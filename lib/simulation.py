@@ -1,15 +1,6 @@
+import copy
+
 class Simulation:
-
-    def __init__(self):
-        board = []
-        oneline = []
-        for i in range(60*2+15):
-            oneline.append(0)
-        for i in range(60*2+15):
-            board.append(oneline)
-
-        self.emptyboard = board
-
 
     def convert2twod(self, inputlist, length):
         twod_list = []
@@ -51,50 +42,42 @@ class Simulation:
         return board
 
 
-    def run(self, board):
-        for g in range(2):
+    def run(self, board, iterations):
+        for g in range(iterations):
             
-            print(board[43][43:49])
-            print(board[44][43:49])
-            print(board[45][43:49])
-            print(board[46][43:49])
-            print(board[47][43:49])
-            print(board[48][43:49])
-            print("------")
-
-            editboard = board
+            editboard = copy.deepcopy(board)
+            print(editboard)
 
             for itrue in range(len(board)-2):
-                i = itrue+1
-                for ztrue in range(len(board[i])-2):
-                    z = ztrue+1
+                y = itrue+1
+                for ztrue in range(len(board[y])-2):
+                    x = ztrue+1
 
-                    upper = [board[i-1][z-1], board[i-1][z], board[i-1][z+1]]
-                    middle = [board[i][z-1], board[i][z+1]]
-                    lower = [board[i+1][z-1], board[i+1][z], board[i+1][z+1]]
-
-                    # upper = [board[i-1][z-1] if z-1>=0 else 0, board[i-1][z], board[i-1][z+1] if z+1<135 else 0] if i-1>=0 else [0,0,0]
-                    # middle = [board[i][z-1] if z-1>=0 else 0, board[i][z+1] if z+1<135 else 0]
-                    # lower = [board[i+1][z-1] if z-1>=0 else 0, board[i+1][z], board[i+1][z+1] if z+1<135 else 0] if i+1<135 else [0,0,0]
+                    places =  [board[y-1][x-1], board[y-1][x], board[y-1][x+1], # up
+                               board[y][x-1],                  board[y][x+1],   # middle
+                               board[y+1][x-1], board[y+1][x], board[y+1][x+1]] # buttom
                     
-                    sourrounding = 0
-                    for f in upper:
-                        sourrounding += f
-                    for f in middle:
-                        sourrounding += f
-                    for f in lower:
-                        sourrounding += f
-
+                    sourrounding = sum(places)
+                    
+                  #  if sourrounding==5 :
+                        #print(board)
+                        #print(board[y-1][x-1], board[y-1][x], board[y-1][x+1])
+                        #print(board[y][x-1],   board[y][x],   board[y][x+1])
+                        #print(board[y+1][x-1], board[y+1][x], board[y+1][x+1])
+                        #print("rrrrrrrrrrrr")
+                    
                     if sourrounding >= 2:
                         surv = self.checksurvival(sourrounding)
                         if surv == 1:
-                            editboard[i][z] = 1
+                            editboard[y][x] = 1
                         elif surv == 2:
-                            editboard[i][z] = 0
+                            editboard[y][x] = 0
                     else:
-                        editboard[i][z] = 0
+                        editboard[y][x] = 0
 
             board = editboard
+            
+        return board
 
 
 
@@ -113,21 +96,23 @@ class Simulation:
 gm = Simulation()
 
 gm.run(gm.creatboard(gm.convert2twod([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-                        0,1,1,0,0,0,0,0,0,0,0,0,0,1,0,
-                        0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,
-                        0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,
-                        0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,
-                        0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-                        0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-                        0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-                        0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-                        0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-                        0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,
-                        0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,
-                        0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,
-                        0,1,1,1,0,0,0,0,0,0,0,0,1,1,0,
-                        0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-                       15))
-       )
+                                      0,1,1,0,0,0,0,0,0,0,0,0,0,1,0,
+                                      0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,
+                                      0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,
+                                      0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,
+                                      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+                                      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+                                      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+                                      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+                                      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+                                      0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,
+                                      0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,
+                                      0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,
+                                      0,1,1,1,0,0,0,0,0,0,1,1,1,1,0,
+                                      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                                     15)
+                     ),
+       100)
 
 print("dada")
+
