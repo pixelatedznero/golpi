@@ -42,7 +42,11 @@ class Simulation:
         return board
 
 
-    def run(self, board, iterations):
+    def run(self, board, iterations, fullexport=False):
+        if fullexport:
+            everyboard = []
+            everyboard.append(board)
+
         for g in range(iterations):
             
             editboard = copy.deepcopy(board)
@@ -68,8 +72,14 @@ class Simulation:
                         editboard[y][x] = 0
 
             board = editboard
+
+            if fullexport:
+                everyboard.append(board)
             
-        return board
+        if fullexport:
+            return board, everyboard
+        else:
+            return board
 
 
     def checksurvival(self, sourrounding):
