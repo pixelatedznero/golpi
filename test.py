@@ -3,10 +3,20 @@ from lib import simulation, utils
 sim = simulation.Simulation()
 util = utils.Utils()
 
-pattern = [[0,0,0,0,0,0,],
-           [0,1,1,0,0,0,],
-           [0,1,1,0,0,0,],
-           [0,0,0,1,1,0,],
-           [0,0,0,1,1,0,],]
+simulation
+zz = sim.run(sim.createboard(sim.convert2twod([0,0,0,0,0,
+                                                0,1,1,1,1,
+                                                1,0,0,0,1,
+                                                0,0,0,0,1,
+                                                1,0,0,1,0],5), 
+                              boardsize=(20,20)),
+             12)
 
-util.animategif(pattern, 10, "animation")
+for i in range(len(zz)):
+    for x in range(len(zz[i])):
+        if zz[i][x] == 1:
+            zz[i][x] ="■"
+        else:
+            zz[i][x] =" "
+
+print(zz)
