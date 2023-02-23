@@ -37,7 +37,15 @@ class Simulation:
                 else:
                     board[i].append(inputpattern[i-patternposition[0]][j-patternposition[1]])
 
-        for g in range(20):
+        for g in range(2):
+            
+            print(board[43][43:49])
+            print(board[44][43:49])
+            print(board[45][43:49])
+            print(board[46][43:49])
+            print(board[47][43:49])
+            print(board[48][43:49])
+            print("------")
 
             editboard = board
 
@@ -77,19 +85,19 @@ class Simulation:
 
     def checksurvival(self, sourrounding):
         if sourrounding == 3:
-            return 1
+            return 1 # is born
         elif sourrounding == 2:
-            return 0
+            return 0 # doesn't change
         elif sourrounding >= 4:
-            return 2
+            return 2 # dies
         else:
-            return 0
+            return 0 # doesn't change
 
 
 
 gm = Simulation()
 
-gm.run(gm.convert2twod([0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,
+gm.run(gm.convert2twod([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
                         0,1,1,0,0,0,0,0,0,0,0,0,0,1,0,
                         0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,
                         0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,
@@ -104,7 +112,7 @@ gm.run(gm.convert2twod([0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,
                         0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,
                         0,1,1,1,0,0,0,0,0,0,0,0,1,1,0,
                         0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-                       5)
+                       15)
        )
 
 print("dada")
