@@ -76,10 +76,7 @@ class Simulation:
             if fullexport:
                 everyboard.append(board)
             
-        if fullexport:
-            return board, everyboard
-        else:
-            return board
+        return everyboard if fullexport else board
 
 
     def checksurvival(self, sourrounding):

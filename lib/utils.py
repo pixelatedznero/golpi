@@ -9,7 +9,7 @@ class Utils:
     
     def __init__(self):
         print("utilself")
-        self.checks = checks.Checks()
+        self.checks = checks
 
     def animategif(self, pattern=list, iterations=int, filename=str, fps=5, boardsize=(100,100), patternposition=None):
         if not patternposition:
