@@ -20,8 +20,8 @@ util = utils.Utils()
 
 # print(zz)
 
-for i in range(4):
-    heyho = util.checks.Checks(f"heyhi{i}")
+check1 = util.checks.Checks(sim.run(sim.createboard(sim.convert2twod([0,0,0,0,0,0,1,1,1,1,1,0,0,0,1,0,0,0,0,1,1,0,0,1,0],5)), 20, fullexport=True))
+ 
+print(check1.distance())
 
-    heyho.distance()
-    heyho.pixelsperframe()
+util.animategif(sim.convert2twod([0,0,0,0,0,0,1,1,1,1,1,0,0,0,1,0,0,0,0,1,1,0,0,1,0],5), 20, "animation", )
