@@ -3,6 +3,7 @@ from lib import simulation, utils
 sim = simulation.Simulation()
 util = utils.Utils()
 
+simulation
 zz = sim.run(sim.createboard(sim.convert2twod([0,0,0,0,0,
                                                 0,1,1,1,1,
                                                 1,0,0,0,1,
