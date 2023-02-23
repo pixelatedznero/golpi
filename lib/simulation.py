@@ -23,7 +23,7 @@ class Simulation:
         return patternposition
 
 
-    def creatboard(self, pattern, boardsize=(100,100), patternposition=None):
+    def createboard(self, pattern, boardsize=(100,100), patternposition=None):
         if patternposition == None:
             patternposition = self.centerpattern(pattern, boardsize)
 
@@ -46,7 +46,6 @@ class Simulation:
         for g in range(iterations):
             
             editboard = copy.deepcopy(board)
-            print(editboard)
 
             for itrue in range(len(board)-2):
                 y = itrue+1
@@ -58,13 +57,6 @@ class Simulation:
                                board[y+1][x-1], board[y+1][x], board[y+1][x+1]] # buttom
                     
                     sourrounding = sum(places)
-                    
-                  #  if sourrounding==5 :
-                        #print(board)
-                        #print(board[y-1][x-1], board[y-1][x], board[y-1][x+1])
-                        #print(board[y][x-1],   board[y][x],   board[y][x+1])
-                        #print(board[y+1][x-1], board[y+1][x], board[y+1][x+1])
-                        #print("rrrrrrrrrrrr")
                     
                     if sourrounding >= 2:
                         surv = self.checksurvival(sourrounding)
@@ -80,7 +72,6 @@ class Simulation:
         return board
 
 
-
     def checksurvival(self, sourrounding):
         if sourrounding == 3:
             return 1 # is born
@@ -90,29 +81,3 @@ class Simulation:
             return 2 # dies
         else:
             return 0 # doesn't change
-
-
-
-gm = Simulation()
-
-gm.run(gm.creatboard(gm.convert2twod([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-                                      0,1,1,0,0,0,0,0,0,0,0,0,0,1,0,
-                                      0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,
-                                      0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,
-                                      0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,
-                                      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-                                      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-                                      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-                                      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-                                      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-                                      0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,
-                                      0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,
-                                      0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,
-                                      0,1,1,1,0,0,0,0,0,0,1,1,1,1,0,
-                                      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-                                     15)
-                     ),
-       100)
-
-print("dada")
-
