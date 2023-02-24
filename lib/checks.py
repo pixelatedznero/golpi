@@ -35,7 +35,24 @@ class Checks:
                 break
 
         return distances
-                
 
     def pixelsperframe(self):
-        print(f"pxl{self.everyboard}")
+        totalpixels = 0
+        for i in range(len(self.everyboard)): # one frame
+            for j in range(len(self.everyboard[i])): # one row
+                totalpixels += sum(self.everyboard[i][j])
+                
+        return totalpixels / len(self.everyboard)
+
+    def survivedtime(self):
+        time = 0
+        for i in range(len(self.everyboard)): # one frame
+            pixels = 0
+            for j in range(len(self.everyboard[i])): # one row
+                pixels += sum(self.everyboard[i][j])
+            
+            if pixels > 0: # survived to the last frame tried
+                time += 1
+            else: # didn't survived to the last frame tried
+                break
+        return time
