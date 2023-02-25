@@ -7,47 +7,64 @@ from lib import simulation, utils
 sim = simulation.Simulation()
 util = utils.Utils()
 
+iterations = 60
+
 # Define the evaluation function
 def evaluate(individual, device):
     # Evaluate the fitness of an individual
     individual_tensor = individual.unsqueeze(0).to(device)
 
-    reallist = list(torch.round(individual_tensor).int().numpy()[0])
+    reallist = list(torch.round(individual_tensor.cpu()).int().numpy()[0])
 
-    ch = util.checks.Checks(sim.run(sim.createboard(sim.convert2twod(reallist,10)), 20, fullexport=True))
+    ch = util.checks.Checks(sim.run(sim.createboard(sim.convert2twod(reallist,10)), iterations, fullexport=True))
     output = ch.distance()
 
     fitness_score = output[max(output)]
     return fitness_score
+
+
+def animate(individual, device, iteration):
+    individual_tensor = individual.unsqueeze(0).to(device)
+
+    reallist = list(torch.round(individual_tensor.cpu()).int().numpy()[0])
+
+    util.animategif(sim.convert2twod(reallist,10), iterations, f"anim{iteration}")
+
 
 # Define the neural network that will be used to learn the optimal solution
 class Net(nn.Module):
     def __init__(self):
         super(Net, self).__init__()
         self.fc1 = nn.Linear(100, 50)
-        self.fc2 = nn.Linear(50, 1)
+        self.fc2 = nn.Linear(50, 25)
+        self.fc3 = nn.Linear(25, 10)
+        self.fc4 = nn.Linear(10, 1)
 
     def forward(self, x):
         x = torch.sigmoid(self.fc1(x))
         x = torch.sigmoid(self.fc2(x))
+        x = torch.sigmoid(self.fc3(x))
+        x = torch.sigmoid(self.fc4(x))
         return x
 
 # Define the genetic algorithm
 class GeneticAlgorithm:
     def __init__(self, population_size, mutation_rate):
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        if self.device == "cuda":
+            print("--- Using CUDA ---")
         self.population_size = population_size
         self.mutation_rate = mutation_rate
         self.population = self.initialize_population().to(self.device)
 
     def initialize_population(self):
-        population = torch.randint(low=0, high=2, size=(self.population_size, 100))
+        population = torch.randint(low=0, high=2, size=(self.population_size, 100)).to(self.device)
         return population.float()
 
     def crossover(self, parent1, parent2):
         # Perform crossover between two parents
-        child = torch.zeros(100)
-        crossover_point = torch.randint(low=0, high=100, size=(1,))
+        child = torch.zeros(100).to(self.device)
+        crossover_point = torch.randint(low=0, high=100, size=(1,)).to(self.device)
         child[:crossover_point] = parent1[:crossover_point]
         child[crossover_point:] = parent2[crossover_point:]
         return child
@@ -55,7 +72,7 @@ class GeneticAlgorithm:
     def mutate(self, individual):
         # Perform mutation on individual
         for i in range(100):
-            if torch.rand(1) < self.mutation_rate:
+            if torch.rand(1).to(self.device) < self.mutation_rate:
                 individual[i] = 1 - individual[i]
         return individual
 
@@ -76,7 +93,7 @@ class GeneticAlgorithm:
             # Select individuals for the next generation
             self.population = self.select_individuals(self.population, fitness_scores, offspring, offspring_fitness_scores)
 
-            print(generation)
+            print(f"Gen: {generation} | Best: {max(offspring_fitness_scores).cpu().int().numpy()} | Avg: {(sum(offspring_fitness_scores.int())/len(offspring_fitness_scores)).cpu().int().numpy()}")
 
     def evaluate_population(self, population):
         # Evaluate the fitness of each individual in the population
@@ -90,7 +107,7 @@ class GeneticAlgorithm:
         # Select parents for the next generation
         fitness_scores = fitness_scores.float()
         fitness_scores += 1e-3
-        parent_indices = torch.multinomial(fitness_scores, self.population_size, replacement=True)
+        parent_indices = torch.multinomial(fitness_scores, self.population_size, replacement=True).to(self.device)
         parents = population[parent_indices]
         return parents
 
@@ -118,19 +135,24 @@ class GeneticAlgorithm:
 # Instantiate the genetic algorithm
 gen_alg = GeneticAlgorithm(population_size=100, mutation_rate=0.01)
 
-# Evolve the population for 100 generations
-for i in range(10):
-    gen_alg.evolve(num_generations=10)
-    print(i)
+for i in range(6):
+    gen_alg.evolve(num_generations=30)
+    best_individual = gen_alg.population[np.argmax([evaluate(individual, gen_alg.device) for individual in gen_alg.population])]
+    animate(best_individual, gen_alg.device, i)
 
 # Get the best individual in the final population
-best_individual = gen_alg.population[np.argmax([evaluate(individual, gen_alg.device) for individual in gen_alg.population])]
-print(evaluate(best_individual, gen_alg.device))
-print(best_individual)
+best_individual = gen_alg.population[np.argmax([evaluate(individual.cpu(), gen_alg.device) for individual in gen_alg.population])].cpu()
 
-[1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 0,
-0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1,
-1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 1, 0, 0, 1, 1, 0, 0, 1,
-1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 0,
-0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1,
-1, 1, 1, 0, 1, 0, 1, 1, 0, 0]
+pattern = list(torch.round(best_individual.cpu().unsqueeze(0).to(gen_alg.device)).cpu().int().numpy()[0])
+
+print(evaluate(best_individual, gen_alg.device))
+print(pattern)
+
+util.animategif(sim.convert2twod(pattern,10), iterations, "final")
+
+net=Net()
+
+print(net.fc1)
+print(net.fc2)
+print(net.fc3)
+print(net.fc4)
