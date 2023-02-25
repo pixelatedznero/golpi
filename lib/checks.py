@@ -34,6 +34,10 @@ class Checks:
             if distances["right"] > 0:
                 break
 
+        for i in distances:
+            if distances[i] < 0:
+                distances[i] = 0
+
         return distances
 
     def pixelsperframe(self):
