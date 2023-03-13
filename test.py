@@ -25,27 +25,3 @@ util = utils.Utils()
 #check1 = util.checks.Checks(sim.run(sim.createboard(sim.convert2twod([0,0,0,0,0,0,1,1,1,1,1,0,0,0,1,0,0,0,0,1,1,0,0,1,0],5)), 20, fullexport=True))
  
 #print(check1.distance())
-
-iters = 90
-
-beforetime = time.time()
-sim.run(sim.createboard(sim.convert2twod([1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 
-                        1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 
-                        1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 0, 
-                        0, 1, 0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 0, 1, 1, 
-                        1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 
-                        1, 1, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 
-                        1, 1, 1, 0, 1, 0, 1, 1, 0, 0],10)), iters, fullexport=True)
-
-print(time.time() - beforetime)
-
-beforetime = time.time()
-sim.run(simslow.createboard(sim.convert2twod([1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 
-                        1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 
-                        1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 0, 
-                        0, 1, 0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 0, 1, 1, 
-                        1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 
-                        1, 1, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 
-                        1, 1, 1, 0, 1, 0, 1, 1, 0, 0],10)), iters, fullexport=True)
-
-print(time.time() - beforetime)
