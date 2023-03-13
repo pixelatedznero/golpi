@@ -1,6 +1,8 @@
-from lib import simulation, utils
+import time
 
-sim = simulation.Simulation()
+from lib import simulation as sim, utils, simslow
+
+# sim = simulation.Simulation()
 util = utils.Utils()
 
 # zz = sim.run(sim.createboard(sim.convert2twod([0,0,0,0,0,
@@ -23,10 +25,3 @@ util = utils.Utils()
 #check1 = util.checks.Checks(sim.run(sim.createboard(sim.convert2twod([0,0,0,0,0,0,1,1,1,1,1,0,0,0,1,0,0,0,0,1,1,0,0,1,0],5)), 20, fullexport=True))
  
 #print(check1.distance())
-
-util.animategif(sim.convert2twod([1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 0,
-0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1,
-1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 1, 0, 0, 1, 1, 0, 0, 1,
-1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 0,
-0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1,
-1, 1, 1, 0, 1, 0, 1, 1, 0, 0],10), 20, "animation", )
