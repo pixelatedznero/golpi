@@ -1,9 +1,14 @@
-import time
+# import time
 
-from lib import simulation as sim, utils, simslow
+import lib
 
-# sim = simulation.Simulation()
-util = utils.Utils()
+print(lib.patterns.block)
+
+
+# from lib import simulation as sim, utils, simslow
+
+# # sim = simulation.Simulation()
+# util = utils.Utils()
 
 # zz = sim.run(sim.createboard(sim.convert2twod([0,0,0,0,0,
 #                                                 0,1,1,1,1,

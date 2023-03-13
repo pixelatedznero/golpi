@@ -1,1 +1,1 @@
-from . import simulation, utils
+from .golpi import *

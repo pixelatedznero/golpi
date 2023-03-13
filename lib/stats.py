@@ -1,11 +1,10 @@
-class Checks:
-    
-    def __init__(self, everyboard):
-        self.everyboard = everyboard
+class Stats:
+    def __init__(self, history):
+        self.history = history
 
 
     def distance(self):
-        lastboard = self.everyboard[len(self.everyboard)-1]
+        lastboard = self.history[len(self.history)-1]
         distances = {"up":0, "down":0, "right":0, "left":0}
 
         for i in range(len(lastboard)):
@@ -40,20 +39,22 @@ class Checks:
 
         return distances
 
+
     def pixelsperframe(self):
         totalpixels = 0
-        for i in range(len(self.everyboard)): # one frame
-            for j in range(len(self.everyboard[i])): # one row
-                totalpixels += sum(self.everyboard[i][j])
+        for i in range(len(self.history)): # one frame
+            for j in range(len(self.history[i])): # one row
+                totalpixels += sum(self.history[i][j])
                 
-        return totalpixels / len(self.everyboard)
+        return totalpixels / len(self.history)
+
 
     def survivedtime(self):
         time = 0
-        for i in range(len(self.everyboard)): # one frame
+        for i in range(len(self.history)): # one frame
             pixels = 0
-            for j in range(len(self.everyboard[i])): # one row
-                pixels += sum(self.everyboard[i][j])
+            for j in range(len(self.history[i])): # one row
+                pixels += sum(self.history[i][j])
             
             if pixels > 0: # survived to the last frame tried
                 time += 1

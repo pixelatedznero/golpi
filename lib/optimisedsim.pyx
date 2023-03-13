@@ -22,23 +22,34 @@ def centerpattern(pattern, boardsize):
     return patternposition
 
 
-def createboard(pattern, boardsize=(100,100), patternposition=None):
-    if patternposition == None:
-        patternposition = centerpattern(pattern, boardsize)
-
+def createboard(size):
     board = []
-
-    for i in range(boardsize[0]):
+    
+    for h in range(size[1]):
         board.append([])
-        for j in range(boardsize[1]):
-            if i < patternposition[0] or i > patternposition[0]+len(pattern)-1:
-                board[i].append(0)
-            elif j < patternposition[1] or j > patternposition[1]+len(pattern[1])-1:
-                board[i].append(0)
-            else:
-                board[i].append(pattern[i-patternposition[0]][j-patternposition[1]])
+        for w in range(size[0]):
+            board[h].append(0)
 
     return board
+
+
+# def createboard(pattern, boardsize=(100,100), patternposition=None):
+#     if patternposition == None:
+#         patternposition = centerpattern(pattern, boardsize)
+# 
+#     board = []
+# 
+#     for i in range(boardsize[0]):
+#         board.append([])
+#         for j in range(boardsize[1]):
+#             if i < patternposition[0] or i > patternposition[0]+len(pattern)-1:
+#                 board[i].append(0)
+#             elif j < patternposition[1] or j > patternposition[1]+len(pattern[1])-1:
+#                 board[i].append(0)
+#             else:
+#                 board[i].append(pattern[i-patternposition[0]][j-patternposition[1]])
+# 
+#     return board
 
 
 def run(board, iterations, fullexport=False):
