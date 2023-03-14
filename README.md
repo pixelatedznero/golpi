@@ -1,14 +1,5 @@
-# Game of life with AI
+# golpi
 
-Trying to make AI create patterns to do stuff in Conway's game of life
+A basic integration of Conway's game of life in development. We are aiming to create a fun, usable and fast python libary for AI training and more. This by the way originated in trying to train AI to create patterns ([Game-of-life-with-AI](https://github.com/pixelatedznero/Game-of-life-with-AI))
 
-## Avalible checks after a simulation
-
-- ### Distance
-  get the distance of the furthes alive pixel from the center (not actually the distance only the distance in axes, if you want to add actual distance feel free to contribute)
-
-- ### Pixels per frame
-  get the average pixels per frame simulated
-
-- ### Time survived
-  amount of frames until the last pixel died
+If you want to help, then feel free to take a look at the open issues and the projects or contact me!
