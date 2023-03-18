@@ -26,7 +26,7 @@ class Board:
         -------
         Nothing"""
 
-        pass
+        self.now = opt.addpattern(pattern, self.now, position if position != () else opt.centerposition(pattern, (len(self.now), len(self.now[0]))))
 
 
     def simulate(self, iterations: int):

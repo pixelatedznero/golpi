@@ -3,12 +3,12 @@
 /* BEGIN: Cython Metadata
 {
     "distutils": {
-        "name": "lib.optimisedsim",
+        "name": "golpi.optimisedsim",
         "sources": [
-            "lib/optimisedsim.pyx"
+            "golpi/optimisedsim.pyx"
         ]
     },
-    "module_name": "lib.optimisedsim"
+    "module_name": "golpi.optimisedsim"
 }
 END: Cython Metadata */
 
@@ -750,8 +750,8 @@ static CYTHON_INLINE float __PYX_NAN() {
   #endif
 #endif
 
-#define __PYX_HAVE__lib__optimisedsim
-#define __PYX_HAVE_API__lib__optimisedsim
+#define __PYX_HAVE__golpi__optimisedsim
+#define __PYX_HAVE_API__golpi__optimisedsim
 /* Early includes */
 #ifdef _OPENMP
 #include <omp.h>
@@ -962,7 +962,7 @@ static const char *__pyx_filename;
 
 
 static const char *__pyx_f[] = {
-  "lib\\optimisedsim.pyx",
+  "golpi\\optimisedsim.pyx",
 };
 
 /*--- Type declarations ---*/
@@ -1224,6 +1224,14 @@ static CYTHON_INLINE PyObject *__Pyx_PyObject_GetItem(PyObject *obj, PyObject* k
 #define __Pyx_PyObject_GetItem(obj, key)  PyObject_GetItem(obj, key)
 #endif
 
+/* PyIntBinop.proto */
+#if !CYTHON_COMPILING_IN_PYPY
+static PyObject* __Pyx_PyInt_SubtractObjC(PyObject *op1, PyObject *op2, long intval, int inplace, int zerodivision_check);
+#else
+#define __Pyx_PyInt_SubtractObjC(op1, op2, intval, inplace, zerodivision_check)\
+    (inplace ? PyNumber_InPlaceSubtract(op1, op2) : PyNumber_Subtract(op1, op2))
+#endif
+
 /* PyDictVersioning.proto */
 #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_TYPE_SLOTS
 #define __PYX_DICT_VERSION_INIT  ((PY_UINT64_T) -1)
@@ -1277,14 +1285,6 @@ static PyObject* __Pyx_PyInt_AddObjC(PyObject *op1, PyObject *op2, long intval, 
 #else
 #define __Pyx_PyInt_AddObjC(op1, op2, intval, inplace, zerodivision_check)\
     (inplace ? PyNumber_InPlaceAdd(op1, op2) : PyNumber_Add(op1, op2))
-#endif
-
-/* PyIntBinop.proto */
-#if !CYTHON_COMPILING_IN_PYPY
-static PyObject* __Pyx_PyInt_SubtractObjC(PyObject *op1, PyObject *op2, long intval, int inplace, int zerodivision_check);
-#else
-#define __Pyx_PyInt_SubtractObjC(op1, op2, intval, inplace, zerodivision_check)\
-    (inplace ? PyNumber_InPlaceSubtract(op1, op2) : PyNumber_Subtract(op1, op2))
 #endif
 
 /* PyIntCompare.proto */
@@ -1356,18 +1356,19 @@ static int __Pyx_check_binary_version(void);
 static int __Pyx_InitStrings(__Pyx_StringTabEntry *t);
 
 
-/* Module declarations from 'lib.optimisedsim' */
-#define __Pyx_MODULE_NAME "lib.optimisedsim"
-extern int __pyx_module_is_main_lib__optimisedsim;
-int __pyx_module_is_main_lib__optimisedsim = 0;
+/* Module declarations from 'golpi.optimisedsim' */
+#define __Pyx_MODULE_NAME "golpi.optimisedsim"
+extern int __pyx_module_is_main_golpi__optimisedsim;
+int __pyx_module_is_main_golpi__optimisedsim = 0;
 
-/* Implementation of 'lib.optimisedsim' */
+/* Implementation of 'golpi.optimisedsim' */
 static PyObject *__pyx_builtin_ValueError;
 static PyObject *__pyx_builtin_range;
 static PyObject *__pyx_builtin_sum;
 static const char __pyx_k_g[] = "g";
 static const char __pyx_k_h[] = "h";
 static const char __pyx_k_i[] = "i";
+static const char __pyx_k_j[] = "j";
 static const char __pyx_k_w[] = "w";
 static const char __pyx_k_x[] = "x";
 static const char __pyx_k_y[] = "y";
@@ -1394,25 +1395,27 @@ static const char __pyx_k_editboard[] = "editboard";
 static const char __pyx_k_inputlist[] = "inputlist";
 static const char __pyx_k_twod_list[] = "twod_list";
 static const char __pyx_k_ValueError[] = "ValueError";
+static const char __pyx_k_addpattern[] = "addpattern";
 static const char __pyx_k_everyboard[] = "everyboard";
 static const char __pyx_k_fullexport[] = "fullexport";
 static const char __pyx_k_iterations[] = "iterations";
 static const char __pyx_k_createboard[] = "createboard";
 static const char __pyx_k_convert2twod[] = "convert2twod";
 static const char __pyx_k_sourrounding[] = "sourrounding";
-static const char __pyx_k_centerpattern[] = "centerpattern";
 static const char __pyx_k_checksurvival[] = "checksurvival";
+static const char __pyx_k_centerposition[] = "centerposition";
 static const char __pyx_k_patternposition[] = "patternposition";
-static const char __pyx_k_lib_optimisedsim[] = "lib.optimisedsim";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
-static const char __pyx_k_lib_optimisedsim_pyx[] = "lib\\optimisedsim.pyx";
+static const char __pyx_k_golpi_optimisedsim[] = "golpi.optimisedsim";
+static const char __pyx_k_golpi_optimisedsim_pyx[] = "golpi\\optimisedsim.pyx";
 static const char __pyx_k_List_length_must_be_divisible_by[] = "List length must be divisible by length value";
 static PyObject *__pyx_kp_u_List_length_must_be_divisible_by;
 static PyObject *__pyx_n_s_ValueError;
+static PyObject *__pyx_n_s_addpattern;
 static PyObject *__pyx_n_s_append;
 static PyObject *__pyx_n_s_board;
 static PyObject *__pyx_n_s_boardsize;
-static PyObject *__pyx_n_s_centerpattern;
+static PyObject *__pyx_n_s_centerposition;
 static PyObject *__pyx_n_s_checksurvival;
 static PyObject *__pyx_n_s_cline_in_traceback;
 static PyObject *__pyx_n_s_convert2twod;
@@ -1423,15 +1426,16 @@ static PyObject *__pyx_n_s_editboard;
 static PyObject *__pyx_n_s_everyboard;
 static PyObject *__pyx_n_s_fullexport;
 static PyObject *__pyx_n_s_g;
+static PyObject *__pyx_n_s_golpi_optimisedsim;
+static PyObject *__pyx_kp_s_golpi_optimisedsim_pyx;
 static PyObject *__pyx_n_s_h;
 static PyObject *__pyx_n_s_i;
 static PyObject *__pyx_n_s_import;
 static PyObject *__pyx_n_s_inputlist;
 static PyObject *__pyx_n_s_iterations;
 static PyObject *__pyx_n_s_itrue;
+static PyObject *__pyx_n_s_j;
 static PyObject *__pyx_n_s_length;
-static PyObject *__pyx_n_s_lib_optimisedsim;
-static PyObject *__pyx_kp_s_lib_optimisedsim_pyx;
 static PyObject *__pyx_n_s_main;
 static PyObject *__pyx_n_s_name;
 static PyObject *__pyx_n_s_pattern;
@@ -1449,11 +1453,12 @@ static PyObject *__pyx_n_s_w;
 static PyObject *__pyx_n_s_x;
 static PyObject *__pyx_n_s_y;
 static PyObject *__pyx_n_s_ztrue;
-static PyObject *__pyx_pf_3lib_12optimisedsim_convert2twod(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_inputlist, PyObject *__pyx_v_length); /* proto */
-static PyObject *__pyx_pf_3lib_12optimisedsim_2centerpattern(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_pattern, PyObject *__pyx_v_boardsize); /* proto */
-static PyObject *__pyx_pf_3lib_12optimisedsim_4createboard(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_size); /* proto */
-static PyObject *__pyx_pf_3lib_12optimisedsim_6run(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_board, PyObject *__pyx_v_iterations, PyObject *__pyx_v_fullexport); /* proto */
-static PyObject *__pyx_pf_3lib_12optimisedsim_8checksurvival(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_sourrounding); /* proto */
+static PyObject *__pyx_pf_5golpi_12optimisedsim_convert2twod(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_inputlist, PyObject *__pyx_v_length); /* proto */
+static PyObject *__pyx_pf_5golpi_12optimisedsim_2centerposition(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_pattern, PyObject *__pyx_v_boardsize); /* proto */
+static PyObject *__pyx_pf_5golpi_12optimisedsim_4createboard(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_size); /* proto */
+static PyObject *__pyx_pf_5golpi_12optimisedsim_6addpattern(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_pattern, PyObject *__pyx_v_board, PyObject *__pyx_v_patternposition); /* proto */
+static PyObject *__pyx_pf_5golpi_12optimisedsim_8run(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_board, PyObject *__pyx_v_iterations, PyObject *__pyx_v_fullexport); /* proto */
+static PyObject *__pyx_pf_5golpi_12optimisedsim_10checksurvival(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_sourrounding); /* proto */
 static PyObject *__pyx_int_0;
 static PyObject *__pyx_int_1;
 static PyObject *__pyx_int_2;
@@ -1465,14 +1470,16 @@ static PyObject *__pyx_tuple__4;
 static PyObject *__pyx_tuple__6;
 static PyObject *__pyx_tuple__8;
 static PyObject *__pyx_tuple__10;
+static PyObject *__pyx_tuple__12;
 static PyObject *__pyx_codeobj__3;
 static PyObject *__pyx_codeobj__5;
 static PyObject *__pyx_codeobj__7;
 static PyObject *__pyx_codeobj__9;
 static PyObject *__pyx_codeobj__11;
+static PyObject *__pyx_codeobj__13;
 /* Late includes */
 
-/* "lib/optimisedsim.pyx":4
+/* "golpi/optimisedsim.pyx":4
  * 
  * 
  * def convert2twod(inputlist, length):             # <<<<<<<<<<<<<<
@@ -1481,9 +1488,9 @@ static PyObject *__pyx_codeobj__11;
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_3lib_12optimisedsim_1convert2twod(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_3lib_12optimisedsim_1convert2twod = {"convert2twod", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_3lib_12optimisedsim_1convert2twod, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_3lib_12optimisedsim_1convert2twod(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_5golpi_12optimisedsim_1convert2twod(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_5golpi_12optimisedsim_1convert2twod = {"convert2twod", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_5golpi_12optimisedsim_1convert2twod, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_5golpi_12optimisedsim_1convert2twod(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_inputlist = 0;
   PyObject *__pyx_v_length = 0;
   int __pyx_lineno = 0;
@@ -1534,18 +1541,18 @@ static PyObject *__pyx_pw_3lib_12optimisedsim_1convert2twod(PyObject *__pyx_self
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("convert2twod", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 4, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("lib.optimisedsim.convert2twod", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("golpi.optimisedsim.convert2twod", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_3lib_12optimisedsim_convert2twod(__pyx_self, __pyx_v_inputlist, __pyx_v_length);
+  __pyx_r = __pyx_pf_5golpi_12optimisedsim_convert2twod(__pyx_self, __pyx_v_inputlist, __pyx_v_length);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_3lib_12optimisedsim_convert2twod(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_inputlist, PyObject *__pyx_v_length) {
+static PyObject *__pyx_pf_5golpi_12optimisedsim_convert2twod(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_inputlist, PyObject *__pyx_v_length) {
   PyObject *__pyx_v_twod_list = NULL;
   PyObject *__pyx_v_i = NULL;
   PyObject *__pyx_r = NULL;
@@ -1563,7 +1570,7 @@ static PyObject *__pyx_pf_3lib_12optimisedsim_convert2twod(CYTHON_UNUSED PyObjec
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("convert2twod", 0);
 
-  /* "lib/optimisedsim.pyx":5
+  /* "golpi/optimisedsim.pyx":5
  * 
  * def convert2twod(inputlist, length):
  *     twod_list = []             # <<<<<<<<<<<<<<
@@ -1575,7 +1582,7 @@ static PyObject *__pyx_pf_3lib_12optimisedsim_convert2twod(CYTHON_UNUSED PyObjec
   __pyx_v_twod_list = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "lib/optimisedsim.pyx":7
+  /* "golpi/optimisedsim.pyx":7
  *     twod_list = []
  * 
  *     if int(len(inputlist)/length) != len(inputlist)/length:             # <<<<<<<<<<<<<<
@@ -1604,7 +1611,7 @@ static PyObject *__pyx_pf_3lib_12optimisedsim_convert2twod(CYTHON_UNUSED PyObjec
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   if (unlikely(__pyx_t_5)) {
 
-    /* "lib/optimisedsim.pyx":8
+    /* "golpi/optimisedsim.pyx":8
  * 
  *     if int(len(inputlist)/length) != len(inputlist)/length:
  *         raise ValueError("List length must be divisible by length value")             # <<<<<<<<<<<<<<
@@ -1617,7 +1624,7 @@ static PyObject *__pyx_pf_3lib_12optimisedsim_convert2twod(CYTHON_UNUSED PyObjec
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __PYX_ERR(0, 8, __pyx_L1_error)
 
-    /* "lib/optimisedsim.pyx":7
+    /* "golpi/optimisedsim.pyx":7
  *     twod_list = []
  * 
  *     if int(len(inputlist)/length) != len(inputlist)/length:             # <<<<<<<<<<<<<<
@@ -1626,7 +1633,7 @@ static PyObject *__pyx_pf_3lib_12optimisedsim_convert2twod(CYTHON_UNUSED PyObjec
  */
   }
 
-  /* "lib/optimisedsim.pyx":10
+  /* "golpi/optimisedsim.pyx":10
  *         raise ValueError("List length must be divisible by length value")
  * 
  *     for i in range(int(len(inputlist)/length)):             # <<<<<<<<<<<<<<
@@ -1688,7 +1695,7 @@ static PyObject *__pyx_pf_3lib_12optimisedsim_convert2twod(CYTHON_UNUSED PyObjec
     __Pyx_XDECREF_SET(__pyx_v_i, __pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "lib/optimisedsim.pyx":11
+    /* "golpi/optimisedsim.pyx":11
  * 
  *     for i in range(int(len(inputlist)/length)):
  *         twod_list.append(inputlist[length*i:length*i+length])             # <<<<<<<<<<<<<<
@@ -1709,7 +1716,7 @@ static PyObject *__pyx_pf_3lib_12optimisedsim_convert2twod(CYTHON_UNUSED PyObjec
     __pyx_t_8 = __Pyx_PyList_Append(__pyx_v_twod_list, __pyx_t_1); if (unlikely(__pyx_t_8 == ((int)-1))) __PYX_ERR(0, 11, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "lib/optimisedsim.pyx":10
+    /* "golpi/optimisedsim.pyx":10
  *         raise ValueError("List length must be divisible by length value")
  * 
  *     for i in range(int(len(inputlist)/length)):             # <<<<<<<<<<<<<<
@@ -1719,7 +1726,7 @@ static PyObject *__pyx_pf_3lib_12optimisedsim_convert2twod(CYTHON_UNUSED PyObjec
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "lib/optimisedsim.pyx":13
+  /* "golpi/optimisedsim.pyx":13
  *         twod_list.append(inputlist[length*i:length*i+length])
  * 
  *     return twod_list             # <<<<<<<<<<<<<<
@@ -1731,7 +1738,7 @@ static PyObject *__pyx_pf_3lib_12optimisedsim_convert2twod(CYTHON_UNUSED PyObjec
   __pyx_r = __pyx_v_twod_list;
   goto __pyx_L0;
 
-  /* "lib/optimisedsim.pyx":4
+  /* "golpi/optimisedsim.pyx":4
  * 
  * 
  * def convert2twod(inputlist, length):             # <<<<<<<<<<<<<<
@@ -1745,7 +1752,7 @@ static PyObject *__pyx_pf_3lib_12optimisedsim_convert2twod(CYTHON_UNUSED PyObjec
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_7);
-  __Pyx_AddTraceback("lib.optimisedsim.convert2twod", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("golpi.optimisedsim.convert2twod", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_twod_list);
@@ -1755,18 +1762,18 @@ static PyObject *__pyx_pf_3lib_12optimisedsim_convert2twod(CYTHON_UNUSED PyObjec
   return __pyx_r;
 }
 
-/* "lib/optimisedsim.pyx":16
+/* "golpi/optimisedsim.pyx":16
  * 
  * 
- * def centerpattern(pattern, boardsize):             # <<<<<<<<<<<<<<
+ * def centerposition(pattern, boardsize):             # <<<<<<<<<<<<<<
  *     patternposition = (int(boardsize[0]/2),int(boardsize[1]/2))
  * 
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_3lib_12optimisedsim_3centerpattern(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_3lib_12optimisedsim_3centerpattern = {"centerpattern", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_3lib_12optimisedsim_3centerpattern, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_3lib_12optimisedsim_3centerpattern(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_5golpi_12optimisedsim_3centerposition(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_5golpi_12optimisedsim_3centerposition = {"centerposition", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_5golpi_12optimisedsim_3centerposition, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_5golpi_12optimisedsim_3centerposition(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_pattern = 0;
   PyObject *__pyx_v_boardsize = 0;
   int __pyx_lineno = 0;
@@ -1774,7 +1781,7 @@ static PyObject *__pyx_pw_3lib_12optimisedsim_3centerpattern(PyObject *__pyx_sel
   int __pyx_clineno = 0;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("centerpattern (wrapper)", 0);
+  __Pyx_RefNannySetupContext("centerposition (wrapper)", 0);
   {
     static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_pattern,&__pyx_n_s_boardsize,0};
     PyObject* values[2] = {0,0};
@@ -1798,11 +1805,11 @@ static PyObject *__pyx_pw_3lib_12optimisedsim_3centerpattern(PyObject *__pyx_sel
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_boardsize)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("centerpattern", 1, 2, 2, 1); __PYX_ERR(0, 16, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("centerposition", 1, 2, 2, 1); __PYX_ERR(0, 16, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "centerpattern") < 0)) __PYX_ERR(0, 16, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "centerposition") < 0)) __PYX_ERR(0, 16, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -1815,20 +1822,20 @@ static PyObject *__pyx_pw_3lib_12optimisedsim_3centerpattern(PyObject *__pyx_sel
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("centerpattern", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 16, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("centerposition", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 16, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("lib.optimisedsim.centerpattern", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("golpi.optimisedsim.centerposition", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_3lib_12optimisedsim_2centerpattern(__pyx_self, __pyx_v_pattern, __pyx_v_boardsize);
+  __pyx_r = __pyx_pf_5golpi_12optimisedsim_2centerposition(__pyx_self, __pyx_v_pattern, __pyx_v_boardsize);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_3lib_12optimisedsim_2centerpattern(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_pattern, PyObject *__pyx_v_boardsize) {
+static PyObject *__pyx_pf_5golpi_12optimisedsim_2centerposition(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_pattern, PyObject *__pyx_v_boardsize) {
   PyObject *__pyx_v_patternposition = NULL;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
@@ -1840,11 +1847,11 @@ static PyObject *__pyx_pf_3lib_12optimisedsim_2centerpattern(CYTHON_UNUSED PyObj
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("centerpattern", 0);
+  __Pyx_RefNannySetupContext("centerposition", 0);
 
-  /* "lib/optimisedsim.pyx":17
+  /* "golpi/optimisedsim.pyx":17
  * 
- * def centerpattern(pattern, boardsize):
+ * def centerposition(pattern, boardsize):
  *     patternposition = (int(boardsize[0]/2),int(boardsize[1]/2))             # <<<<<<<<<<<<<<
  * 
  *     patternposition = (patternposition[0]-int(len(pattern[0])/2),
@@ -1876,11 +1883,11 @@ static PyObject *__pyx_pf_3lib_12optimisedsim_2centerpattern(CYTHON_UNUSED PyObj
   __pyx_v_patternposition = ((PyObject*)__pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "lib/optimisedsim.pyx":19
+  /* "golpi/optimisedsim.pyx":19
  *     patternposition = (int(boardsize[0]/2),int(boardsize[1]/2))
  * 
  *     patternposition = (patternposition[0]-int(len(pattern[0])/2),             # <<<<<<<<<<<<<<
- *                         patternposition[1]-int(len(pattern)/2))
+ *                        patternposition[1]-int(len(pattern)/2))
  * 
  */
   __pyx_t_3 = __Pyx_GetItemInt_Tuple(__pyx_v_patternposition, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 19, __pyx_L1_error)
@@ -1896,10 +1903,10 @@ static PyObject *__pyx_pf_3lib_12optimisedsim_2centerpattern(CYTHON_UNUSED PyObj
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "lib/optimisedsim.pyx":20
+  /* "golpi/optimisedsim.pyx":20
  * 
  *     patternposition = (patternposition[0]-int(len(pattern[0])/2),
- *                         patternposition[1]-int(len(pattern)/2))             # <<<<<<<<<<<<<<
+ *                        patternposition[1]-int(len(pattern)/2))             # <<<<<<<<<<<<<<
  * 
  *     return patternposition
  */
@@ -1913,11 +1920,11 @@ static PyObject *__pyx_pf_3lib_12optimisedsim_2centerpattern(CYTHON_UNUSED PyObj
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "lib/optimisedsim.pyx":19
+  /* "golpi/optimisedsim.pyx":19
  *     patternposition = (int(boardsize[0]/2),int(boardsize[1]/2))
  * 
  *     patternposition = (patternposition[0]-int(len(pattern[0])/2),             # <<<<<<<<<<<<<<
- *                         patternposition[1]-int(len(pattern)/2))
+ *                        patternposition[1]-int(len(pattern)/2))
  * 
  */
   __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 19, __pyx_L1_error)
@@ -1931,8 +1938,8 @@ static PyObject *__pyx_pf_3lib_12optimisedsim_2centerpattern(CYTHON_UNUSED PyObj
   __Pyx_DECREF_SET(__pyx_v_patternposition, ((PyObject*)__pyx_t_3));
   __pyx_t_3 = 0;
 
-  /* "lib/optimisedsim.pyx":22
- *                         patternposition[1]-int(len(pattern)/2))
+  /* "golpi/optimisedsim.pyx":22
+ *                        patternposition[1]-int(len(pattern)/2))
  * 
  *     return patternposition             # <<<<<<<<<<<<<<
  * 
@@ -1943,10 +1950,10 @@ static PyObject *__pyx_pf_3lib_12optimisedsim_2centerpattern(CYTHON_UNUSED PyObj
   __pyx_r = __pyx_v_patternposition;
   goto __pyx_L0;
 
-  /* "lib/optimisedsim.pyx":16
+  /* "golpi/optimisedsim.pyx":16
  * 
  * 
- * def centerpattern(pattern, boardsize):             # <<<<<<<<<<<<<<
+ * def centerposition(pattern, boardsize):             # <<<<<<<<<<<<<<
  *     patternposition = (int(boardsize[0]/2),int(boardsize[1]/2))
  * 
  */
@@ -1957,7 +1964,7 @@ static PyObject *__pyx_pf_3lib_12optimisedsim_2centerpattern(CYTHON_UNUSED PyObj
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_AddTraceback("lib.optimisedsim.centerpattern", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("golpi.optimisedsim.centerposition", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_patternposition);
@@ -1966,7 +1973,7 @@ static PyObject *__pyx_pf_3lib_12optimisedsim_2centerpattern(CYTHON_UNUSED PyObj
   return __pyx_r;
 }
 
-/* "lib/optimisedsim.pyx":25
+/* "golpi/optimisedsim.pyx":25
  * 
  * 
  * def createboard(size):             # <<<<<<<<<<<<<<
@@ -1975,20 +1982,20 @@ static PyObject *__pyx_pf_3lib_12optimisedsim_2centerpattern(CYTHON_UNUSED PyObj
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_3lib_12optimisedsim_5createboard(PyObject *__pyx_self, PyObject *__pyx_v_size); /*proto*/
-static PyMethodDef __pyx_mdef_3lib_12optimisedsim_5createboard = {"createboard", (PyCFunction)__pyx_pw_3lib_12optimisedsim_5createboard, METH_O, 0};
-static PyObject *__pyx_pw_3lib_12optimisedsim_5createboard(PyObject *__pyx_self, PyObject *__pyx_v_size) {
+static PyObject *__pyx_pw_5golpi_12optimisedsim_5createboard(PyObject *__pyx_self, PyObject *__pyx_v_size); /*proto*/
+static PyMethodDef __pyx_mdef_5golpi_12optimisedsim_5createboard = {"createboard", (PyCFunction)__pyx_pw_5golpi_12optimisedsim_5createboard, METH_O, 0};
+static PyObject *__pyx_pw_5golpi_12optimisedsim_5createboard(PyObject *__pyx_self, PyObject *__pyx_v_size) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("createboard (wrapper)", 0);
-  __pyx_r = __pyx_pf_3lib_12optimisedsim_4createboard(__pyx_self, ((PyObject *)__pyx_v_size));
+  __pyx_r = __pyx_pf_5golpi_12optimisedsim_4createboard(__pyx_self, ((PyObject *)__pyx_v_size));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_3lib_12optimisedsim_4createboard(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_size) {
+static PyObject *__pyx_pf_5golpi_12optimisedsim_4createboard(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_size) {
   PyObject *__pyx_v_board = NULL;
   PyObject *__pyx_v_h = NULL;
   CYTHON_UNUSED PyObject *__pyx_v_w = NULL;
@@ -2007,7 +2014,7 @@ static PyObject *__pyx_pf_3lib_12optimisedsim_4createboard(CYTHON_UNUSED PyObjec
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("createboard", 0);
 
-  /* "lib/optimisedsim.pyx":26
+  /* "golpi/optimisedsim.pyx":26
  * 
  * def createboard(size):
  *     board = []             # <<<<<<<<<<<<<<
@@ -2019,7 +2026,7 @@ static PyObject *__pyx_pf_3lib_12optimisedsim_4createboard(CYTHON_UNUSED PyObjec
   __pyx_v_board = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "lib/optimisedsim.pyx":28
+  /* "golpi/optimisedsim.pyx":28
  *     board = []
  * 
  *     for h in range(size[1]):             # <<<<<<<<<<<<<<
@@ -2074,7 +2081,7 @@ static PyObject *__pyx_pf_3lib_12optimisedsim_4createboard(CYTHON_UNUSED PyObjec
     __Pyx_XDECREF_SET(__pyx_v_h, __pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "lib/optimisedsim.pyx":29
+    /* "golpi/optimisedsim.pyx":29
  * 
  *     for h in range(size[1]):
  *         board.append([])             # <<<<<<<<<<<<<<
@@ -2086,7 +2093,7 @@ static PyObject *__pyx_pf_3lib_12optimisedsim_4createboard(CYTHON_UNUSED PyObjec
     __pyx_t_5 = __Pyx_PyList_Append(__pyx_v_board, __pyx_t_2); if (unlikely(__pyx_t_5 == ((int)-1))) __PYX_ERR(0, 29, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "lib/optimisedsim.pyx":30
+    /* "golpi/optimisedsim.pyx":30
  *     for h in range(size[1]):
  *         board.append([])
  *         for w in range(size[0]):             # <<<<<<<<<<<<<<
@@ -2141,7 +2148,7 @@ static PyObject *__pyx_pf_3lib_12optimisedsim_4createboard(CYTHON_UNUSED PyObjec
       __Pyx_XDECREF_SET(__pyx_v_w, __pyx_t_6);
       __pyx_t_6 = 0;
 
-      /* "lib/optimisedsim.pyx":31
+      /* "golpi/optimisedsim.pyx":31
  *         board.append([])
  *         for w in range(size[0]):
  *             board[h].append(0)             # <<<<<<<<<<<<<<
@@ -2153,7 +2160,7 @@ static PyObject *__pyx_pf_3lib_12optimisedsim_4createboard(CYTHON_UNUSED PyObjec
       __pyx_t_5 = __Pyx_PyObject_Append(__pyx_t_6, __pyx_int_0); if (unlikely(__pyx_t_5 == ((int)-1))) __PYX_ERR(0, 31, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-      /* "lib/optimisedsim.pyx":30
+      /* "golpi/optimisedsim.pyx":30
  *     for h in range(size[1]):
  *         board.append([])
  *         for w in range(size[0]):             # <<<<<<<<<<<<<<
@@ -2163,7 +2170,7 @@ static PyObject *__pyx_pf_3lib_12optimisedsim_4createboard(CYTHON_UNUSED PyObjec
     }
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "lib/optimisedsim.pyx":28
+    /* "golpi/optimisedsim.pyx":28
  *     board = []
  * 
  *     for h in range(size[1]):             # <<<<<<<<<<<<<<
@@ -2173,7 +2180,7 @@ static PyObject *__pyx_pf_3lib_12optimisedsim_4createboard(CYTHON_UNUSED PyObjec
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "lib/optimisedsim.pyx":33
+  /* "golpi/optimisedsim.pyx":33
  *             board[h].append(0)
  * 
  *     return board             # <<<<<<<<<<<<<<
@@ -2185,7 +2192,7 @@ static PyObject *__pyx_pf_3lib_12optimisedsim_4createboard(CYTHON_UNUSED PyObjec
   __pyx_r = __pyx_v_board;
   goto __pyx_L0;
 
-  /* "lib/optimisedsim.pyx":25
+  /* "golpi/optimisedsim.pyx":25
  * 
  * 
  * def createboard(size):             # <<<<<<<<<<<<<<
@@ -2198,7 +2205,7 @@ static PyObject *__pyx_pf_3lib_12optimisedsim_4createboard(CYTHON_UNUSED PyObjec
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_6);
-  __Pyx_AddTraceback("lib.optimisedsim.createboard", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("golpi.optimisedsim.createboard", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_board);
@@ -2209,7 +2216,401 @@ static PyObject *__pyx_pf_3lib_12optimisedsim_4createboard(CYTHON_UNUSED PyObjec
   return __pyx_r;
 }
 
-/* "lib/optimisedsim.pyx":55
+/* "golpi/optimisedsim.pyx":36
+ * 
+ * 
+ * def addpattern(pattern, board, patternposition):             # <<<<<<<<<<<<<<
+ * 
+ *     for i in range(len(board)):
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_5golpi_12optimisedsim_7addpattern(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_5golpi_12optimisedsim_7addpattern = {"addpattern", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_5golpi_12optimisedsim_7addpattern, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_5golpi_12optimisedsim_7addpattern(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+  PyObject *__pyx_v_pattern = 0;
+  PyObject *__pyx_v_board = 0;
+  PyObject *__pyx_v_patternposition = 0;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("addpattern (wrapper)", 0);
+  {
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_pattern,&__pyx_n_s_board,&__pyx_n_s_patternposition,0};
+    PyObject* values[3] = {0,0,0};
+    if (unlikely(__pyx_kwds)) {
+      Py_ssize_t kw_args;
+      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
+      switch (pos_args) {
+        case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+        CYTHON_FALLTHROUGH;
+        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        CYTHON_FALLTHROUGH;
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      kw_args = PyDict_Size(__pyx_kwds);
+      switch (pos_args) {
+        case  0:
+        if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_pattern)) != 0)) kw_args--;
+        else goto __pyx_L5_argtuple_error;
+        CYTHON_FALLTHROUGH;
+        case  1:
+        if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_board)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("addpattern", 1, 3, 3, 1); __PYX_ERR(0, 36, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  2:
+        if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_patternposition)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("addpattern", 1, 3, 3, 2); __PYX_ERR(0, 36, __pyx_L3_error)
+        }
+      }
+      if (unlikely(kw_args > 0)) {
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "addpattern") < 0)) __PYX_ERR(0, 36, __pyx_L3_error)
+      }
+    } else if (PyTuple_GET_SIZE(__pyx_args) != 3) {
+      goto __pyx_L5_argtuple_error;
+    } else {
+      values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+      values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+      values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+    }
+    __pyx_v_pattern = values[0];
+    __pyx_v_board = values[1];
+    __pyx_v_patternposition = values[2];
+  }
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("addpattern", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 36, __pyx_L3_error)
+  __pyx_L3_error:;
+  __Pyx_AddTraceback("golpi.optimisedsim.addpattern", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_5golpi_12optimisedsim_6addpattern(__pyx_self, __pyx_v_pattern, __pyx_v_board, __pyx_v_patternposition);
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_5golpi_12optimisedsim_6addpattern(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_pattern, PyObject *__pyx_v_board, PyObject *__pyx_v_patternposition) {
+  PyObject *__pyx_v_i = NULL;
+  PyObject *__pyx_v_j = NULL;
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  Py_ssize_t __pyx_t_1;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *(*__pyx_t_4)(PyObject *);
+  Py_ssize_t __pyx_t_5;
+  PyObject *__pyx_t_6 = NULL;
+  PyObject *(*__pyx_t_7)(PyObject *);
+  int __pyx_t_8;
+  PyObject *__pyx_t_9 = NULL;
+  int __pyx_t_10;
+  Py_ssize_t __pyx_t_11;
+  PyObject *__pyx_t_12 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("addpattern", 0);
+
+  /* "golpi/optimisedsim.pyx":38
+ * def addpattern(pattern, board, patternposition):
+ * 
+ *     for i in range(len(board)):             # <<<<<<<<<<<<<<
+ *         for j in range(len(board[0])):
+ *             if i < patternposition[0] or i > patternposition[0]+len(pattern)-1:
+ */
+  __pyx_t_1 = PyObject_Length(__pyx_v_board); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(0, 38, __pyx_L1_error)
+  __pyx_t_2 = PyInt_FromSsize_t(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 38, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 38, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  if (likely(PyList_CheckExact(__pyx_t_3)) || PyTuple_CheckExact(__pyx_t_3)) {
+    __pyx_t_2 = __pyx_t_3; __Pyx_INCREF(__pyx_t_2); __pyx_t_1 = 0;
+    __pyx_t_4 = NULL;
+  } else {
+    __pyx_t_1 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 38, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_4 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 38, __pyx_L1_error)
+  }
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  for (;;) {
+    if (likely(!__pyx_t_4)) {
+      if (likely(PyList_CheckExact(__pyx_t_2))) {
+        if (__pyx_t_1 >= PyList_GET_SIZE(__pyx_t_2)) break;
+        #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+        __pyx_t_3 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_1); __Pyx_INCREF(__pyx_t_3); __pyx_t_1++; if (unlikely(0 < 0)) __PYX_ERR(0, 38, __pyx_L1_error)
+        #else
+        __pyx_t_3 = PySequence_ITEM(__pyx_t_2, __pyx_t_1); __pyx_t_1++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 38, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_3);
+        #endif
+      } else {
+        if (__pyx_t_1 >= PyTuple_GET_SIZE(__pyx_t_2)) break;
+        #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+        __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_1); __Pyx_INCREF(__pyx_t_3); __pyx_t_1++; if (unlikely(0 < 0)) __PYX_ERR(0, 38, __pyx_L1_error)
+        #else
+        __pyx_t_3 = PySequence_ITEM(__pyx_t_2, __pyx_t_1); __pyx_t_1++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 38, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_3);
+        #endif
+      }
+    } else {
+      __pyx_t_3 = __pyx_t_4(__pyx_t_2);
+      if (unlikely(!__pyx_t_3)) {
+        PyObject* exc_type = PyErr_Occurred();
+        if (exc_type) {
+          if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
+          else __PYX_ERR(0, 38, __pyx_L1_error)
+        }
+        break;
+      }
+      __Pyx_GOTREF(__pyx_t_3);
+    }
+    __Pyx_XDECREF_SET(__pyx_v_i, __pyx_t_3);
+    __pyx_t_3 = 0;
+
+    /* "golpi/optimisedsim.pyx":39
+ * 
+ *     for i in range(len(board)):
+ *         for j in range(len(board[0])):             # <<<<<<<<<<<<<<
+ *             if i < patternposition[0] or i > patternposition[0]+len(pattern)-1:
+ *                 pass
+ */
+    __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_board, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 39, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_5 = PyObject_Length(__pyx_t_3); if (unlikely(__pyx_t_5 == ((Py_ssize_t)-1))) __PYX_ERR(0, 39, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_3 = PyInt_FromSsize_t(__pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 39, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_6 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_t_3); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 39, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_6);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    if (likely(PyList_CheckExact(__pyx_t_6)) || PyTuple_CheckExact(__pyx_t_6)) {
+      __pyx_t_3 = __pyx_t_6; __Pyx_INCREF(__pyx_t_3); __pyx_t_5 = 0;
+      __pyx_t_7 = NULL;
+    } else {
+      __pyx_t_5 = -1; __pyx_t_3 = PyObject_GetIter(__pyx_t_6); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 39, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_3);
+      __pyx_t_7 = Py_TYPE(__pyx_t_3)->tp_iternext; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 39, __pyx_L1_error)
+    }
+    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+    for (;;) {
+      if (likely(!__pyx_t_7)) {
+        if (likely(PyList_CheckExact(__pyx_t_3))) {
+          if (__pyx_t_5 >= PyList_GET_SIZE(__pyx_t_3)) break;
+          #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+          __pyx_t_6 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_5); __Pyx_INCREF(__pyx_t_6); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 39, __pyx_L1_error)
+          #else
+          __pyx_t_6 = PySequence_ITEM(__pyx_t_3, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 39, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_6);
+          #endif
+        } else {
+          if (__pyx_t_5 >= PyTuple_GET_SIZE(__pyx_t_3)) break;
+          #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+          __pyx_t_6 = PyTuple_GET_ITEM(__pyx_t_3, __pyx_t_5); __Pyx_INCREF(__pyx_t_6); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 39, __pyx_L1_error)
+          #else
+          __pyx_t_6 = PySequence_ITEM(__pyx_t_3, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 39, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_6);
+          #endif
+        }
+      } else {
+        __pyx_t_6 = __pyx_t_7(__pyx_t_3);
+        if (unlikely(!__pyx_t_6)) {
+          PyObject* exc_type = PyErr_Occurred();
+          if (exc_type) {
+            if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
+            else __PYX_ERR(0, 39, __pyx_L1_error)
+          }
+          break;
+        }
+        __Pyx_GOTREF(__pyx_t_6);
+      }
+      __Pyx_XDECREF_SET(__pyx_v_j, __pyx_t_6);
+      __pyx_t_6 = 0;
+
+      /* "golpi/optimisedsim.pyx":40
+ *     for i in range(len(board)):
+ *         for j in range(len(board[0])):
+ *             if i < patternposition[0] or i > patternposition[0]+len(pattern)-1:             # <<<<<<<<<<<<<<
+ *                 pass
+ *             elif j < patternposition[1] or j > patternposition[1]+len(pattern[0])-1:
+ */
+      __pyx_t_6 = __Pyx_GetItemInt(__pyx_v_patternposition, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 40, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_6);
+      __pyx_t_9 = PyObject_RichCompare(__pyx_v_i, __pyx_t_6, Py_LT); __Pyx_XGOTREF(__pyx_t_9); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 40, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+      __pyx_t_10 = __Pyx_PyObject_IsTrue(__pyx_t_9); if (unlikely(__pyx_t_10 < 0)) __PYX_ERR(0, 40, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+      if (!__pyx_t_10) {
+      } else {
+        __pyx_t_8 = __pyx_t_10;
+        goto __pyx_L8_bool_binop_done;
+      }
+      __pyx_t_9 = __Pyx_GetItemInt(__pyx_v_patternposition, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 40, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_9);
+      __pyx_t_11 = PyObject_Length(__pyx_v_pattern); if (unlikely(__pyx_t_11 == ((Py_ssize_t)-1))) __PYX_ERR(0, 40, __pyx_L1_error)
+      __pyx_t_6 = PyInt_FromSsize_t(__pyx_t_11); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 40, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_6);
+      __pyx_t_12 = PyNumber_Add(__pyx_t_9, __pyx_t_6); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 40, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_12);
+      __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+      __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+      __pyx_t_6 = __Pyx_PyInt_SubtractObjC(__pyx_t_12, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 40, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_6);
+      __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+      __pyx_t_12 = PyObject_RichCompare(__pyx_v_i, __pyx_t_6, Py_GT); __Pyx_XGOTREF(__pyx_t_12); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 40, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+      __pyx_t_10 = __Pyx_PyObject_IsTrue(__pyx_t_12); if (unlikely(__pyx_t_10 < 0)) __PYX_ERR(0, 40, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+      __pyx_t_8 = __pyx_t_10;
+      __pyx_L8_bool_binop_done:;
+      if (__pyx_t_8) {
+        goto __pyx_L7;
+      }
+
+      /* "golpi/optimisedsim.pyx":42
+ *             if i < patternposition[0] or i > patternposition[0]+len(pattern)-1:
+ *                 pass
+ *             elif j < patternposition[1] or j > patternposition[1]+len(pattern[0])-1:             # <<<<<<<<<<<<<<
+ *                 pass
+ *             else:
+ */
+      __pyx_t_12 = __Pyx_GetItemInt(__pyx_v_patternposition, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 42, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_12);
+      __pyx_t_6 = PyObject_RichCompare(__pyx_v_j, __pyx_t_12, Py_LT); __Pyx_XGOTREF(__pyx_t_6); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 42, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+      __pyx_t_10 = __Pyx_PyObject_IsTrue(__pyx_t_6); if (unlikely(__pyx_t_10 < 0)) __PYX_ERR(0, 42, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+      if (!__pyx_t_10) {
+      } else {
+        __pyx_t_8 = __pyx_t_10;
+        goto __pyx_L10_bool_binop_done;
+      }
+      __pyx_t_6 = __Pyx_GetItemInt(__pyx_v_patternposition, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 42, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_6);
+      __pyx_t_12 = __Pyx_GetItemInt(__pyx_v_pattern, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 42, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_12);
+      __pyx_t_11 = PyObject_Length(__pyx_t_12); if (unlikely(__pyx_t_11 == ((Py_ssize_t)-1))) __PYX_ERR(0, 42, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+      __pyx_t_12 = PyInt_FromSsize_t(__pyx_t_11); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 42, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_12);
+      __pyx_t_9 = PyNumber_Add(__pyx_t_6, __pyx_t_12); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 42, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_9);
+      __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+      __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+      __pyx_t_12 = __Pyx_PyInt_SubtractObjC(__pyx_t_9, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 42, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_12);
+      __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+      __pyx_t_9 = PyObject_RichCompare(__pyx_v_j, __pyx_t_12, Py_GT); __Pyx_XGOTREF(__pyx_t_9); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 42, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+      __pyx_t_10 = __Pyx_PyObject_IsTrue(__pyx_t_9); if (unlikely(__pyx_t_10 < 0)) __PYX_ERR(0, 42, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+      __pyx_t_8 = __pyx_t_10;
+      __pyx_L10_bool_binop_done:;
+      if (__pyx_t_8) {
+        goto __pyx_L7;
+      }
+
+      /* "golpi/optimisedsim.pyx":45
+ *                 pass
+ *             else:
+ *                 board[i][j] = pattern[i-patternposition[0]][j-patternposition[1]]             # <<<<<<<<<<<<<<
+ * 
+ *     return board
+ */
+      /*else*/ {
+        __pyx_t_9 = __Pyx_GetItemInt(__pyx_v_patternposition, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 45, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_9);
+        __pyx_t_12 = PyNumber_Subtract(__pyx_v_i, __pyx_t_9); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 45, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_12);
+        __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+        __pyx_t_9 = __Pyx_PyObject_GetItem(__pyx_v_pattern, __pyx_t_12); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 45, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_9);
+        __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+        __pyx_t_12 = __Pyx_GetItemInt(__pyx_v_patternposition, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 45, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_12);
+        __pyx_t_6 = PyNumber_Subtract(__pyx_v_j, __pyx_t_12); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 45, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_6);
+        __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+        __pyx_t_12 = __Pyx_PyObject_GetItem(__pyx_t_9, __pyx_t_6); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 45, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_12);
+        __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+        __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+        __pyx_t_6 = __Pyx_PyObject_GetItem(__pyx_v_board, __pyx_v_i); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 45, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_6);
+        if (unlikely(PyObject_SetItem(__pyx_t_6, __pyx_v_j, __pyx_t_12) < 0)) __PYX_ERR(0, 45, __pyx_L1_error)
+        __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+        __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+      }
+      __pyx_L7:;
+
+      /* "golpi/optimisedsim.pyx":39
+ * 
+ *     for i in range(len(board)):
+ *         for j in range(len(board[0])):             # <<<<<<<<<<<<<<
+ *             if i < patternposition[0] or i > patternposition[0]+len(pattern)-1:
+ *                 pass
+ */
+    }
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+
+    /* "golpi/optimisedsim.pyx":38
+ * def addpattern(pattern, board, patternposition):
+ * 
+ *     for i in range(len(board)):             # <<<<<<<<<<<<<<
+ *         for j in range(len(board[0])):
+ *             if i < patternposition[0] or i > patternposition[0]+len(pattern)-1:
+ */
+  }
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+
+  /* "golpi/optimisedsim.pyx":47
+ *                 board[i][j] = pattern[i-patternposition[0]][j-patternposition[1]]
+ * 
+ *     return board             # <<<<<<<<<<<<<<
+ * 
+ * 
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __Pyx_INCREF(__pyx_v_board);
+  __pyx_r = __pyx_v_board;
+  goto __pyx_L0;
+
+  /* "golpi/optimisedsim.pyx":36
+ * 
+ * 
+ * def addpattern(pattern, board, patternposition):             # <<<<<<<<<<<<<<
+ * 
+ *     for i in range(len(board)):
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_6);
+  __Pyx_XDECREF(__pyx_t_9);
+  __Pyx_XDECREF(__pyx_t_12);
+  __Pyx_AddTraceback("golpi.optimisedsim.addpattern", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XDECREF(__pyx_v_i);
+  __Pyx_XDECREF(__pyx_v_j);
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "golpi/optimisedsim.pyx":50
  * 
  * 
  * def run(board, iterations, fullexport=False):             # <<<<<<<<<<<<<<
@@ -2218,9 +2619,9 @@ static PyObject *__pyx_pf_3lib_12optimisedsim_4createboard(CYTHON_UNUSED PyObjec
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_3lib_12optimisedsim_7run(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_3lib_12optimisedsim_7run = {"run", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_3lib_12optimisedsim_7run, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_3lib_12optimisedsim_7run(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_5golpi_12optimisedsim_9run(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_5golpi_12optimisedsim_9run = {"run", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_5golpi_12optimisedsim_9run, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_5golpi_12optimisedsim_9run(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_board = 0;
   PyObject *__pyx_v_iterations = 0;
   PyObject *__pyx_v_fullexport = 0;
@@ -2256,7 +2657,7 @@ static PyObject *__pyx_pw_3lib_12optimisedsim_7run(PyObject *__pyx_self, PyObjec
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_iterations)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("run", 0, 2, 3, 1); __PYX_ERR(0, 55, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("run", 0, 2, 3, 1); __PYX_ERR(0, 50, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
@@ -2266,7 +2667,7 @@ static PyObject *__pyx_pw_3lib_12optimisedsim_7run(PyObject *__pyx_self, PyObjec
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "run") < 0)) __PYX_ERR(0, 55, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "run") < 0)) __PYX_ERR(0, 50, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -2284,20 +2685,20 @@ static PyObject *__pyx_pw_3lib_12optimisedsim_7run(PyObject *__pyx_self, PyObjec
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("run", 0, 2, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 55, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("run", 0, 2, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 50, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("lib.optimisedsim.run", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("golpi.optimisedsim.run", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_3lib_12optimisedsim_6run(__pyx_self, __pyx_v_board, __pyx_v_iterations, __pyx_v_fullexport);
+  __pyx_r = __pyx_pf_5golpi_12optimisedsim_8run(__pyx_self, __pyx_v_board, __pyx_v_iterations, __pyx_v_fullexport);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_3lib_12optimisedsim_6run(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_board, PyObject *__pyx_v_iterations, PyObject *__pyx_v_fullexport) {
+static PyObject *__pyx_pf_5golpi_12optimisedsim_8run(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_board, PyObject *__pyx_v_iterations, PyObject *__pyx_v_fullexport) {
   PyObject *__pyx_v_everyboard = NULL;
   CYTHON_UNUSED PyObject *__pyx_v_g = NULL;
   PyObject *__pyx_v_editboard = NULL;
@@ -2337,38 +2738,38 @@ static PyObject *__pyx_pf_3lib_12optimisedsim_6run(CYTHON_UNUSED PyObject *__pyx
   __Pyx_RefNannySetupContext("run", 0);
   __Pyx_INCREF(__pyx_v_board);
 
-  /* "lib/optimisedsim.pyx":56
+  /* "golpi/optimisedsim.pyx":51
  * 
  * def run(board, iterations, fullexport=False):
  *     if fullexport:             # <<<<<<<<<<<<<<
  *         everyboard = []
  *         everyboard.append(board)
  */
-  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_fullexport); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 56, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_fullexport); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 51, __pyx_L1_error)
   if (__pyx_t_1) {
 
-    /* "lib/optimisedsim.pyx":57
+    /* "golpi/optimisedsim.pyx":52
  * def run(board, iterations, fullexport=False):
  *     if fullexport:
  *         everyboard = []             # <<<<<<<<<<<<<<
  *         everyboard.append(board)
  * 
  */
-    __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 57, __pyx_L1_error)
+    __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 52, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_v_everyboard = ((PyObject*)__pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "lib/optimisedsim.pyx":58
+    /* "golpi/optimisedsim.pyx":53
  *     if fullexport:
  *         everyboard = []
  *         everyboard.append(board)             # <<<<<<<<<<<<<<
  * 
  *     for g in range(iterations):
  */
-    __pyx_t_3 = __Pyx_PyList_Append(__pyx_v_everyboard, __pyx_v_board); if (unlikely(__pyx_t_3 == ((int)-1))) __PYX_ERR(0, 58, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyList_Append(__pyx_v_everyboard, __pyx_v_board); if (unlikely(__pyx_t_3 == ((int)-1))) __PYX_ERR(0, 53, __pyx_L1_error)
 
-    /* "lib/optimisedsim.pyx":56
+    /* "golpi/optimisedsim.pyx":51
  * 
  * def run(board, iterations, fullexport=False):
  *     if fullexport:             # <<<<<<<<<<<<<<
@@ -2377,22 +2778,22 @@ static PyObject *__pyx_pf_3lib_12optimisedsim_6run(CYTHON_UNUSED PyObject *__pyx
  */
   }
 
-  /* "lib/optimisedsim.pyx":60
+  /* "golpi/optimisedsim.pyx":55
  *         everyboard.append(board)
  * 
  *     for g in range(iterations):             # <<<<<<<<<<<<<<
  * 
  *         editboard = copy.deepcopy(board)
  */
-  __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_v_iterations); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 60, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_v_iterations); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 55, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (likely(PyList_CheckExact(__pyx_t_2)) || PyTuple_CheckExact(__pyx_t_2)) {
     __pyx_t_4 = __pyx_t_2; __Pyx_INCREF(__pyx_t_4); __pyx_t_5 = 0;
     __pyx_t_6 = NULL;
   } else {
-    __pyx_t_5 = -1; __pyx_t_4 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 60, __pyx_L1_error)
+    __pyx_t_5 = -1; __pyx_t_4 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 55, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_6 = Py_TYPE(__pyx_t_4)->tp_iternext; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 60, __pyx_L1_error)
+    __pyx_t_6 = Py_TYPE(__pyx_t_4)->tp_iternext; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 55, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   for (;;) {
@@ -2400,17 +2801,17 @@ static PyObject *__pyx_pf_3lib_12optimisedsim_6run(CYTHON_UNUSED PyObject *__pyx
       if (likely(PyList_CheckExact(__pyx_t_4))) {
         if (__pyx_t_5 >= PyList_GET_SIZE(__pyx_t_4)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_2 = PyList_GET_ITEM(__pyx_t_4, __pyx_t_5); __Pyx_INCREF(__pyx_t_2); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 60, __pyx_L1_error)
+        __pyx_t_2 = PyList_GET_ITEM(__pyx_t_4, __pyx_t_5); __Pyx_INCREF(__pyx_t_2); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 55, __pyx_L1_error)
         #else
-        __pyx_t_2 = PySequence_ITEM(__pyx_t_4, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 60, __pyx_L1_error)
+        __pyx_t_2 = PySequence_ITEM(__pyx_t_4, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 55, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         #endif
       } else {
         if (__pyx_t_5 >= PyTuple_GET_SIZE(__pyx_t_4)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_2 = PyTuple_GET_ITEM(__pyx_t_4, __pyx_t_5); __Pyx_INCREF(__pyx_t_2); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 60, __pyx_L1_error)
+        __pyx_t_2 = PyTuple_GET_ITEM(__pyx_t_4, __pyx_t_5); __Pyx_INCREF(__pyx_t_2); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 55, __pyx_L1_error)
         #else
-        __pyx_t_2 = PySequence_ITEM(__pyx_t_4, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 60, __pyx_L1_error)
+        __pyx_t_2 = PySequence_ITEM(__pyx_t_4, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 55, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         #endif
       }
@@ -2420,7 +2821,7 @@ static PyObject *__pyx_pf_3lib_12optimisedsim_6run(CYTHON_UNUSED PyObject *__pyx
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 60, __pyx_L1_error)
+          else __PYX_ERR(0, 55, __pyx_L1_error)
         }
         break;
       }
@@ -2429,16 +2830,16 @@ static PyObject *__pyx_pf_3lib_12optimisedsim_6run(CYTHON_UNUSED PyObject *__pyx
     __Pyx_XDECREF_SET(__pyx_v_g, __pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "lib/optimisedsim.pyx":62
+    /* "golpi/optimisedsim.pyx":57
  *     for g in range(iterations):
  * 
  *         editboard = copy.deepcopy(board)             # <<<<<<<<<<<<<<
  * 
  *         for itrue in range(len(board)-2):
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_copy); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 62, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_copy); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 57, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_deepcopy); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 62, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_deepcopy); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 57, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __pyx_t_7 = NULL;
@@ -2453,32 +2854,32 @@ static PyObject *__pyx_pf_3lib_12optimisedsim_6run(CYTHON_UNUSED PyObject *__pyx
     }
     __pyx_t_2 = (__pyx_t_7) ? __Pyx_PyObject_Call2Args(__pyx_t_8, __pyx_t_7, __pyx_v_board) : __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_v_board);
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 62, __pyx_L1_error)
+    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 57, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_XDECREF_SET(__pyx_v_editboard, __pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "lib/optimisedsim.pyx":64
+    /* "golpi/optimisedsim.pyx":59
  *         editboard = copy.deepcopy(board)
  * 
  *         for itrue in range(len(board)-2):             # <<<<<<<<<<<<<<
  *             y = itrue+1
  *             for ztrue in range(len(board[y])-2):
  */
-    __pyx_t_9 = PyObject_Length(__pyx_v_board); if (unlikely(__pyx_t_9 == ((Py_ssize_t)-1))) __PYX_ERR(0, 64, __pyx_L1_error)
-    __pyx_t_2 = PyInt_FromSsize_t((__pyx_t_9 - 2)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 64, __pyx_L1_error)
+    __pyx_t_9 = PyObject_Length(__pyx_v_board); if (unlikely(__pyx_t_9 == ((Py_ssize_t)-1))) __PYX_ERR(0, 59, __pyx_L1_error)
+    __pyx_t_2 = PyInt_FromSsize_t((__pyx_t_9 - 2)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 59, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_8 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_t_2); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 64, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_t_2); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 59, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     if (likely(PyList_CheckExact(__pyx_t_8)) || PyTuple_CheckExact(__pyx_t_8)) {
       __pyx_t_2 = __pyx_t_8; __Pyx_INCREF(__pyx_t_2); __pyx_t_9 = 0;
       __pyx_t_10 = NULL;
     } else {
-      __pyx_t_9 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_8); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 64, __pyx_L1_error)
+      __pyx_t_9 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_8); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 59, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_10 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 64, __pyx_L1_error)
+      __pyx_t_10 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 59, __pyx_L1_error)
     }
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     for (;;) {
@@ -2486,17 +2887,17 @@ static PyObject *__pyx_pf_3lib_12optimisedsim_6run(CYTHON_UNUSED PyObject *__pyx
         if (likely(PyList_CheckExact(__pyx_t_2))) {
           if (__pyx_t_9 >= PyList_GET_SIZE(__pyx_t_2)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_8 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_9); __Pyx_INCREF(__pyx_t_8); __pyx_t_9++; if (unlikely(0 < 0)) __PYX_ERR(0, 64, __pyx_L1_error)
+          __pyx_t_8 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_9); __Pyx_INCREF(__pyx_t_8); __pyx_t_9++; if (unlikely(0 < 0)) __PYX_ERR(0, 59, __pyx_L1_error)
           #else
-          __pyx_t_8 = PySequence_ITEM(__pyx_t_2, __pyx_t_9); __pyx_t_9++; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 64, __pyx_L1_error)
+          __pyx_t_8 = PySequence_ITEM(__pyx_t_2, __pyx_t_9); __pyx_t_9++; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 59, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_8);
           #endif
         } else {
           if (__pyx_t_9 >= PyTuple_GET_SIZE(__pyx_t_2)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_8 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_9); __Pyx_INCREF(__pyx_t_8); __pyx_t_9++; if (unlikely(0 < 0)) __PYX_ERR(0, 64, __pyx_L1_error)
+          __pyx_t_8 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_9); __Pyx_INCREF(__pyx_t_8); __pyx_t_9++; if (unlikely(0 < 0)) __PYX_ERR(0, 59, __pyx_L1_error)
           #else
-          __pyx_t_8 = PySequence_ITEM(__pyx_t_2, __pyx_t_9); __pyx_t_9++; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 64, __pyx_L1_error)
+          __pyx_t_8 = PySequence_ITEM(__pyx_t_2, __pyx_t_9); __pyx_t_9++; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 59, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_8);
           #endif
         }
@@ -2506,7 +2907,7 @@ static PyObject *__pyx_pf_3lib_12optimisedsim_6run(CYTHON_UNUSED PyObject *__pyx
           PyObject* exc_type = PyErr_Occurred();
           if (exc_type) {
             if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-            else __PYX_ERR(0, 64, __pyx_L1_error)
+            else __PYX_ERR(0, 59, __pyx_L1_error)
           }
           break;
         }
@@ -2515,41 +2916,41 @@ static PyObject *__pyx_pf_3lib_12optimisedsim_6run(CYTHON_UNUSED PyObject *__pyx
       __Pyx_XDECREF_SET(__pyx_v_itrue, __pyx_t_8);
       __pyx_t_8 = 0;
 
-      /* "lib/optimisedsim.pyx":65
+      /* "golpi/optimisedsim.pyx":60
  * 
  *         for itrue in range(len(board)-2):
  *             y = itrue+1             # <<<<<<<<<<<<<<
  *             for ztrue in range(len(board[y])-2):
  *                 x = ztrue+1
  */
-      __pyx_t_8 = __Pyx_PyInt_AddObjC(__pyx_v_itrue, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 65, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_PyInt_AddObjC(__pyx_v_itrue, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 60, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_XDECREF_SET(__pyx_v_y, __pyx_t_8);
       __pyx_t_8 = 0;
 
-      /* "lib/optimisedsim.pyx":66
+      /* "golpi/optimisedsim.pyx":61
  *         for itrue in range(len(board)-2):
  *             y = itrue+1
  *             for ztrue in range(len(board[y])-2):             # <<<<<<<<<<<<<<
  *                 x = ztrue+1
  * 
  */
-      __pyx_t_8 = __Pyx_PyObject_GetItem(__pyx_v_board, __pyx_v_y); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 66, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_PyObject_GetItem(__pyx_v_board, __pyx_v_y); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 61, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
-      __pyx_t_11 = PyObject_Length(__pyx_t_8); if (unlikely(__pyx_t_11 == ((Py_ssize_t)-1))) __PYX_ERR(0, 66, __pyx_L1_error)
+      __pyx_t_11 = PyObject_Length(__pyx_t_8); if (unlikely(__pyx_t_11 == ((Py_ssize_t)-1))) __PYX_ERR(0, 61, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-      __pyx_t_8 = PyInt_FromSsize_t((__pyx_t_11 - 2)); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 66, __pyx_L1_error)
+      __pyx_t_8 = PyInt_FromSsize_t((__pyx_t_11 - 2)); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 61, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
-      __pyx_t_7 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_t_8); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 66, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_t_8); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 61, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       if (likely(PyList_CheckExact(__pyx_t_7)) || PyTuple_CheckExact(__pyx_t_7)) {
         __pyx_t_8 = __pyx_t_7; __Pyx_INCREF(__pyx_t_8); __pyx_t_11 = 0;
         __pyx_t_12 = NULL;
       } else {
-        __pyx_t_11 = -1; __pyx_t_8 = PyObject_GetIter(__pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 66, __pyx_L1_error)
+        __pyx_t_11 = -1; __pyx_t_8 = PyObject_GetIter(__pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 61, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
-        __pyx_t_12 = Py_TYPE(__pyx_t_8)->tp_iternext; if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 66, __pyx_L1_error)
+        __pyx_t_12 = Py_TYPE(__pyx_t_8)->tp_iternext; if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 61, __pyx_L1_error)
       }
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       for (;;) {
@@ -2557,17 +2958,17 @@ static PyObject *__pyx_pf_3lib_12optimisedsim_6run(CYTHON_UNUSED PyObject *__pyx
           if (likely(PyList_CheckExact(__pyx_t_8))) {
             if (__pyx_t_11 >= PyList_GET_SIZE(__pyx_t_8)) break;
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_7 = PyList_GET_ITEM(__pyx_t_8, __pyx_t_11); __Pyx_INCREF(__pyx_t_7); __pyx_t_11++; if (unlikely(0 < 0)) __PYX_ERR(0, 66, __pyx_L1_error)
+            __pyx_t_7 = PyList_GET_ITEM(__pyx_t_8, __pyx_t_11); __Pyx_INCREF(__pyx_t_7); __pyx_t_11++; if (unlikely(0 < 0)) __PYX_ERR(0, 61, __pyx_L1_error)
             #else
-            __pyx_t_7 = PySequence_ITEM(__pyx_t_8, __pyx_t_11); __pyx_t_11++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 66, __pyx_L1_error)
+            __pyx_t_7 = PySequence_ITEM(__pyx_t_8, __pyx_t_11); __pyx_t_11++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 61, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_7);
             #endif
           } else {
             if (__pyx_t_11 >= PyTuple_GET_SIZE(__pyx_t_8)) break;
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_7 = PyTuple_GET_ITEM(__pyx_t_8, __pyx_t_11); __Pyx_INCREF(__pyx_t_7); __pyx_t_11++; if (unlikely(0 < 0)) __PYX_ERR(0, 66, __pyx_L1_error)
+            __pyx_t_7 = PyTuple_GET_ITEM(__pyx_t_8, __pyx_t_11); __Pyx_INCREF(__pyx_t_7); __pyx_t_11++; if (unlikely(0 < 0)) __PYX_ERR(0, 61, __pyx_L1_error)
             #else
-            __pyx_t_7 = PySequence_ITEM(__pyx_t_8, __pyx_t_11); __pyx_t_11++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 66, __pyx_L1_error)
+            __pyx_t_7 = PySequence_ITEM(__pyx_t_8, __pyx_t_11); __pyx_t_11++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 61, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_7);
             #endif
           }
@@ -2577,7 +2978,7 @@ static PyObject *__pyx_pf_3lib_12optimisedsim_6run(CYTHON_UNUSED PyObject *__pyx
             PyObject* exc_type = PyErr_Occurred();
             if (exc_type) {
               if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-              else __PYX_ERR(0, 66, __pyx_L1_error)
+              else __PYX_ERR(0, 61, __pyx_L1_error)
             }
             break;
           }
@@ -2586,126 +2987,126 @@ static PyObject *__pyx_pf_3lib_12optimisedsim_6run(CYTHON_UNUSED PyObject *__pyx
         __Pyx_XDECREF_SET(__pyx_v_ztrue, __pyx_t_7);
         __pyx_t_7 = 0;
 
-        /* "lib/optimisedsim.pyx":67
+        /* "golpi/optimisedsim.pyx":62
  *             y = itrue+1
  *             for ztrue in range(len(board[y])-2):
  *                 x = ztrue+1             # <<<<<<<<<<<<<<
  * 
  *                 places =  [board[y-1][x-1], board[y-1][x], board[y-1][x+1], # up
  */
-        __pyx_t_7 = __Pyx_PyInt_AddObjC(__pyx_v_ztrue, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 67, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyInt_AddObjC(__pyx_v_ztrue, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 62, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         __Pyx_XDECREF_SET(__pyx_v_x, __pyx_t_7);
         __pyx_t_7 = 0;
 
-        /* "lib/optimisedsim.pyx":69
+        /* "golpi/optimisedsim.pyx":64
  *                 x = ztrue+1
  * 
  *                 places =  [board[y-1][x-1], board[y-1][x], board[y-1][x+1], # up             # <<<<<<<<<<<<<<
  *                             board[y][x-1],                  board[y][x+1],   # middle
  *                             board[y+1][x-1], board[y+1][x], board[y+1][x+1]] # buttom
  */
-        __pyx_t_7 = __Pyx_PyInt_SubtractObjC(__pyx_v_y, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 69, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyInt_SubtractObjC(__pyx_v_y, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 64, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
-        __pyx_t_13 = __Pyx_PyObject_GetItem(__pyx_v_board, __pyx_t_7); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 69, __pyx_L1_error)
+        __pyx_t_13 = __Pyx_PyObject_GetItem(__pyx_v_board, __pyx_t_7); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 64, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_13);
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-        __pyx_t_7 = __Pyx_PyInt_SubtractObjC(__pyx_v_x, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 69, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyInt_SubtractObjC(__pyx_v_x, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 64, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
-        __pyx_t_14 = __Pyx_PyObject_GetItem(__pyx_t_13, __pyx_t_7); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 69, __pyx_L1_error)
+        __pyx_t_14 = __Pyx_PyObject_GetItem(__pyx_t_13, __pyx_t_7); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 64, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_14);
         __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-        __pyx_t_7 = __Pyx_PyInt_SubtractObjC(__pyx_v_y, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 69, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyInt_SubtractObjC(__pyx_v_y, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 64, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
-        __pyx_t_13 = __Pyx_PyObject_GetItem(__pyx_v_board, __pyx_t_7); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 69, __pyx_L1_error)
+        __pyx_t_13 = __Pyx_PyObject_GetItem(__pyx_v_board, __pyx_t_7); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 64, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_13);
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-        __pyx_t_7 = __Pyx_PyObject_GetItem(__pyx_t_13, __pyx_v_x); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 69, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyObject_GetItem(__pyx_t_13, __pyx_v_x); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 64, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-        __pyx_t_13 = __Pyx_PyInt_SubtractObjC(__pyx_v_y, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 69, __pyx_L1_error)
+        __pyx_t_13 = __Pyx_PyInt_SubtractObjC(__pyx_v_y, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 64, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_13);
-        __pyx_t_15 = __Pyx_PyObject_GetItem(__pyx_v_board, __pyx_t_13); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 69, __pyx_L1_error)
+        __pyx_t_15 = __Pyx_PyObject_GetItem(__pyx_v_board, __pyx_t_13); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 64, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_15);
         __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-        __pyx_t_13 = __Pyx_PyInt_AddObjC(__pyx_v_x, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 69, __pyx_L1_error)
+        __pyx_t_13 = __Pyx_PyInt_AddObjC(__pyx_v_x, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 64, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_13);
-        __pyx_t_16 = __Pyx_PyObject_GetItem(__pyx_t_15, __pyx_t_13); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 69, __pyx_L1_error)
+        __pyx_t_16 = __Pyx_PyObject_GetItem(__pyx_t_15, __pyx_t_13); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 64, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_16);
         __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
         __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
 
-        /* "lib/optimisedsim.pyx":70
+        /* "golpi/optimisedsim.pyx":65
  * 
  *                 places =  [board[y-1][x-1], board[y-1][x], board[y-1][x+1], # up
  *                             board[y][x-1],                  board[y][x+1],   # middle             # <<<<<<<<<<<<<<
  *                             board[y+1][x-1], board[y+1][x], board[y+1][x+1]] # buttom
  * 
  */
-        __pyx_t_13 = __Pyx_PyObject_GetItem(__pyx_v_board, __pyx_v_y); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 70, __pyx_L1_error)
+        __pyx_t_13 = __Pyx_PyObject_GetItem(__pyx_v_board, __pyx_v_y); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 65, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_13);
-        __pyx_t_15 = __Pyx_PyInt_SubtractObjC(__pyx_v_x, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 70, __pyx_L1_error)
+        __pyx_t_15 = __Pyx_PyInt_SubtractObjC(__pyx_v_x, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 65, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_15);
-        __pyx_t_17 = __Pyx_PyObject_GetItem(__pyx_t_13, __pyx_t_15); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 70, __pyx_L1_error)
+        __pyx_t_17 = __Pyx_PyObject_GetItem(__pyx_t_13, __pyx_t_15); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 65, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_17);
         __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
         __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
-        __pyx_t_15 = __Pyx_PyObject_GetItem(__pyx_v_board, __pyx_v_y); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 70, __pyx_L1_error)
+        __pyx_t_15 = __Pyx_PyObject_GetItem(__pyx_v_board, __pyx_v_y); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 65, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_15);
-        __pyx_t_13 = __Pyx_PyInt_AddObjC(__pyx_v_x, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 70, __pyx_L1_error)
+        __pyx_t_13 = __Pyx_PyInt_AddObjC(__pyx_v_x, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 65, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_13);
-        __pyx_t_18 = __Pyx_PyObject_GetItem(__pyx_t_15, __pyx_t_13); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 70, __pyx_L1_error)
+        __pyx_t_18 = __Pyx_PyObject_GetItem(__pyx_t_15, __pyx_t_13); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 65, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_18);
         __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
         __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
 
-        /* "lib/optimisedsim.pyx":71
+        /* "golpi/optimisedsim.pyx":66
  *                 places =  [board[y-1][x-1], board[y-1][x], board[y-1][x+1], # up
  *                             board[y][x-1],                  board[y][x+1],   # middle
  *                             board[y+1][x-1], board[y+1][x], board[y+1][x+1]] # buttom             # <<<<<<<<<<<<<<
  * 
  *                 sourrounding = sum(places)
  */
-        __pyx_t_13 = __Pyx_PyInt_AddObjC(__pyx_v_y, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 71, __pyx_L1_error)
+        __pyx_t_13 = __Pyx_PyInt_AddObjC(__pyx_v_y, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 66, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_13);
-        __pyx_t_15 = __Pyx_PyObject_GetItem(__pyx_v_board, __pyx_t_13); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 71, __pyx_L1_error)
+        __pyx_t_15 = __Pyx_PyObject_GetItem(__pyx_v_board, __pyx_t_13); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 66, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_15);
         __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-        __pyx_t_13 = __Pyx_PyInt_SubtractObjC(__pyx_v_x, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 71, __pyx_L1_error)
+        __pyx_t_13 = __Pyx_PyInt_SubtractObjC(__pyx_v_x, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 66, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_13);
-        __pyx_t_19 = __Pyx_PyObject_GetItem(__pyx_t_15, __pyx_t_13); if (unlikely(!__pyx_t_19)) __PYX_ERR(0, 71, __pyx_L1_error)
+        __pyx_t_19 = __Pyx_PyObject_GetItem(__pyx_t_15, __pyx_t_13); if (unlikely(!__pyx_t_19)) __PYX_ERR(0, 66, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_19);
         __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
         __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-        __pyx_t_13 = __Pyx_PyInt_AddObjC(__pyx_v_y, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 71, __pyx_L1_error)
+        __pyx_t_13 = __Pyx_PyInt_AddObjC(__pyx_v_y, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 66, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_13);
-        __pyx_t_15 = __Pyx_PyObject_GetItem(__pyx_v_board, __pyx_t_13); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 71, __pyx_L1_error)
+        __pyx_t_15 = __Pyx_PyObject_GetItem(__pyx_v_board, __pyx_t_13); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 66, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_15);
         __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-        __pyx_t_13 = __Pyx_PyObject_GetItem(__pyx_t_15, __pyx_v_x); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 71, __pyx_L1_error)
+        __pyx_t_13 = __Pyx_PyObject_GetItem(__pyx_t_15, __pyx_v_x); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 66, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_13);
         __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
-        __pyx_t_15 = __Pyx_PyInt_AddObjC(__pyx_v_y, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 71, __pyx_L1_error)
+        __pyx_t_15 = __Pyx_PyInt_AddObjC(__pyx_v_y, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 66, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_15);
-        __pyx_t_20 = __Pyx_PyObject_GetItem(__pyx_v_board, __pyx_t_15); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 71, __pyx_L1_error)
+        __pyx_t_20 = __Pyx_PyObject_GetItem(__pyx_v_board, __pyx_t_15); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 66, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_20);
         __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
-        __pyx_t_15 = __Pyx_PyInt_AddObjC(__pyx_v_x, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 71, __pyx_L1_error)
+        __pyx_t_15 = __Pyx_PyInt_AddObjC(__pyx_v_x, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 66, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_15);
-        __pyx_t_21 = __Pyx_PyObject_GetItem(__pyx_t_20, __pyx_t_15); if (unlikely(!__pyx_t_21)) __PYX_ERR(0, 71, __pyx_L1_error)
+        __pyx_t_21 = __Pyx_PyObject_GetItem(__pyx_t_20, __pyx_t_15); if (unlikely(!__pyx_t_21)) __PYX_ERR(0, 66, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_21);
         __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
         __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
 
-        /* "lib/optimisedsim.pyx":69
+        /* "golpi/optimisedsim.pyx":64
  *                 x = ztrue+1
  * 
  *                 places =  [board[y-1][x-1], board[y-1][x], board[y-1][x+1], # up             # <<<<<<<<<<<<<<
  *                             board[y][x-1],                  board[y][x+1],   # middle
  *                             board[y+1][x-1], board[y+1][x], board[y+1][x+1]] # buttom
  */
-        __pyx_t_15 = PyList_New(8); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 69, __pyx_L1_error)
+        __pyx_t_15 = PyList_New(8); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 64, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_15);
         __Pyx_GIVEREF(__pyx_t_14);
         PyList_SET_ITEM(__pyx_t_15, 0, __pyx_t_14);
@@ -2734,38 +3135,38 @@ static PyObject *__pyx_pf_3lib_12optimisedsim_6run(CYTHON_UNUSED PyObject *__pyx
         __Pyx_XDECREF_SET(__pyx_v_places, ((PyObject*)__pyx_t_15));
         __pyx_t_15 = 0;
 
-        /* "lib/optimisedsim.pyx":73
+        /* "golpi/optimisedsim.pyx":68
  *                             board[y+1][x-1], board[y+1][x], board[y+1][x+1]] # buttom
  * 
  *                 sourrounding = sum(places)             # <<<<<<<<<<<<<<
  * 
  *                 if sourrounding >= 2:
  */
-        __pyx_t_15 = __Pyx_PyObject_CallOneArg(__pyx_builtin_sum, __pyx_v_places); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 73, __pyx_L1_error)
+        __pyx_t_15 = __Pyx_PyObject_CallOneArg(__pyx_builtin_sum, __pyx_v_places); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 68, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_15);
         __Pyx_XDECREF_SET(__pyx_v_sourrounding, __pyx_t_15);
         __pyx_t_15 = 0;
 
-        /* "lib/optimisedsim.pyx":75
+        /* "golpi/optimisedsim.pyx":70
  *                 sourrounding = sum(places)
  * 
  *                 if sourrounding >= 2:             # <<<<<<<<<<<<<<
  *                     surv = checksurvival(sourrounding)
  *                     if surv == 1:
  */
-        __pyx_t_15 = PyObject_RichCompare(__pyx_v_sourrounding, __pyx_int_2, Py_GE); __Pyx_XGOTREF(__pyx_t_15); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 75, __pyx_L1_error)
-        __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_15); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 75, __pyx_L1_error)
+        __pyx_t_15 = PyObject_RichCompare(__pyx_v_sourrounding, __pyx_int_2, Py_GE); __Pyx_XGOTREF(__pyx_t_15); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 70, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_15); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 70, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
         if (__pyx_t_1) {
 
-          /* "lib/optimisedsim.pyx":76
+          /* "golpi/optimisedsim.pyx":71
  * 
  *                 if sourrounding >= 2:
  *                     surv = checksurvival(sourrounding)             # <<<<<<<<<<<<<<
  *                     if surv == 1:
  *                         editboard[y][x] = 1
  */
-          __Pyx_GetModuleGlobalName(__pyx_t_21, __pyx_n_s_checksurvival); if (unlikely(!__pyx_t_21)) __PYX_ERR(0, 76, __pyx_L1_error)
+          __Pyx_GetModuleGlobalName(__pyx_t_21, __pyx_n_s_checksurvival); if (unlikely(!__pyx_t_21)) __PYX_ERR(0, 71, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_21);
           __pyx_t_13 = NULL;
           if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_21))) {
@@ -2779,38 +3180,38 @@ static PyObject *__pyx_pf_3lib_12optimisedsim_6run(CYTHON_UNUSED PyObject *__pyx
           }
           __pyx_t_15 = (__pyx_t_13) ? __Pyx_PyObject_Call2Args(__pyx_t_21, __pyx_t_13, __pyx_v_sourrounding) : __Pyx_PyObject_CallOneArg(__pyx_t_21, __pyx_v_sourrounding);
           __Pyx_XDECREF(__pyx_t_13); __pyx_t_13 = 0;
-          if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 76, __pyx_L1_error)
+          if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 71, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_15);
           __Pyx_DECREF(__pyx_t_21); __pyx_t_21 = 0;
           __Pyx_XDECREF_SET(__pyx_v_surv, __pyx_t_15);
           __pyx_t_15 = 0;
 
-          /* "lib/optimisedsim.pyx":77
+          /* "golpi/optimisedsim.pyx":72
  *                 if sourrounding >= 2:
  *                     surv = checksurvival(sourrounding)
  *                     if surv == 1:             # <<<<<<<<<<<<<<
  *                         editboard[y][x] = 1
  *                     elif surv == 2:
  */
-          __pyx_t_15 = __Pyx_PyInt_EqObjC(__pyx_v_surv, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 77, __pyx_L1_error)
+          __pyx_t_15 = __Pyx_PyInt_EqObjC(__pyx_v_surv, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 72, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_15);
-          __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_15); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 77, __pyx_L1_error)
+          __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_15); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 72, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
           if (__pyx_t_1) {
 
-            /* "lib/optimisedsim.pyx":78
+            /* "golpi/optimisedsim.pyx":73
  *                     surv = checksurvival(sourrounding)
  *                     if surv == 1:
  *                         editboard[y][x] = 1             # <<<<<<<<<<<<<<
  *                     elif surv == 2:
  *                         editboard[y][x] = 0
  */
-            __pyx_t_15 = __Pyx_PyObject_GetItem(__pyx_v_editboard, __pyx_v_y); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 78, __pyx_L1_error)
+            __pyx_t_15 = __Pyx_PyObject_GetItem(__pyx_v_editboard, __pyx_v_y); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 73, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_15);
-            if (unlikely(PyObject_SetItem(__pyx_t_15, __pyx_v_x, __pyx_int_1) < 0)) __PYX_ERR(0, 78, __pyx_L1_error)
+            if (unlikely(PyObject_SetItem(__pyx_t_15, __pyx_v_x, __pyx_int_1) < 0)) __PYX_ERR(0, 73, __pyx_L1_error)
             __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
 
-            /* "lib/optimisedsim.pyx":77
+            /* "golpi/optimisedsim.pyx":72
  *                 if sourrounding >= 2:
  *                     surv = checksurvival(sourrounding)
  *                     if surv == 1:             # <<<<<<<<<<<<<<
@@ -2820,32 +3221,32 @@ static PyObject *__pyx_pf_3lib_12optimisedsim_6run(CYTHON_UNUSED PyObject *__pyx
             goto __pyx_L11;
           }
 
-          /* "lib/optimisedsim.pyx":79
+          /* "golpi/optimisedsim.pyx":74
  *                     if surv == 1:
  *                         editboard[y][x] = 1
  *                     elif surv == 2:             # <<<<<<<<<<<<<<
  *                         editboard[y][x] = 0
  *                 else:
  */
-          __pyx_t_15 = __Pyx_PyInt_EqObjC(__pyx_v_surv, __pyx_int_2, 2, 0); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 79, __pyx_L1_error)
+          __pyx_t_15 = __Pyx_PyInt_EqObjC(__pyx_v_surv, __pyx_int_2, 2, 0); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 74, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_15);
-          __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_15); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 79, __pyx_L1_error)
+          __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_15); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 74, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
           if (__pyx_t_1) {
 
-            /* "lib/optimisedsim.pyx":80
+            /* "golpi/optimisedsim.pyx":75
  *                         editboard[y][x] = 1
  *                     elif surv == 2:
  *                         editboard[y][x] = 0             # <<<<<<<<<<<<<<
  *                 else:
  *                     editboard[y][x] = 0
  */
-            __pyx_t_15 = __Pyx_PyObject_GetItem(__pyx_v_editboard, __pyx_v_y); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 80, __pyx_L1_error)
+            __pyx_t_15 = __Pyx_PyObject_GetItem(__pyx_v_editboard, __pyx_v_y); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 75, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_15);
-            if (unlikely(PyObject_SetItem(__pyx_t_15, __pyx_v_x, __pyx_int_0) < 0)) __PYX_ERR(0, 80, __pyx_L1_error)
+            if (unlikely(PyObject_SetItem(__pyx_t_15, __pyx_v_x, __pyx_int_0) < 0)) __PYX_ERR(0, 75, __pyx_L1_error)
             __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
 
-            /* "lib/optimisedsim.pyx":79
+            /* "golpi/optimisedsim.pyx":74
  *                     if surv == 1:
  *                         editboard[y][x] = 1
  *                     elif surv == 2:             # <<<<<<<<<<<<<<
@@ -2855,7 +3256,7 @@ static PyObject *__pyx_pf_3lib_12optimisedsim_6run(CYTHON_UNUSED PyObject *__pyx
           }
           __pyx_L11:;
 
-          /* "lib/optimisedsim.pyx":75
+          /* "golpi/optimisedsim.pyx":70
  *                 sourrounding = sum(places)
  * 
  *                 if sourrounding >= 2:             # <<<<<<<<<<<<<<
@@ -2865,7 +3266,7 @@ static PyObject *__pyx_pf_3lib_12optimisedsim_6run(CYTHON_UNUSED PyObject *__pyx
           goto __pyx_L10;
         }
 
-        /* "lib/optimisedsim.pyx":82
+        /* "golpi/optimisedsim.pyx":77
  *                         editboard[y][x] = 0
  *                 else:
  *                     editboard[y][x] = 0             # <<<<<<<<<<<<<<
@@ -2873,14 +3274,14 @@ static PyObject *__pyx_pf_3lib_12optimisedsim_6run(CYTHON_UNUSED PyObject *__pyx
  *         board = editboard
  */
         /*else*/ {
-          __pyx_t_15 = __Pyx_PyObject_GetItem(__pyx_v_editboard, __pyx_v_y); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 82, __pyx_L1_error)
+          __pyx_t_15 = __Pyx_PyObject_GetItem(__pyx_v_editboard, __pyx_v_y); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 77, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_15);
-          if (unlikely(PyObject_SetItem(__pyx_t_15, __pyx_v_x, __pyx_int_0) < 0)) __PYX_ERR(0, 82, __pyx_L1_error)
+          if (unlikely(PyObject_SetItem(__pyx_t_15, __pyx_v_x, __pyx_int_0) < 0)) __PYX_ERR(0, 77, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
         }
         __pyx_L10:;
 
-        /* "lib/optimisedsim.pyx":66
+        /* "golpi/optimisedsim.pyx":61
  *         for itrue in range(len(board)-2):
  *             y = itrue+1
  *             for ztrue in range(len(board[y])-2):             # <<<<<<<<<<<<<<
@@ -2890,7 +3291,7 @@ static PyObject *__pyx_pf_3lib_12optimisedsim_6run(CYTHON_UNUSED PyObject *__pyx
       }
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-      /* "lib/optimisedsim.pyx":64
+      /* "golpi/optimisedsim.pyx":59
  *         editboard = copy.deepcopy(board)
  * 
  *         for itrue in range(len(board)-2):             # <<<<<<<<<<<<<<
@@ -2900,7 +3301,7 @@ static PyObject *__pyx_pf_3lib_12optimisedsim_6run(CYTHON_UNUSED PyObject *__pyx
     }
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "lib/optimisedsim.pyx":84
+    /* "golpi/optimisedsim.pyx":79
  *                     editboard[y][x] = 0
  * 
  *         board = editboard             # <<<<<<<<<<<<<<
@@ -2910,27 +3311,27 @@ static PyObject *__pyx_pf_3lib_12optimisedsim_6run(CYTHON_UNUSED PyObject *__pyx
     __Pyx_INCREF(__pyx_v_editboard);
     __Pyx_DECREF_SET(__pyx_v_board, __pyx_v_editboard);
 
-    /* "lib/optimisedsim.pyx":86
+    /* "golpi/optimisedsim.pyx":81
  *         board = editboard
  * 
  *         if fullexport:             # <<<<<<<<<<<<<<
  *             everyboard.append(board)
  * 
  */
-    __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_fullexport); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 86, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_fullexport); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 81, __pyx_L1_error)
     if (__pyx_t_1) {
 
-      /* "lib/optimisedsim.pyx":87
+      /* "golpi/optimisedsim.pyx":82
  * 
  *         if fullexport:
  *             everyboard.append(board)             # <<<<<<<<<<<<<<
  * 
  *     return everyboard if fullexport else board
  */
-      if (unlikely(!__pyx_v_everyboard)) { __Pyx_RaiseUnboundLocalError("everyboard"); __PYX_ERR(0, 87, __pyx_L1_error) }
-      __pyx_t_3 = __Pyx_PyList_Append(__pyx_v_everyboard, __pyx_v_board); if (unlikely(__pyx_t_3 == ((int)-1))) __PYX_ERR(0, 87, __pyx_L1_error)
+      if (unlikely(!__pyx_v_everyboard)) { __Pyx_RaiseUnboundLocalError("everyboard"); __PYX_ERR(0, 82, __pyx_L1_error) }
+      __pyx_t_3 = __Pyx_PyList_Append(__pyx_v_everyboard, __pyx_v_board); if (unlikely(__pyx_t_3 == ((int)-1))) __PYX_ERR(0, 82, __pyx_L1_error)
 
-      /* "lib/optimisedsim.pyx":86
+      /* "golpi/optimisedsim.pyx":81
  *         board = editboard
  * 
  *         if fullexport:             # <<<<<<<<<<<<<<
@@ -2939,7 +3340,7 @@ static PyObject *__pyx_pf_3lib_12optimisedsim_6run(CYTHON_UNUSED PyObject *__pyx
  */
     }
 
-    /* "lib/optimisedsim.pyx":60
+    /* "golpi/optimisedsim.pyx":55
  *         everyboard.append(board)
  * 
  *     for g in range(iterations):             # <<<<<<<<<<<<<<
@@ -2949,7 +3350,7 @@ static PyObject *__pyx_pf_3lib_12optimisedsim_6run(CYTHON_UNUSED PyObject *__pyx
   }
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "lib/optimisedsim.pyx":89
+  /* "golpi/optimisedsim.pyx":84
  *             everyboard.append(board)
  * 
  *     return everyboard if fullexport else board             # <<<<<<<<<<<<<<
@@ -2957,9 +3358,9 @@ static PyObject *__pyx_pf_3lib_12optimisedsim_6run(CYTHON_UNUSED PyObject *__pyx
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_fullexport); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 89, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_fullexport); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 84, __pyx_L1_error)
   if (__pyx_t_1) {
-    if (unlikely(!__pyx_v_everyboard)) { __Pyx_RaiseUnboundLocalError("everyboard"); __PYX_ERR(0, 89, __pyx_L1_error) }
+    if (unlikely(!__pyx_v_everyboard)) { __Pyx_RaiseUnboundLocalError("everyboard"); __PYX_ERR(0, 84, __pyx_L1_error) }
     __Pyx_INCREF(__pyx_v_everyboard);
     __pyx_t_4 = __pyx_v_everyboard;
   } else {
@@ -2970,7 +3371,7 @@ static PyObject *__pyx_pf_3lib_12optimisedsim_6run(CYTHON_UNUSED PyObject *__pyx
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "lib/optimisedsim.pyx":55
+  /* "golpi/optimisedsim.pyx":50
  * 
  * 
  * def run(board, iterations, fullexport=False):             # <<<<<<<<<<<<<<
@@ -2993,7 +3394,7 @@ static PyObject *__pyx_pf_3lib_12optimisedsim_6run(CYTHON_UNUSED PyObject *__pyx
   __Pyx_XDECREF(__pyx_t_19);
   __Pyx_XDECREF(__pyx_t_20);
   __Pyx_XDECREF(__pyx_t_21);
-  __Pyx_AddTraceback("lib.optimisedsim.run", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("golpi.optimisedsim.run", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_everyboard);
@@ -3012,7 +3413,7 @@ static PyObject *__pyx_pf_3lib_12optimisedsim_6run(CYTHON_UNUSED PyObject *__pyx
   return __pyx_r;
 }
 
-/* "lib/optimisedsim.pyx":92
+/* "golpi/optimisedsim.pyx":87
  * 
  * 
  * def checksurvival(sourrounding):             # <<<<<<<<<<<<<<
@@ -3021,20 +3422,20 @@ static PyObject *__pyx_pf_3lib_12optimisedsim_6run(CYTHON_UNUSED PyObject *__pyx
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_3lib_12optimisedsim_9checksurvival(PyObject *__pyx_self, PyObject *__pyx_v_sourrounding); /*proto*/
-static PyMethodDef __pyx_mdef_3lib_12optimisedsim_9checksurvival = {"checksurvival", (PyCFunction)__pyx_pw_3lib_12optimisedsim_9checksurvival, METH_O, 0};
-static PyObject *__pyx_pw_3lib_12optimisedsim_9checksurvival(PyObject *__pyx_self, PyObject *__pyx_v_sourrounding) {
+static PyObject *__pyx_pw_5golpi_12optimisedsim_11checksurvival(PyObject *__pyx_self, PyObject *__pyx_v_sourrounding); /*proto*/
+static PyMethodDef __pyx_mdef_5golpi_12optimisedsim_11checksurvival = {"checksurvival", (PyCFunction)__pyx_pw_5golpi_12optimisedsim_11checksurvival, METH_O, 0};
+static PyObject *__pyx_pw_5golpi_12optimisedsim_11checksurvival(PyObject *__pyx_self, PyObject *__pyx_v_sourrounding) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("checksurvival (wrapper)", 0);
-  __pyx_r = __pyx_pf_3lib_12optimisedsim_8checksurvival(__pyx_self, ((PyObject *)__pyx_v_sourrounding));
+  __pyx_r = __pyx_pf_5golpi_12optimisedsim_10checksurvival(__pyx_self, ((PyObject *)__pyx_v_sourrounding));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_3lib_12optimisedsim_8checksurvival(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_sourrounding) {
+static PyObject *__pyx_pf_5golpi_12optimisedsim_10checksurvival(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_sourrounding) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -3044,20 +3445,20 @@ static PyObject *__pyx_pf_3lib_12optimisedsim_8checksurvival(CYTHON_UNUSED PyObj
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("checksurvival", 0);
 
-  /* "lib/optimisedsim.pyx":93
+  /* "golpi/optimisedsim.pyx":88
  * 
  * def checksurvival(sourrounding):
  *     if sourrounding == 3:             # <<<<<<<<<<<<<<
  *         return 1 # is born
  *     elif sourrounding == 2:
  */
-  __pyx_t_1 = __Pyx_PyInt_EqObjC(__pyx_v_sourrounding, __pyx_int_3, 3, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 93, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_EqObjC(__pyx_v_sourrounding, __pyx_int_3, 3, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 88, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 93, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 88, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (__pyx_t_2) {
 
-    /* "lib/optimisedsim.pyx":94
+    /* "golpi/optimisedsim.pyx":89
  * def checksurvival(sourrounding):
  *     if sourrounding == 3:
  *         return 1 # is born             # <<<<<<<<<<<<<<
@@ -3069,7 +3470,7 @@ static PyObject *__pyx_pf_3lib_12optimisedsim_8checksurvival(CYTHON_UNUSED PyObj
     __pyx_r = __pyx_int_1;
     goto __pyx_L0;
 
-    /* "lib/optimisedsim.pyx":93
+    /* "golpi/optimisedsim.pyx":88
  * 
  * def checksurvival(sourrounding):
  *     if sourrounding == 3:             # <<<<<<<<<<<<<<
@@ -3078,20 +3479,20 @@ static PyObject *__pyx_pf_3lib_12optimisedsim_8checksurvival(CYTHON_UNUSED PyObj
  */
   }
 
-  /* "lib/optimisedsim.pyx":95
+  /* "golpi/optimisedsim.pyx":90
  *     if sourrounding == 3:
  *         return 1 # is born
  *     elif sourrounding == 2:             # <<<<<<<<<<<<<<
  *         return 0 # doesn't change
  *     elif sourrounding >= 4:
  */
-  __pyx_t_1 = __Pyx_PyInt_EqObjC(__pyx_v_sourrounding, __pyx_int_2, 2, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 95, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_EqObjC(__pyx_v_sourrounding, __pyx_int_2, 2, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 90, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 95, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 90, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (__pyx_t_2) {
 
-    /* "lib/optimisedsim.pyx":96
+    /* "golpi/optimisedsim.pyx":91
  *         return 1 # is born
  *     elif sourrounding == 2:
  *         return 0 # doesn't change             # <<<<<<<<<<<<<<
@@ -3103,7 +3504,7 @@ static PyObject *__pyx_pf_3lib_12optimisedsim_8checksurvival(CYTHON_UNUSED PyObj
     __pyx_r = __pyx_int_0;
     goto __pyx_L0;
 
-    /* "lib/optimisedsim.pyx":95
+    /* "golpi/optimisedsim.pyx":90
  *     if sourrounding == 3:
  *         return 1 # is born
  *     elif sourrounding == 2:             # <<<<<<<<<<<<<<
@@ -3112,19 +3513,19 @@ static PyObject *__pyx_pf_3lib_12optimisedsim_8checksurvival(CYTHON_UNUSED PyObj
  */
   }
 
-  /* "lib/optimisedsim.pyx":97
+  /* "golpi/optimisedsim.pyx":92
  *     elif sourrounding == 2:
  *         return 0 # doesn't change
  *     elif sourrounding >= 4:             # <<<<<<<<<<<<<<
  *         return 2 # dies
  *     else:
  */
-  __pyx_t_1 = PyObject_RichCompare(__pyx_v_sourrounding, __pyx_int_4, Py_GE); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 97, __pyx_L1_error)
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 97, __pyx_L1_error)
+  __pyx_t_1 = PyObject_RichCompare(__pyx_v_sourrounding, __pyx_int_4, Py_GE); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 92, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 92, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (__pyx_t_2) {
 
-    /* "lib/optimisedsim.pyx":98
+    /* "golpi/optimisedsim.pyx":93
  *         return 0 # doesn't change
  *     elif sourrounding >= 4:
  *         return 2 # dies             # <<<<<<<<<<<<<<
@@ -3136,7 +3537,7 @@ static PyObject *__pyx_pf_3lib_12optimisedsim_8checksurvival(CYTHON_UNUSED PyObj
     __pyx_r = __pyx_int_2;
     goto __pyx_L0;
 
-    /* "lib/optimisedsim.pyx":97
+    /* "golpi/optimisedsim.pyx":92
  *     elif sourrounding == 2:
  *         return 0 # doesn't change
  *     elif sourrounding >= 4:             # <<<<<<<<<<<<<<
@@ -3145,7 +3546,7 @@ static PyObject *__pyx_pf_3lib_12optimisedsim_8checksurvival(CYTHON_UNUSED PyObj
  */
   }
 
-  /* "lib/optimisedsim.pyx":100
+  /* "golpi/optimisedsim.pyx":95
  *         return 2 # dies
  *     else:
  *         return 0 # doesn't change             # <<<<<<<<<<<<<<
@@ -3157,7 +3558,7 @@ static PyObject *__pyx_pf_3lib_12optimisedsim_8checksurvival(CYTHON_UNUSED PyObj
     goto __pyx_L0;
   }
 
-  /* "lib/optimisedsim.pyx":92
+  /* "golpi/optimisedsim.pyx":87
  * 
  * 
  * def checksurvival(sourrounding):             # <<<<<<<<<<<<<<
@@ -3168,7 +3569,7 @@ static PyObject *__pyx_pf_3lib_12optimisedsim_8checksurvival(CYTHON_UNUSED PyObj
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("lib.optimisedsim.checksurvival", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("golpi.optimisedsim.checksurvival", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -3224,10 +3625,11 @@ static struct PyModuleDef __pyx_moduledef = {
 static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_kp_u_List_length_must_be_divisible_by, __pyx_k_List_length_must_be_divisible_by, sizeof(__pyx_k_List_length_must_be_divisible_by), 0, 1, 0, 0},
   {&__pyx_n_s_ValueError, __pyx_k_ValueError, sizeof(__pyx_k_ValueError), 0, 0, 1, 1},
+  {&__pyx_n_s_addpattern, __pyx_k_addpattern, sizeof(__pyx_k_addpattern), 0, 0, 1, 1},
   {&__pyx_n_s_append, __pyx_k_append, sizeof(__pyx_k_append), 0, 0, 1, 1},
   {&__pyx_n_s_board, __pyx_k_board, sizeof(__pyx_k_board), 0, 0, 1, 1},
   {&__pyx_n_s_boardsize, __pyx_k_boardsize, sizeof(__pyx_k_boardsize), 0, 0, 1, 1},
-  {&__pyx_n_s_centerpattern, __pyx_k_centerpattern, sizeof(__pyx_k_centerpattern), 0, 0, 1, 1},
+  {&__pyx_n_s_centerposition, __pyx_k_centerposition, sizeof(__pyx_k_centerposition), 0, 0, 1, 1},
   {&__pyx_n_s_checksurvival, __pyx_k_checksurvival, sizeof(__pyx_k_checksurvival), 0, 0, 1, 1},
   {&__pyx_n_s_cline_in_traceback, __pyx_k_cline_in_traceback, sizeof(__pyx_k_cline_in_traceback), 0, 0, 1, 1},
   {&__pyx_n_s_convert2twod, __pyx_k_convert2twod, sizeof(__pyx_k_convert2twod), 0, 0, 1, 1},
@@ -3238,15 +3640,16 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_everyboard, __pyx_k_everyboard, sizeof(__pyx_k_everyboard), 0, 0, 1, 1},
   {&__pyx_n_s_fullexport, __pyx_k_fullexport, sizeof(__pyx_k_fullexport), 0, 0, 1, 1},
   {&__pyx_n_s_g, __pyx_k_g, sizeof(__pyx_k_g), 0, 0, 1, 1},
+  {&__pyx_n_s_golpi_optimisedsim, __pyx_k_golpi_optimisedsim, sizeof(__pyx_k_golpi_optimisedsim), 0, 0, 1, 1},
+  {&__pyx_kp_s_golpi_optimisedsim_pyx, __pyx_k_golpi_optimisedsim_pyx, sizeof(__pyx_k_golpi_optimisedsim_pyx), 0, 0, 1, 0},
   {&__pyx_n_s_h, __pyx_k_h, sizeof(__pyx_k_h), 0, 0, 1, 1},
   {&__pyx_n_s_i, __pyx_k_i, sizeof(__pyx_k_i), 0, 0, 1, 1},
   {&__pyx_n_s_import, __pyx_k_import, sizeof(__pyx_k_import), 0, 0, 1, 1},
   {&__pyx_n_s_inputlist, __pyx_k_inputlist, sizeof(__pyx_k_inputlist), 0, 0, 1, 1},
   {&__pyx_n_s_iterations, __pyx_k_iterations, sizeof(__pyx_k_iterations), 0, 0, 1, 1},
   {&__pyx_n_s_itrue, __pyx_k_itrue, sizeof(__pyx_k_itrue), 0, 0, 1, 1},
+  {&__pyx_n_s_j, __pyx_k_j, sizeof(__pyx_k_j), 0, 0, 1, 1},
   {&__pyx_n_s_length, __pyx_k_length, sizeof(__pyx_k_length), 0, 0, 1, 1},
-  {&__pyx_n_s_lib_optimisedsim, __pyx_k_lib_optimisedsim, sizeof(__pyx_k_lib_optimisedsim), 0, 0, 1, 1},
-  {&__pyx_kp_s_lib_optimisedsim_pyx, __pyx_k_lib_optimisedsim_pyx, sizeof(__pyx_k_lib_optimisedsim_pyx), 0, 0, 1, 0},
   {&__pyx_n_s_main, __pyx_k_main, sizeof(__pyx_k_main), 0, 0, 1, 1},
   {&__pyx_n_s_name, __pyx_k_name, sizeof(__pyx_k_name), 0, 0, 1, 1},
   {&__pyx_n_s_pattern, __pyx_k_pattern, sizeof(__pyx_k_pattern), 0, 0, 1, 1},
@@ -3269,7 +3672,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
   __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(0, 8, __pyx_L1_error)
   __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 10, __pyx_L1_error)
-  __pyx_builtin_sum = __Pyx_GetBuiltinName(__pyx_n_s_sum); if (!__pyx_builtin_sum) __PYX_ERR(0, 73, __pyx_L1_error)
+  __pyx_builtin_sum = __Pyx_GetBuiltinName(__pyx_n_s_sum); if (!__pyx_builtin_sum) __PYX_ERR(0, 68, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -3279,7 +3682,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "lib/optimisedsim.pyx":8
+  /* "golpi/optimisedsim.pyx":8
  * 
  *     if int(len(inputlist)/length) != len(inputlist)/length:
  *         raise ValueError("List length must be divisible by length value")             # <<<<<<<<<<<<<<
@@ -3290,7 +3693,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple_);
   __Pyx_GIVEREF(__pyx_tuple_);
 
-  /* "lib/optimisedsim.pyx":4
+  /* "golpi/optimisedsim.pyx":4
  * 
  * 
  * def convert2twod(inputlist, length):             # <<<<<<<<<<<<<<
@@ -3300,21 +3703,21 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__2 = PyTuple_Pack(4, __pyx_n_s_inputlist, __pyx_n_s_length, __pyx_n_s_twod_list, __pyx_n_s_i); if (unlikely(!__pyx_tuple__2)) __PYX_ERR(0, 4, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__2);
   __Pyx_GIVEREF(__pyx_tuple__2);
-  __pyx_codeobj__3 = (PyObject*)__Pyx_PyCode_New(2, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__2, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_lib_optimisedsim_pyx, __pyx_n_s_convert2twod, 4, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__3)) __PYX_ERR(0, 4, __pyx_L1_error)
+  __pyx_codeobj__3 = (PyObject*)__Pyx_PyCode_New(2, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__2, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_golpi_optimisedsim_pyx, __pyx_n_s_convert2twod, 4, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__3)) __PYX_ERR(0, 4, __pyx_L1_error)
 
-  /* "lib/optimisedsim.pyx":16
+  /* "golpi/optimisedsim.pyx":16
  * 
  * 
- * def centerpattern(pattern, boardsize):             # <<<<<<<<<<<<<<
+ * def centerposition(pattern, boardsize):             # <<<<<<<<<<<<<<
  *     patternposition = (int(boardsize[0]/2),int(boardsize[1]/2))
  * 
  */
   __pyx_tuple__4 = PyTuple_Pack(3, __pyx_n_s_pattern, __pyx_n_s_boardsize, __pyx_n_s_patternposition); if (unlikely(!__pyx_tuple__4)) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__4);
   __Pyx_GIVEREF(__pyx_tuple__4);
-  __pyx_codeobj__5 = (PyObject*)__Pyx_PyCode_New(2, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__4, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_lib_optimisedsim_pyx, __pyx_n_s_centerpattern, 16, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__5)) __PYX_ERR(0, 16, __pyx_L1_error)
+  __pyx_codeobj__5 = (PyObject*)__Pyx_PyCode_New(2, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__4, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_golpi_optimisedsim_pyx, __pyx_n_s_centerposition, 16, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__5)) __PYX_ERR(0, 16, __pyx_L1_error)
 
-  /* "lib/optimisedsim.pyx":25
+  /* "golpi/optimisedsim.pyx":25
  * 
  * 
  * def createboard(size):             # <<<<<<<<<<<<<<
@@ -3324,31 +3727,43 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__6 = PyTuple_Pack(4, __pyx_n_s_size, __pyx_n_s_board, __pyx_n_s_h, __pyx_n_s_w); if (unlikely(!__pyx_tuple__6)) __PYX_ERR(0, 25, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__6);
   __Pyx_GIVEREF(__pyx_tuple__6);
-  __pyx_codeobj__7 = (PyObject*)__Pyx_PyCode_New(1, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__6, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_lib_optimisedsim_pyx, __pyx_n_s_createboard, 25, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__7)) __PYX_ERR(0, 25, __pyx_L1_error)
+  __pyx_codeobj__7 = (PyObject*)__Pyx_PyCode_New(1, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__6, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_golpi_optimisedsim_pyx, __pyx_n_s_createboard, 25, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__7)) __PYX_ERR(0, 25, __pyx_L1_error)
 
-  /* "lib/optimisedsim.pyx":55
+  /* "golpi/optimisedsim.pyx":36
+ * 
+ * 
+ * def addpattern(pattern, board, patternposition):             # <<<<<<<<<<<<<<
+ * 
+ *     for i in range(len(board)):
+ */
+  __pyx_tuple__8 = PyTuple_Pack(5, __pyx_n_s_pattern, __pyx_n_s_board, __pyx_n_s_patternposition, __pyx_n_s_i, __pyx_n_s_j); if (unlikely(!__pyx_tuple__8)) __PYX_ERR(0, 36, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__8);
+  __Pyx_GIVEREF(__pyx_tuple__8);
+  __pyx_codeobj__9 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__8, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_golpi_optimisedsim_pyx, __pyx_n_s_addpattern, 36, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__9)) __PYX_ERR(0, 36, __pyx_L1_error)
+
+  /* "golpi/optimisedsim.pyx":50
  * 
  * 
  * def run(board, iterations, fullexport=False):             # <<<<<<<<<<<<<<
  *     if fullexport:
  *         everyboard = []
  */
-  __pyx_tuple__8 = PyTuple_Pack(13, __pyx_n_s_board, __pyx_n_s_iterations, __pyx_n_s_fullexport, __pyx_n_s_everyboard, __pyx_n_s_g, __pyx_n_s_editboard, __pyx_n_s_itrue, __pyx_n_s_y, __pyx_n_s_ztrue, __pyx_n_s_x, __pyx_n_s_places, __pyx_n_s_sourrounding, __pyx_n_s_surv); if (unlikely(!__pyx_tuple__8)) __PYX_ERR(0, 55, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__8);
-  __Pyx_GIVEREF(__pyx_tuple__8);
-  __pyx_codeobj__9 = (PyObject*)__Pyx_PyCode_New(3, 0, 13, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__8, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_lib_optimisedsim_pyx, __pyx_n_s_run, 55, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__9)) __PYX_ERR(0, 55, __pyx_L1_error)
+  __pyx_tuple__10 = PyTuple_Pack(13, __pyx_n_s_board, __pyx_n_s_iterations, __pyx_n_s_fullexport, __pyx_n_s_everyboard, __pyx_n_s_g, __pyx_n_s_editboard, __pyx_n_s_itrue, __pyx_n_s_y, __pyx_n_s_ztrue, __pyx_n_s_x, __pyx_n_s_places, __pyx_n_s_sourrounding, __pyx_n_s_surv); if (unlikely(!__pyx_tuple__10)) __PYX_ERR(0, 50, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__10);
+  __Pyx_GIVEREF(__pyx_tuple__10);
+  __pyx_codeobj__11 = (PyObject*)__Pyx_PyCode_New(3, 0, 13, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__10, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_golpi_optimisedsim_pyx, __pyx_n_s_run, 50, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__11)) __PYX_ERR(0, 50, __pyx_L1_error)
 
-  /* "lib/optimisedsim.pyx":92
+  /* "golpi/optimisedsim.pyx":87
  * 
  * 
  * def checksurvival(sourrounding):             # <<<<<<<<<<<<<<
  *     if sourrounding == 3:
  *         return 1 # is born
  */
-  __pyx_tuple__10 = PyTuple_Pack(1, __pyx_n_s_sourrounding); if (unlikely(!__pyx_tuple__10)) __PYX_ERR(0, 92, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__10);
-  __Pyx_GIVEREF(__pyx_tuple__10);
-  __pyx_codeobj__11 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__10, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_lib_optimisedsim_pyx, __pyx_n_s_checksurvival, 92, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__11)) __PYX_ERR(0, 92, __pyx_L1_error)
+  __pyx_tuple__12 = PyTuple_Pack(1, __pyx_n_s_sourrounding); if (unlikely(!__pyx_tuple__12)) __PYX_ERR(0, 87, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__12);
+  __Pyx_GIVEREF(__pyx_tuple__12);
+  __pyx_codeobj__13 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__12, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_golpi_optimisedsim_pyx, __pyx_n_s_checksurvival, 87, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__13)) __PYX_ERR(0, 87, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -3604,14 +4019,14 @@ if (!__Pyx_RefNanny) {
   #if PY_MAJOR_VERSION < 3 && (__PYX_DEFAULT_STRING_ENCODING_IS_ASCII || __PYX_DEFAULT_STRING_ENCODING_IS_DEFAULT)
   if (__Pyx_init_sys_getdefaultencoding_params() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
-  if (__pyx_module_is_main_lib__optimisedsim) {
+  if (__pyx_module_is_main_golpi__optimisedsim) {
     if (PyObject_SetAttr(__pyx_m, __pyx_n_s_name, __pyx_n_s_main) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   }
   #if PY_MAJOR_VERSION >= 3
   {
     PyObject *modules = PyImport_GetModuleDict(); if (unlikely(!modules)) __PYX_ERR(0, 1, __pyx_L1_error)
-    if (!PyDict_GetItemString(modules, "lib.optimisedsim")) {
-      if (unlikely(PyDict_SetItemString(modules, "lib.optimisedsim", __pyx_m) < 0)) __PYX_ERR(0, 1, __pyx_L1_error)
+    if (!PyDict_GetItemString(modules, "golpi.optimisedsim")) {
+      if (unlikely(PyDict_SetItemString(modules, "golpi.optimisedsim", __pyx_m) < 0)) __PYX_ERR(0, 1, __pyx_L1_error)
     }
   }
   #endif
@@ -3632,7 +4047,7 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_patch_abc() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
 
-  /* "lib/optimisedsim.pyx":1
+  /* "golpi/optimisedsim.pyx":1
  * import copy             # <<<<<<<<<<<<<<
  * 
  * 
@@ -3642,67 +4057,79 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_copy, __pyx_t_1) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "lib/optimisedsim.pyx":4
+  /* "golpi/optimisedsim.pyx":4
  * 
  * 
  * def convert2twod(inputlist, length):             # <<<<<<<<<<<<<<
  *     twod_list = []
  * 
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_3lib_12optimisedsim_1convert2twod, NULL, __pyx_n_s_lib_optimisedsim); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 4, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_5golpi_12optimisedsim_1convert2twod, NULL, __pyx_n_s_golpi_optimisedsim); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 4, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_convert2twod, __pyx_t_1) < 0) __PYX_ERR(0, 4, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "lib/optimisedsim.pyx":16
+  /* "golpi/optimisedsim.pyx":16
  * 
  * 
- * def centerpattern(pattern, boardsize):             # <<<<<<<<<<<<<<
+ * def centerposition(pattern, boardsize):             # <<<<<<<<<<<<<<
  *     patternposition = (int(boardsize[0]/2),int(boardsize[1]/2))
  * 
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_3lib_12optimisedsim_3centerpattern, NULL, __pyx_n_s_lib_optimisedsim); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 16, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_5golpi_12optimisedsim_3centerposition, NULL, __pyx_n_s_golpi_optimisedsim); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_centerpattern, __pyx_t_1) < 0) __PYX_ERR(0, 16, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_centerposition, __pyx_t_1) < 0) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "lib/optimisedsim.pyx":25
+  /* "golpi/optimisedsim.pyx":25
  * 
  * 
  * def createboard(size):             # <<<<<<<<<<<<<<
  *     board = []
  * 
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_3lib_12optimisedsim_5createboard, NULL, __pyx_n_s_lib_optimisedsim); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 25, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_5golpi_12optimisedsim_5createboard, NULL, __pyx_n_s_golpi_optimisedsim); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 25, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_createboard, __pyx_t_1) < 0) __PYX_ERR(0, 25, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "lib/optimisedsim.pyx":55
+  /* "golpi/optimisedsim.pyx":36
+ * 
+ * 
+ * def addpattern(pattern, board, patternposition):             # <<<<<<<<<<<<<<
+ * 
+ *     for i in range(len(board)):
+ */
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_5golpi_12optimisedsim_7addpattern, NULL, __pyx_n_s_golpi_optimisedsim); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 36, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_addpattern, __pyx_t_1) < 0) __PYX_ERR(0, 36, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "golpi/optimisedsim.pyx":50
  * 
  * 
  * def run(board, iterations, fullexport=False):             # <<<<<<<<<<<<<<
  *     if fullexport:
  *         everyboard = []
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_3lib_12optimisedsim_7run, NULL, __pyx_n_s_lib_optimisedsim); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 55, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_5golpi_12optimisedsim_9run, NULL, __pyx_n_s_golpi_optimisedsim); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 50, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_run, __pyx_t_1) < 0) __PYX_ERR(0, 55, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_run, __pyx_t_1) < 0) __PYX_ERR(0, 50, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "lib/optimisedsim.pyx":92
+  /* "golpi/optimisedsim.pyx":87
  * 
  * 
  * def checksurvival(sourrounding):             # <<<<<<<<<<<<<<
  *     if sourrounding == 3:
  *         return 1 # is born
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_3lib_12optimisedsim_9checksurvival, NULL, __pyx_n_s_lib_optimisedsim); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 92, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_5golpi_12optimisedsim_11checksurvival, NULL, __pyx_n_s_golpi_optimisedsim); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 87, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_checksurvival, __pyx_t_1) < 0) __PYX_ERR(0, 92, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_checksurvival, __pyx_t_1) < 0) __PYX_ERR(0, 87, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "lib/optimisedsim.pyx":1
+  /* "golpi/optimisedsim.pyx":1
  * import copy             # <<<<<<<<<<<<<<
  * 
  * 
@@ -3719,11 +4146,11 @@ if (!__Pyx_RefNanny) {
   __Pyx_XDECREF(__pyx_t_1);
   if (__pyx_m) {
     if (__pyx_d) {
-      __Pyx_AddTraceback("init lib.optimisedsim", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      __Pyx_AddTraceback("init golpi.optimisedsim", __pyx_clineno, __pyx_lineno, __pyx_filename);
     }
     Py_CLEAR(__pyx_m);
   } else if (!PyErr_Occurred()) {
-    PyErr_SetString(PyExc_ImportError, "init lib.optimisedsim");
+    PyErr_SetString(PyExc_ImportError, "init golpi.optimisedsim");
   }
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
@@ -4808,6 +5235,130 @@ static PyObject *__Pyx_PyObject_GetItem(PyObject *obj, PyObject* key) {
 }
 #endif
 
+/* PyIntBinop */
+#if !CYTHON_COMPILING_IN_PYPY
+static PyObject* __Pyx_PyInt_SubtractObjC(PyObject *op1, PyObject *op2, CYTHON_UNUSED long intval, int inplace, int zerodivision_check) {
+    (void)inplace;
+    (void)zerodivision_check;
+    #if PY_MAJOR_VERSION < 3
+    if (likely(PyInt_CheckExact(op1))) {
+        const long b = intval;
+        long x;
+        long a = PyInt_AS_LONG(op1);
+            x = (long)((unsigned long)a - b);
+            if (likely((x^a) >= 0 || (x^~b) >= 0))
+                return PyInt_FromLong(x);
+            return PyLong_Type.tp_as_number->nb_subtract(op1, op2);
+    }
+    #endif
+    #if CYTHON_USE_PYLONG_INTERNALS
+    if (likely(PyLong_CheckExact(op1))) {
+        const long b = intval;
+        long a, x;
+#ifdef HAVE_LONG_LONG
+        const PY_LONG_LONG llb = intval;
+        PY_LONG_LONG lla, llx;
+#endif
+        const digit* digits = ((PyLongObject*)op1)->ob_digit;
+        const Py_ssize_t size = Py_SIZE(op1);
+        if (likely(__Pyx_sst_abs(size) <= 1)) {
+            a = likely(size) ? digits[0] : 0;
+            if (size == -1) a = -a;
+        } else {
+            switch (size) {
+                case -2:
+                    if (8 * sizeof(long) - 1 > 2 * PyLong_SHIFT) {
+                        a = -(long) (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
+                        break;
+#ifdef HAVE_LONG_LONG
+                    } else if (8 * sizeof(PY_LONG_LONG) - 1 > 2 * PyLong_SHIFT) {
+                        lla = -(PY_LONG_LONG) (((((unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
+                        goto long_long;
+#endif
+                    }
+                    CYTHON_FALLTHROUGH;
+                case 2:
+                    if (8 * sizeof(long) - 1 > 2 * PyLong_SHIFT) {
+                        a = (long) (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
+                        break;
+#ifdef HAVE_LONG_LONG
+                    } else if (8 * sizeof(PY_LONG_LONG) - 1 > 2 * PyLong_SHIFT) {
+                        lla = (PY_LONG_LONG) (((((unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
+                        goto long_long;
+#endif
+                    }
+                    CYTHON_FALLTHROUGH;
+                case -3:
+                    if (8 * sizeof(long) - 1 > 3 * PyLong_SHIFT) {
+                        a = -(long) (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
+                        break;
+#ifdef HAVE_LONG_LONG
+                    } else if (8 * sizeof(PY_LONG_LONG) - 1 > 3 * PyLong_SHIFT) {
+                        lla = -(PY_LONG_LONG) (((((((unsigned PY_LONG_LONG)digits[2]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
+                        goto long_long;
+#endif
+                    }
+                    CYTHON_FALLTHROUGH;
+                case 3:
+                    if (8 * sizeof(long) - 1 > 3 * PyLong_SHIFT) {
+                        a = (long) (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
+                        break;
+#ifdef HAVE_LONG_LONG
+                    } else if (8 * sizeof(PY_LONG_LONG) - 1 > 3 * PyLong_SHIFT) {
+                        lla = (PY_LONG_LONG) (((((((unsigned PY_LONG_LONG)digits[2]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
+                        goto long_long;
+#endif
+                    }
+                    CYTHON_FALLTHROUGH;
+                case -4:
+                    if (8 * sizeof(long) - 1 > 4 * PyLong_SHIFT) {
+                        a = -(long) (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
+                        break;
+#ifdef HAVE_LONG_LONG
+                    } else if (8 * sizeof(PY_LONG_LONG) - 1 > 4 * PyLong_SHIFT) {
+                        lla = -(PY_LONG_LONG) (((((((((unsigned PY_LONG_LONG)digits[3]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[2]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
+                        goto long_long;
+#endif
+                    }
+                    CYTHON_FALLTHROUGH;
+                case 4:
+                    if (8 * sizeof(long) - 1 > 4 * PyLong_SHIFT) {
+                        a = (long) (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
+                        break;
+#ifdef HAVE_LONG_LONG
+                    } else if (8 * sizeof(PY_LONG_LONG) - 1 > 4 * PyLong_SHIFT) {
+                        lla = (PY_LONG_LONG) (((((((((unsigned PY_LONG_LONG)digits[3]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[2]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
+                        goto long_long;
+#endif
+                    }
+                    CYTHON_FALLTHROUGH;
+                default: return PyLong_Type.tp_as_number->nb_subtract(op1, op2);
+            }
+        }
+                x = a - b;
+            return PyLong_FromLong(x);
+#ifdef HAVE_LONG_LONG
+        long_long:
+                llx = lla - llb;
+            return PyLong_FromLongLong(llx);
+#endif
+        
+        
+    }
+    #endif
+    if (PyFloat_CheckExact(op1)) {
+        const long b = intval;
+        double a = PyFloat_AS_DOUBLE(op1);
+            double result;
+            PyFPE_START_PROTECT("subtract", return NULL)
+            result = ((double)a) - (double)b;
+            PyFPE_END_PROTECT(result)
+            return PyFloat_FromDouble(result);
+    }
+    return (inplace ? PyNumber_InPlaceSubtract : PyNumber_Subtract)(op1, op2);
+}
+#endif
+
 /* PyDictVersioning */
 #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_TYPE_SLOTS
 static CYTHON_INLINE PY_UINT64_T __Pyx_get_tp_dict_version(PyObject *obj) {
@@ -4990,130 +5541,6 @@ static PyObject* __Pyx_PyInt_AddObjC(PyObject *op1, PyObject *op2, CYTHON_UNUSED
             return PyFloat_FromDouble(result);
     }
     return (inplace ? PyNumber_InPlaceAdd : PyNumber_Add)(op1, op2);
-}
-#endif
-
-/* PyIntBinop */
-#if !CYTHON_COMPILING_IN_PYPY
-static PyObject* __Pyx_PyInt_SubtractObjC(PyObject *op1, PyObject *op2, CYTHON_UNUSED long intval, int inplace, int zerodivision_check) {
-    (void)inplace;
-    (void)zerodivision_check;
-    #if PY_MAJOR_VERSION < 3
-    if (likely(PyInt_CheckExact(op1))) {
-        const long b = intval;
-        long x;
-        long a = PyInt_AS_LONG(op1);
-            x = (long)((unsigned long)a - b);
-            if (likely((x^a) >= 0 || (x^~b) >= 0))
-                return PyInt_FromLong(x);
-            return PyLong_Type.tp_as_number->nb_subtract(op1, op2);
-    }
-    #endif
-    #if CYTHON_USE_PYLONG_INTERNALS
-    if (likely(PyLong_CheckExact(op1))) {
-        const long b = intval;
-        long a, x;
-#ifdef HAVE_LONG_LONG
-        const PY_LONG_LONG llb = intval;
-        PY_LONG_LONG lla, llx;
-#endif
-        const digit* digits = ((PyLongObject*)op1)->ob_digit;
-        const Py_ssize_t size = Py_SIZE(op1);
-        if (likely(__Pyx_sst_abs(size) <= 1)) {
-            a = likely(size) ? digits[0] : 0;
-            if (size == -1) a = -a;
-        } else {
-            switch (size) {
-                case -2:
-                    if (8 * sizeof(long) - 1 > 2 * PyLong_SHIFT) {
-                        a = -(long) (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
-                        break;
-#ifdef HAVE_LONG_LONG
-                    } else if (8 * sizeof(PY_LONG_LONG) - 1 > 2 * PyLong_SHIFT) {
-                        lla = -(PY_LONG_LONG) (((((unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
-                        goto long_long;
-#endif
-                    }
-                    CYTHON_FALLTHROUGH;
-                case 2:
-                    if (8 * sizeof(long) - 1 > 2 * PyLong_SHIFT) {
-                        a = (long) (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
-                        break;
-#ifdef HAVE_LONG_LONG
-                    } else if (8 * sizeof(PY_LONG_LONG) - 1 > 2 * PyLong_SHIFT) {
-                        lla = (PY_LONG_LONG) (((((unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
-                        goto long_long;
-#endif
-                    }
-                    CYTHON_FALLTHROUGH;
-                case -3:
-                    if (8 * sizeof(long) - 1 > 3 * PyLong_SHIFT) {
-                        a = -(long) (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
-                        break;
-#ifdef HAVE_LONG_LONG
-                    } else if (8 * sizeof(PY_LONG_LONG) - 1 > 3 * PyLong_SHIFT) {
-                        lla = -(PY_LONG_LONG) (((((((unsigned PY_LONG_LONG)digits[2]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
-                        goto long_long;
-#endif
-                    }
-                    CYTHON_FALLTHROUGH;
-                case 3:
-                    if (8 * sizeof(long) - 1 > 3 * PyLong_SHIFT) {
-                        a = (long) (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
-                        break;
-#ifdef HAVE_LONG_LONG
-                    } else if (8 * sizeof(PY_LONG_LONG) - 1 > 3 * PyLong_SHIFT) {
-                        lla = (PY_LONG_LONG) (((((((unsigned PY_LONG_LONG)digits[2]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
-                        goto long_long;
-#endif
-                    }
-                    CYTHON_FALLTHROUGH;
-                case -4:
-                    if (8 * sizeof(long) - 1 > 4 * PyLong_SHIFT) {
-                        a = -(long) (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
-                        break;
-#ifdef HAVE_LONG_LONG
-                    } else if (8 * sizeof(PY_LONG_LONG) - 1 > 4 * PyLong_SHIFT) {
-                        lla = -(PY_LONG_LONG) (((((((((unsigned PY_LONG_LONG)digits[3]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[2]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
-                        goto long_long;
-#endif
-                    }
-                    CYTHON_FALLTHROUGH;
-                case 4:
-                    if (8 * sizeof(long) - 1 > 4 * PyLong_SHIFT) {
-                        a = (long) (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
-                        break;
-#ifdef HAVE_LONG_LONG
-                    } else if (8 * sizeof(PY_LONG_LONG) - 1 > 4 * PyLong_SHIFT) {
-                        lla = (PY_LONG_LONG) (((((((((unsigned PY_LONG_LONG)digits[3]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[2]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
-                        goto long_long;
-#endif
-                    }
-                    CYTHON_FALLTHROUGH;
-                default: return PyLong_Type.tp_as_number->nb_subtract(op1, op2);
-            }
-        }
-                x = a - b;
-            return PyLong_FromLong(x);
-#ifdef HAVE_LONG_LONG
-        long_long:
-                llx = lla - llb;
-            return PyLong_FromLongLong(llx);
-#endif
-        
-        
-    }
-    #endif
-    if (PyFloat_CheckExact(op1)) {
-        const long b = intval;
-        double a = PyFloat_AS_DOUBLE(op1);
-            double result;
-            PyFPE_START_PROTECT("subtract", return NULL)
-            result = ((double)a) - (double)b;
-            PyFPE_END_PROTECT(result)
-            return PyFloat_FromDouble(result);
-    }
-    return (inplace ? PyNumber_InPlaceSubtract : PyNumber_Subtract)(op1, op2);
 }
 #endif
 

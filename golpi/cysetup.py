@@ -10,7 +10,7 @@ try:
 except:
     setup(
         ext_modules=cythonize(
-            "lib/optimisedsim.pyx", compiler_directives={"language_level": "3"}
+            "golpi/optimisedsim.pyx", compiler_directives={"language_level": "3"}
         )
     )
 
