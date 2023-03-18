@@ -1,9 +1,5 @@
-import lib
+import golpi
 
-hehe = lib.initstats((123,123))
-
-hehe.distance()
-
-hehe.now
+board = golpi.createboard((10,10))
 
 print("teststuffhere")
