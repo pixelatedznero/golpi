@@ -1,29 +1,61 @@
-try:
-    from lib import optimisedsim as opt, board, stats, patterns
-except:
-    import optimisedsim as opt, board, stats, patterns
+from . import optimisedsim as opt, board, stats, patterns
 
 
-def convert2twod(inputlist, length):
+def convert2twod(inputlist: list, length: int):
+    """ initialize stats
+
+    Parameters
+    ----------
+    inputlist: list
+    - list that is divisable by length, will be converted into 2D
+
+    length: int
+    - the length of the parts the list should be split in, must be able to divide list lengh
+
+    Retruns
+    -------
+    inputlist converted into 2D"""
+
     return opt.convert2twod(inputlist, length)
 
-def createboard(size):
+def createboard(size: tuple):
+    """ create a board
+
+    Parameters
+    ----------
+    size: tuple
+    - size of the board that should be generated
+
+    Retruns
+    -------
+    board object to work with and simulate"""
+    
     return board.Board(opt.createboard(size))
 
 
-def initstats(self, history):
+def initstats(history: list):
+    """ initialize stats
+
+    Parameters
+    ----------
+    history: 3D list
+    - binary boards to analyze,  board.history for the last simulation of that specific board
+
+    Retruns
+    -------
+    stats object with various checks"""
+
     return stats.Stats(history)
 
 
 def animate(history: list, filename: str, fps=5):
     """Animate a generated history
 
-    ---
-
     Parameters
     ----------
     history: 3D list 
     - Animates given binary boards, board.history for animating the last simulation of that specific board
+    
     filename: str
     - filename and location for saving the gif
 

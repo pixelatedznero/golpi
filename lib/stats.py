@@ -4,6 +4,16 @@ class Stats:
 
 
     def distance(self):
+        """ check the distance of the furthest pixel from the center
+
+        Parameters
+        ----------
+        None
+
+        Retruns
+        -------
+        Dictionary of the distances in all directions "up", "down", "right" and "left" """
+
         lastboard = self.history[len(self.history)-1]
         distances = {"up":0, "down":0, "right":0, "left":0}
 
@@ -41,6 +51,16 @@ class Stats:
 
 
     def pixelsperframe(self):
+        """ average amout of alive cells on the board for every frame
+
+        Parameters
+        ----------
+        None
+
+        Retruns
+        -------
+        integer"""
+
         totalpixels = 0
         for i in range(len(self.history)): # one frame
             for j in range(len(self.history[i])): # one row
@@ -50,6 +70,16 @@ class Stats:
 
 
     def survivedtime(self):
+        """ the amount of frames until there was no alive cell was left
+
+        Parameters
+        ----------
+        None
+
+        Retruns
+        -------
+        integer """
+
         time = 0
         for i in range(len(self.history)): # one frame
             pixels = 0
