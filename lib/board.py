@@ -1,7 +1,4 @@
-try:
-    from lib import optimisedsim as opt
-except:
-    import optimisedsim as opt
+from . import optimisedsim as opt
 
 class Board:
 
