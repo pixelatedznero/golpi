@@ -47,7 +47,7 @@ def addpattern(pattern, board, patternposition):
     return board
 
 
-def run(board, iterations, fullexport=False):
+def run(board: list, iterations: int, fullexport=False):
     if fullexport:
         everyboard = []
         everyboard.append(board)

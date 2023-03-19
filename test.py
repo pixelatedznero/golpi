@@ -1,8 +1,13 @@
-import golpi
+import golpi, time, seagull
 
-board = golpi.createboard((10,10))
-board.add([[1,1,1]], (4,2))
+before = time.time()
 
-board.simulate(1)
+board = golpi.createboard((100,100))
+board.add(golpi.patterns.block)
 
-print(board.now)
+board.simulate(500)
+
+stats = golpi.initstats(board.history)
+print(stats.distance())
+
+print(time.time()-before)
