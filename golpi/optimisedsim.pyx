@@ -1,6 +1,5 @@
 import copy
 
-
 def convert2twod(inputlist, length):
     twod_list = []
     
@@ -22,24 +21,23 @@ def centerposition(pattern, boardsize):
     return patternposition
 
 
-def createboard(size):
-    board = []
-    
-    for h in range(size[1]):
-        board.append([])
-        for w in range(size[0]):
-            board[h].append(0)
-
+def createboard(int width, int height):
+    board = [[0 for w in range(width)] for h in range(height)]
     return board
 
 
 def addpattern(pattern, board, patternposition):
+    cdef int i, j
+    cdef int len_board_i = len(board)
+    cdef int len_board_j = len(board[0])
+    cdef int len_pattern_i = len(pattern)
+    cdef int len_pattern_j = len(pattern[0])
 
-    for i in range(len(board)):
-        for j in range(len(board[0])):
-            if i < patternposition[0] or i > patternposition[0]+len(pattern)-1:
+    for i in range(len_board_i):
+        for j in range(len_board_j):
+            if i < patternposition[0] or i > patternposition[0]+len_pattern_i-1:
                 pass
-            elif j < patternposition[1] or j > patternposition[1]+len(pattern[0])-1:
+            elif j < patternposition[1] or j > patternposition[1]+len_pattern_j-1:
                 pass
             else:
                 board[i][j] = pattern[i-patternposition[0]][j-patternposition[1]]
@@ -47,10 +45,9 @@ def addpattern(pattern, board, patternposition):
     return board
 
 
-def run(board: list, iterations: int, fullexport=False):
-    if fullexport:
-        everyboard = []
-        everyboard.append(board)
+def run(board: list, iterations: int):
+    everyboard = []
+    everyboard.append(board)
 
     for g in range(iterations):
         
@@ -62,34 +59,26 @@ def run(board: list, iterations: int, fullexport=False):
                 x = ztrue+1
 
                 places =  [board[y-1][x-1], board[y-1][x], board[y-1][x+1], # up
-                            board[y][x-1],                  board[y][x+1],   # middle
-                            board[y+1][x-1], board[y+1][x], board[y+1][x+1]] # buttom
+                           board[y][x-1],                  board[y][x+1],   # middle
+                           board[y+1][x-1], board[y+1][x], board[y+1][x+1]] # buttom
                 
                 sourrounding = sum(places)
                 
                 if sourrounding >= 2:
-                    surv = checksurvival(sourrounding)
-                    if surv == 1:
+                    if sourrounding == 3:
                         editboard[y][x] = 1
-                    elif surv == 2:
+                    elif sourrounding == 2:
+                        pass
+                    elif sourrounding >= 4:
                         editboard[y][x] = 0
+                    else:
+                        pass
                 else:
                     editboard[y][x] = 0
 
         board = editboard
 
-        if fullexport:
-            everyboard.append(board)
+        everyboard.append(board)
         
-    return everyboard if fullexport else board
-
-
-def checksurvival(sourrounding):
-    if sourrounding == 3:
-        return 1 # is born
-    elif sourrounding == 2:
-        return 0 # doesn't change
-    elif sourrounding >= 4:
-        return 2 # dies
-    else:
-        return 0 # doesn't change
+    return everyboard
+    

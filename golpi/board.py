@@ -26,7 +26,7 @@ class Board:
         -------
         Nothing"""
 
-        self.now = opt.addpattern(pattern, self.now, position if position != () else opt.centerposition(pattern, (len(self.now), len(self.now[0]))))
+        self.now = opt.addpattern(pattern, self.now, list(position) if position != () else list(opt.centerposition(pattern, (len(self.now), len(self.now[0])))))
 
 
     def simulate(self, iterations: int):
@@ -41,7 +41,7 @@ class Board:
         -------
         Nothing"""
 
-        self.history = opt.run(self.now, iterations, True)
+        self.history = opt.run(self.now, iterations)
         self.now = self.history[len(self.history)-1]
         for i in self.history:
             self.fullhistory.append(i)
