@@ -1,4 +1,4 @@
-import golpi, time, seagull
+import golpi, time
 
 times = []
 

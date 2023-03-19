@@ -45,7 +45,6 @@ def addpattern(pattern, board, patternposition):
     return board
 
 
-
 def run(board: list, iterations: int):
     everyboard = []
     everyboard.append(board)
@@ -66,11 +65,14 @@ def run(board: list, iterations: int):
                 sourrounding = sum(places)
                 
                 if sourrounding >= 2:
-                    surv = checksurvival(sourrounding)
-                    if surv == 1:
+                    if sourrounding == 3:
                         editboard[y][x] = 1
-                    elif surv == 2:
+                    elif sourrounding == 2:
+                        pass
+                    elif sourrounding >= 4:
                         editboard[y][x] = 0
+                    else:
+                        pass
                 else:
                     editboard[y][x] = 0
 
@@ -79,14 +81,4 @@ def run(board: list, iterations: int):
         everyboard.append(board)
         
     return everyboard
-
-
-def checksurvival(sourrounding):
-    if sourrounding == 3:
-        return 1 # is born
-    elif sourrounding == 2:
-        return 0 # doesn't change
-    elif sourrounding >= 4:
-        return 2 # dies
-    else:
-        return 0 # doesn't change
+    
