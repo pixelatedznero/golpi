@@ -1,13 +1,16 @@
 import golpi, time, seagull
 
-before = time.time()
+times = []
 
-board = golpi.createboard((100,100))
-board.add(golpi.patterns.block)
+for i in range(5):
+    before = time.time()
 
-board.simulate(500)
+    board = golpi.createboard((100,100))
+    for i in range(20):
+        board.add([[1,1,1]], (i,i))
 
-stats = golpi.initstats(board.history)
-print(stats.distance())
+    board.simulate(500)
 
-print(time.time()-before)
+    times.append(time.time()-before)
+
+print(sum(times)/len(times))

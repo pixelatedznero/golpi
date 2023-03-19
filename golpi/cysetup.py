@@ -15,4 +15,4 @@ except:
     )
 
 # to run
-# python cysetup.py build_ext --inplace
+# python golpi\cysetup.py build_ext --inplace

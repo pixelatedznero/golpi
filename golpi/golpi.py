@@ -30,7 +30,7 @@ def createboard(size: tuple):
     -------
     board object to work with and simulate"""
     
-    return board.Board(opt.createboard(size))
+    return board.Board(opt.createboard(size[0], size[1]))
 
 
 def initstats(history: list):
