@@ -8,6 +8,15 @@ golpi_c_functions.update_board(test_board)
 golpi_c_functions.print_board(test_board)
 
 
+"""
+
+- (converter 1d to 2d)
+- python board object to 
+- addpattern
+
+"""
+
+
 
 
 # times = []

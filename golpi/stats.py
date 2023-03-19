@@ -10,7 +10,7 @@ class Stats:
         ----------
         None
 
-        Retruns
+        Returns
         -------
         Dictionary of the distances in all directions "up", "down", "right" and "left" """
 
@@ -57,7 +57,7 @@ class Stats:
         ----------
         None
 
-        Retruns
+        Returns
         -------
         integer"""
 
@@ -76,7 +76,7 @@ class Stats:
         ----------
         None
 
-        Retruns
+        Returns
         -------
         integer """
 
