@@ -1,0 +1,1 @@
+gcc -std=c99 -O3 -shared -o build/optimizedsim.so golpi/optimizedsim.c
