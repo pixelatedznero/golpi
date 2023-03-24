@@ -4,7 +4,7 @@ int main(int argc, char** argv)
 {
     uint64_t generations = 1;
 
-    printf("Geben Sie die Anzahl der Generationen ein, fuer die die Simulation laufen soll: ");
+    printf("Generations: ");
     scanf("%llu", &generations);
 
     char game_board[10 * 11] = {

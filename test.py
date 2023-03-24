@@ -1,6 +1,6 @@
-from golpi.c_impl.golpi_c import *
+import golpi
 
-raw_data = b'      *        ***                *                     *              *       ***                 *'
-
-board = golpi_c_create_board(raw_data, 10, 10, BORDER_MODE_TRANSPARENT)
-golpi_c_print_board(pointer(board))
+raw_data = b'                          *          *       ***                                                    '
+board = golpi.board.Board(raw_data, 10, 10, 0)
+board.simulate(3395901)
+board.display()

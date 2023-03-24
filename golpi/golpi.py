@@ -1,4 +1,4 @@
-from board import Board
+from .board import Board
 
 def convert_to_2d(input_list: list, x_length: int) -> list:
     """ Converts a 1D list into a 2D list with provided x-length
@@ -66,22 +66,6 @@ def create_empty_board(x_dim: int, y_dim: int, border_mode: int = 0) -> Board:
     for _ in range(0, x_dim * y_dim):
         board += b' '
     return Board(board, x_dim, y_dim, border_mode)
-
-
-#def initstats(history: list):
-    """ initialize stats
-
-    Parameters
-    ----------
-    history: 3D list
-    - binary boards to analyze,  board.history for the last simulation of that specific board
-
-    Retruns
-    -------
-    stats object with various checks"""
-
-#    return stats.Stats(history)
-
 
 #def animate(history: list, filename: str, fps=5):
     """Animate a generated history

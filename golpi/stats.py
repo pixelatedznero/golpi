@@ -1,4 +1,4 @@
-from golpi import convert_to_2d, convert_to_binary
+#from .golpi import convert_to_2d, convert_to_binary
 
 class Stats:
     def __init__(self, history: bytes, latest_history: bytes) -> None:
@@ -18,6 +18,7 @@ class Stats:
 
         distances = { "up" : 0, "down" : 0, "right" : 0, "left" : 0 }
 
+        """
         for i in range(len(self.latest_history)):
             if sum(self.latest_history[i]) > 0:
                 distances["up"] = len(self.latest_history) // 2 - i
@@ -49,7 +50,9 @@ class Stats:
                 distances[i] = 0
 
         return distances
+        """
 
+        
 
     def pixels_per_frame(self):
         """ Computes the average of alive pixels for all frames
@@ -80,14 +83,14 @@ class Stats:
         -------
         Frames until the board was dead """
 
-        time = 0
+        frames = 0
         for i in range(len(self.history)): # one frame
             pixels = 0
             for j in range(len(self.history[i])): # one row
                 pixels += sum(self.history[i][j])
             
             if pixels > 0: 
-                time += 1
+                frames += 1
             else:
                 break
-        return time
+        return frames

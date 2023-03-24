@@ -1,5 +1,5 @@
-from c_impl.golpi_c import *
-from stats import Stats
+from .c_impl.golpi_c import *
+from .stats import Stats
 
 class Board:
     def __init__(self, start_data: bytes, x_dim: int, y_dim: int, border_mode: int) -> None:
@@ -50,3 +50,6 @@ class Board:
 
     def stats(self) -> Stats:
         return Stats(self.full_history, self.latest_history)
+    
+    def display(self) -> None:
+        golpi_c_print_board(pointer(self.current_board))
