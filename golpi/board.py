@@ -40,7 +40,7 @@ class Board:
 
         Returns
         -------
-        None"""
+        None """
 
         for _ in range(0, iterations):
             self.full_history.append(self.current_board.raw_data)

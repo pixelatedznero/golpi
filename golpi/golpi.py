@@ -1,39 +1,58 @@
+from board import Board
 
-
-def convert2twod(inputlist: list, length: int):
-    """ initialize stats
-
-    Parameters
-    ----------
-    inputlist: list
-    - list that is divisable by length, will be converted into 2D
-
-    length: int
-    - the length of the parts the list should be split in, must be able to divide list lengh
-
-    Retruns
-    -------
-    inputlist converted into 2D"""
-
-    return opt.convert2twod(inputlist, length)
-
-def createboard(size: tuple):
-    """ create a board
+def convert_to_2d(input_list: list, x_length: int) -> list:
+    """ Converts a 1D list into a 2D list with provided x-length
 
     Parameters
     ----------
-    size: tuple
-    - size of the board that should be generated
+    input_list: list
+    - 1D list that must be converted to 2D list
 
-    Retruns
+    x_length: int
+    - The row length that the new 2d list will have
+
+    Returns
     -------
-    board object to work with and simulate"""
+    The provied 1D list converted into a 2D list with given row length """
+
+    if len(input_list) % x_length != 0:
+        raise Exception("List must be divisible by length in order to be converted to 2d list.")
+
+    y_length = len(input_list) // x_length
     
-    board = [[0 for w in range(size[0])] for h in range(size[1])]
-    return board.Board(board)
+    temp_list = [[] for _ in range(0, y_length)]
+    for i in range(0, len(input_list)):
+        x_position = i % x_length
+        y_position = i // x_length
+
+        temp_list[x_position][y_position] = input_list[i]
+    return temp_list
+
+def create_empty_board(x_dim: int, y_dim: int, border_mode: int = 0) -> Board:
+    """ Create an empty board
+
+    Parameters
+    ----------
+    x_dim: int
+    - The row size of the empty board
+
+    y_dim: int
+    - The column size of the empty board
+
+    border_mode: int = 0
+    - The border_mode of the empty board
+
+    Returns
+    -------
+    An empty board object with given dimensions and border mode """
+    
+    board = b''
+    for _ in range(0, x_dim * y_dim):
+        board += b' '
+    return Board(board, x_dim, y_dim, border_mode)
 
 
-def initstats(history: list):
+#def initstats(history: list):
     """ initialize stats
 
     Parameters
@@ -45,10 +64,10 @@ def initstats(history: list):
     -------
     stats object with various checks"""
 
-    return stats.Stats(history)
+#    return stats.Stats(history)
 
 
-def animate(history: list, filename: str, fps=5):
+#def animate(history: list, filename: str, fps=5):
     """Animate a generated history
 
     Parameters
@@ -63,7 +82,7 @@ def animate(history: list, filename: str, fps=5):
     -------
     saves gif, no return"""
     
-    print("animate")
+#    print("animate")
 
     # if not patternposition:
     #         patternposition = (int(boardsize[0]/2),int(boardsize[1]/2))
