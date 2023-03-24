@@ -1,4 +1,5 @@
 from c_impl.golpi_c import *
+from stats import Stats
 
 class Board:
     def __init__(self, start_data: bytes, x_dim: int, y_dim: int, border_mode: int) -> None:
@@ -46,4 +47,6 @@ class Board:
             self.full_history.append(self.current_board.raw_data)
             golpi_c_simulate_board(pointer(self.current_board))
         self.latest_history = self.full_history[len(self.full_history) - 1]
-    
+
+    def stats(self) -> Stats:
+        return Stats(self.full_history, self.latest_history)

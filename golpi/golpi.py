@@ -28,6 +28,22 @@ def convert_to_2d(input_list: list, x_length: int) -> list:
         temp_list[x_position][y_position] = input_list[i]
     return temp_list
 
+def convert_to_binary(input_list: list) -> list:
+    """ Converts a list of space-star representation into a list of binary representation
+
+    Parameters
+    ----------
+    input_list: list
+    - 1D list that will be converted to binary represenation
+
+    Returns
+    -------
+    The provided 1D list of space-star representation as a binary representation """
+
+    temp_list = []
+    for i in input_list:
+        temp_list.append(1 if i == '*' else 0)
+
 def create_empty_board(x_dim: int, y_dim: int, border_mode: int = 0) -> Board:
     """ Create an empty board
 
