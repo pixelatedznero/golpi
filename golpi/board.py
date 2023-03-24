@@ -1,7 +1,6 @@
-from . import optimisedsim as opt
+from c_impl.golpi_c import *
 
 class Board:
-
     def __init__(self, startboard):
         self.now = startboard
         """current board"""

@@ -1,4 +1,3 @@
-from . import optimisedsim as opt, board, stats, patterns
 
 
 def convert2twod(inputlist: list, length: int):
