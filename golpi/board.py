@@ -1,47 +1,49 @@
 from c_impl.golpi_c import *
 
 class Board:
-    def __init__(self, startboard):
-        self.now = startboard
-        """current board"""
-        self.history = [[[]]]
-        """history of the board for its last simulation"""
-        self.fullhistory = [[[]]]
-        """history since the board was created"""
+    def __init__(self, start_data: bytes, x_dim: int, y_dim: int, border_mode: int) -> None:
+        self.current_board = golpi_c_create_board(start_data, x_dim, y_dim, border_mode)
+        """Represents the current board as a Ctypes struct object"""
+        self.latest_history = []
+        """Saves the last state of the simulation"""
+        self.full_history = []
+        """Saves all states of the simulation"""
 
-
-    def add(self, pattern: list, position=()):
-        """ initialize stats
-
+    def add(self, pattern: bytes, position: int) -> None:
+        """ Add a patter to the current board
+        
         Parameters
         ----------
-        pattern: 2D list
-        - pattern that will be placed on the board
+        pattern: bytes object
+        - Specifies the pattern that must be added to the board
 
-        position: tuple
-        - position where pattern should be placed, centered if none
+        position: int
+        - Specifies the position at wich the pattern originates in the current board
 
-        Retruns
+        Returns
         -------
-        Nothing"""
+        None """
 
-        self.now = opt.addpattern(pattern, self.now, list(position) if position != () else list(opt.centerposition(pattern, (len(self.now), len(self.now[0])))))
+        if((position + len(pattern)) > (self.current_board.x_dim * self.current_board.y_dim)):
+            raise Exception("Pattern is too long to fit into current board.")
+        
+        for i in range(position, position + len(pattern)):
+            self.current_board.raw_data[i] = pattern[i - position]
 
-
-    def simulate(self, iterations: int):
-        """ initialize stats
+    def simulate(self, iterations: int) -> None:
+        """ Simulate board for specified ammount of iterations
 
         Parameters
         ----------
         iterations: int
-        - generations the current board should be simulated
+        - The amount of iterations to simulate the board for
 
-        Retruns
+        Returns
         -------
-        Nothing"""
+        None"""
 
-        self.history = opt.run(self.now, iterations)
-        self.now = self.history[len(self.history)-1]
-        for i in self.history:
-            self.fullhistory.append(i)
-
+        for _ in range(0, iterations):
+            self.full_history.append(self.current_board.raw_data)
+            golpi_c_simulate_board(pointer(self.current_board))
+        self.latest_history = self.full_history[len(self.full_history) - 1]
+    
