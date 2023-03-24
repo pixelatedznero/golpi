@@ -9,6 +9,8 @@
 #define GOLPI_BORDER_MODE_SOLID 1
 #define GOLPI_BORDER_MODE_OFFSET 2
 
+//#define GOLPI_DEBUG
+
 typedef struct
 {
     char* raw_data;
@@ -26,12 +28,12 @@ GolpiBoard golpi_board_create(char* raw_data, uint32_t x_dim, uint32_t y_dim, in
 
 char golpi_board_index(GolpiBoard* board, uint32_t x, uint32_t y)
 {
-    return board->raw_data[board->y_dim * y + x];
+    return board->raw_data[board->x_dim * y + x];
 }
 
 char* golpi_board_index_ref(GolpiBoard* board, uint32_t x, uint32_t y)
 {
-    return &(board->raw_data[board->y_dim * y + x]);
+    return &(board->raw_data[board->x_dim * y + x]);
 }
 
 uint8_t golpi_board_check_zero(GolpiBoard* board)
@@ -62,13 +64,21 @@ uint8_t golpi_board_active_surrounding_cells(GolpiBoard* board, uint32_t cell_x,
             surrounding_cells += (golpi_board_index(board, ucorner_x, ucorner_y) == '*');
             surrounding_cells += (golpi_board_index(board, lcorner_x, ucorner_y) == '*');
             surrounding_cells += (golpi_board_index(board, cell_x, ucorner_y) == '*');
-
             surrounding_cells += (golpi_board_index(board, ucorner_x, cell_y) == '*');
             surrounding_cells += (golpi_board_index(board, lcorner_x, cell_y) == '*');
-
             surrounding_cells += (golpi_board_index(board, ucorner_x, lcorner_y) == '*');
             surrounding_cells += (golpi_board_index(board, cell_x, lcorner_y) == '*');
             surrounding_cells += (golpi_board_index(board, lcorner_x, lcorner_y) == '*');
+
+#ifdef GOLPI_DEBUG
+            if(surrounding_cells)
+            {
+                printf("cell_x: %u, cell_y: %u\n", cell_x, cell_y);
+                printf("lcorner_x: %i, lcorner_y: %i\n", lcorner_x, lcorner_y);
+                printf("ucorner_x: %i, ucorner_y: %i\n", ucorner_x, ucorner_y);
+            }
+#endif
+
             break;
         case 1:
             break;
@@ -84,20 +94,26 @@ void golpi_board_simulate(GolpiBoard* board)
 {
     char temp_board_dt[board->x_dim * board->y_dim];
     memcpy(temp_board_dt, board->raw_data, board->x_dim * board->y_dim);
-    GolpiBoard temp_board = (GolpiBoard){.raw_data = temp_board_dt, .x_dim = board->x_dim, .y_dim = board->y_dim, .border_mode = board->border_mode};
 
-    for(uint32_t j = 0; j < board->x_dim; j++)
+    GolpiBoard temp_board = *board;
+    temp_board.raw_data = temp_board_dt;
+
+    for(uint32_t i = 0; i < board->x_dim * board->y_dim; i++)
     {
-        for(uint32_t i = 0; i < board->y_dim; i++)
+        uint32_t x_index = i % board->x_dim;
+        uint32_t y_index = i / board->x_dim;
+
+        uint8_t surrounding_cells = golpi_board_active_surrounding_cells(board, x_index, y_index);
+#ifdef GOLPI_DEBUG
+        if(surrounding_cells) printf("%u : %u\n", i, surrounding_cells);
+#endif
+
+        if(board->raw_data[i] == '*')
         {
-            uint8_t surrounding_cells = golpi_board_active_surrounding_cells(board, i, j);
-            if(golpi_board_index(board, i, j) == '*')
-            {
-                if((surrounding_cells < 2) || (surrounding_cells > 3)) *golpi_board_index_ref(&temp_board, i, j) = ' '; 
-                continue;
-            }
-            if(surrounding_cells == 3) *golpi_board_index_ref(&temp_board, i, j) = '*';
+            if((surrounding_cells < 2) || (surrounding_cells > 3)) temp_board_dt[i] = ' ';
+            continue;
         }
+        if(surrounding_cells == 3) temp_board_dt[i] = '*';
     }
 
     memcpy(board->raw_data, temp_board_dt, board->x_dim * board->y_dim);
@@ -105,15 +121,27 @@ void golpi_board_simulate(GolpiBoard* board)
 
 void golpi_board_print(GolpiBoard* board)
 {
-    for(uint32_t j = 0; j < board->x_dim; j++)
+#ifdef GOLPI_DEBUG
+    for(uint32_t i = 0; i < board->x_dim * board->y_dim; i++)
     {
-        for(uint32_t i = 0; i < board->y_dim; i++)
-        {
-            printf("%c", golpi_board_index(board, i, j));
-        }
-        printf("\n");
+        uint32_t x_index = i % board->x_dim;
+
+        if(!x_index) putc('|', stdout);
+        putc(board->raw_data[i] == ' ' ? '_' : '*', stdout);
+        putc(' ', stdout);
     }
-    printf("\n\n");
+    puts("\n\n");
+#else
+    for(uint32_t i = 0; i < board->x_dim * board->y_dim; i++)
+    {
+        uint32_t x_index = i % board->x_dim;
+        uint32_t y_index = i / board->x_dim;
+
+        if(!x_index) putc('\n', stdout);
+        putc(board->raw_data[i], stdout);
+    }
+    putc('\n', stdout);
+#endif
 }
 
 #endif

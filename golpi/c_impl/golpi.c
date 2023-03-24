@@ -7,19 +7,20 @@ int main(int argc, char** argv)
     printf("Geben Sie die Anzahl der Generationen ein, fuer die die Simulation laufen soll: ");
     scanf("%llu", &generations);
 
-    char game_board[10 * 10] = {
-        ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '*', '*',
+    char game_board[10 * 11] = {
         ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ',
         ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ',
         ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ',
         ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ',
+        ' ', ' ', ' ', ' ', ' ', '*', ' ', ' ', ' ', ' ',
+        ' ', ' ', ' ', ' ', ' ', ' ', '*', ' ', ' ', ' ',
+        ' ', ' ', ' ', ' ', '*', '*', '*', ' ', ' ', ' ',
         ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ',
         ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ',
         ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ',
         ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ',
-        ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '*', '*',
     };
-    GolpiBoard board = golpi_board_create(game_board, 10, 10, 0);
+    GolpiBoard board = golpi_board_create(game_board, 10, 11, 0);
     golpi_board_print(&board);
 
     size_t g = 0;
