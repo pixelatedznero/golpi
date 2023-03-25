@@ -1,1 +1,1 @@
-gcc -std=c99 -O3 -shared -o build/golpi.so golpi/golpi.c
+gcc -std=c99 -O3 -shared -o build/golpi.so golpi/c_impl/golpi.c
