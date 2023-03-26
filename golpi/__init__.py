@@ -1,1 +1,1 @@
-from . import golpi
+from golpi import golpi

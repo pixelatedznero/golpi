@@ -1,5 +1,4 @@
 from .c_impl.golpi_c import *
-from .stats import Stats
 
 class Board:
     def __init__(self, start_data: bytes, x_dim: int, y_dim: int, border_mode: int) -> None:
@@ -28,8 +27,10 @@ class Board:
         if((position + len(pattern)) > (self.current_board.x_dim * self.current_board.y_dim)):
             raise Exception("Pattern is too long to fit into current board.")
         
+        data = bytearray(self.current_board.raw_data)
         for i in range(position, position + len(pattern)):
-            self.current_board.raw_data[i] = pattern[i - position]
+            data[i] = pattern[i - position]
+        self.current_board.raw_data = bytes(data)
 
     def simulate(self, iterations: int) -> None:
         """ Simulate board for specified ammount of iterations
@@ -47,9 +48,6 @@ class Board:
             self.full_history.append(self.current_board.raw_data)
             golpi_c_simulate_board(pointer(self.current_board))
         self.latest_history = self.full_history[len(self.full_history) - 1]
-
-    def stats(self) -> Stats:
-        return Stats(self.full_history, self.latest_history)
     
     def display(self) -> None:
         golpi_c_print_board(pointer(self.current_board))

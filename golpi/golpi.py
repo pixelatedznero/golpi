@@ -16,17 +16,9 @@ def convert_to_2d(input_list: list, x_length: int) -> list:
     The provied 1D list converted into a 2D list with given row length """
 
     if len(input_list) % x_length != 0:
-        raise Exception("List must be divisible by length in order to be converted to 2d list.")
-
-    y_length = len(input_list) // x_length
+        raise Exception("List must be divisible by x_length in order to be converted to 2d list.")
     
-    temp_list = [[] for _ in range(0, y_length)]
-    for i in range(0, len(input_list)):
-        x_position = i % x_length
-        y_position = i // x_length
-
-        temp_list[x_position][y_position] = input_list[i]
-    return temp_list
+    return [[input_list[y * x_length + x] for x in range(0, x_length)] for y in range(0, len(input_list) // x_length)]
 
 def convert_to_binary(input_list: list) -> list:
     """ Converts a list of space-star representation into a list of binary representation
@@ -40,9 +32,7 @@ def convert_to_binary(input_list: list) -> list:
     -------
     The provided 1D list of space-star representation as a binary representation """
 
-    temp_list = []
-    for i in input_list:
-        temp_list.append(1 if i == '*' else 0)
+    return [1 if i == '*' else 0 for i in input_list]
 
 def create_empty_board(x_dim: int, y_dim: int, border_mode: int = 0) -> Board:
     """ Create an empty board
@@ -62,10 +52,10 @@ def create_empty_board(x_dim: int, y_dim: int, border_mode: int = 0) -> Board:
     -------
     An empty board object with given dimensions and border mode """
     
-    board = b''
+    board = bytearray(b'')
     for _ in range(0, x_dim * y_dim):
         board += b' '
-    return Board(board, x_dim, y_dim, border_mode)
+    return Board(bytes(board), x_dim, y_dim, border_mode)
 
 #def animate(history: list, filename: str, fps=5):
     """Animate a generated history

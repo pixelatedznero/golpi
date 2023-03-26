@@ -1,6 +1,7 @@
 import golpi
 
-raw_data = b'                          *          *       ***                                                    '
-board = golpi.board.Board(raw_data, 10, 10, 0)
-board.simulate(3395901)
+fly_pattern = b'      *          *       ***  '
+board = golpi.golpi.create_empty_board(10, 100)
+board.add(fly_pattern, 20)
+board.simulate(301_533)
 board.display()

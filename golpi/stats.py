@@ -1,4 +1,4 @@
-#from .golpi import convert_to_2d, convert_to_binary
+from .golpi import convert_to_2d, convert_to_binary
 
 class Stats:
     def __init__(self, history: bytes, latest_history: bytes) -> None:
