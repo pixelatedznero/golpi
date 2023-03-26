@@ -1,11 +1,107 @@
-from .golpi import convert_to_2d, convert_to_binary
+from copy import deepcopy
+
+#class Stats:
+#    def __init__(self, history: bytes, latest_history: bytes) -> None:
+#        self.history = convert_to_2d(convert_to_binary(list(history)))
+#        self.latest_history = convert_to_2d(convert_to_binary(list(latest_history)))
+#
+#    def distance(self):
+#        """ Computes the distance that every pixel has traveled in every direction
+#
+#        Parameters
+#        ----------
+#        None
+#
+#        Returns
+#        -------
+#        Dictionary of the distances in every direction (up, down, right and left) """
+#
+#        distances = { "up" : 0, "down" : 0, "right" : 0, "left" : 0 }
+#
+#        """
+#        for i in range(len(self.latest_history)):
+#            if sum(self.latest_history[i]) > 0:
+#                distances["up"] = len(self.latest_history) // 2 - i
+#                break
+#        
+#        for i in reversed(range(len(self.latest_history))):
+#            if sum(self.latest_history[i]) > 0:
+#                distances["down"] = i - len(self.latest_history) // 2
+#                break
+#        
+#        for x in range(len(self.latest_history)):
+#            for i in range(len(self.latest_history[x])):
+#                if self.latest_history[x][i] > 0:
+#                    distances["left"] = len(self.latest_history[x]) // 2 - i
+#                    break
+#            if distances["left"] > 0:
+#                break
+#        
+#        for x in range(len(self.latest_history)):
+#            for i in reversed(range(len(self.latest_history[x]))):
+#                if self.latest_history[x][i] > 0:
+#                    distances["right"] = i - len(self.latest_history[x]) // 2
+#                    break
+#            if distances["right"] > 0:
+#                break
+#
+#        for i in distances:
+#            if distances[i] < 0:
+#                distances[i] = 0
+#
+#        return distances
+#        """
+#
+#        
+#
+#    def pixels_per_frame(self):
+#        """ Computes the average of alive pixels for all frames
+#
+#        Parameters
+#        ----------
+#        None
+#
+#        Returns
+#        -------
+#        Average of alive pixels for all frames """
+#
+#        total_pixels = 0
+#        for i in range(len(self.history)):
+#            for j in range(len(self.history[i])):
+#                total_pixels += sum(self.history[i][j])
+#                
+#        return total_pixels / len(self.history)
+#
+#    def survived_time(self):
+#        """ The amount of frames until all cells were dead
+#
+#        Parameters
+#        ----------
+#        None
+#
+#        Returns
+#        -------
+#        Frames until the board was dead """
+#
+#        frames = 0
+#        for i in range(len(self.history)): # one frame
+#            pixels = 0
+#            for j in range(len(self.history[i])): # one row
+#                pixels += sum(self.history[i][j])
+#            
+#            if pixels > 0: 
+#                frames += 1
+#            else:
+#                break
+#        return frames
+#
+from .board import Board
 
 class Stats:
-    def __init__(self, history: bytes, latest_history: bytes) -> None:
-        self.history = convert_to_2d(convert_to_binary(list(history)))
-        self.latest_history = convert_to_2d(convert_to_binary(list(latest_history)))
+    def __init__(self, board: Board) -> None:
+        self.board = board
 
-    def distance(self):
+    def distances(self) -> list:
         """ Computes the distance that every pixel has traveled in every direction
 
         Parameters
@@ -18,43 +114,24 @@ class Stats:
 
         distances = { "up" : 0, "down" : 0, "right" : 0, "left" : 0 }
 
-        """
-        for i in range(len(self.latest_history)):
-            if sum(self.latest_history[i]) > 0:
-                distances["up"] = len(self.latest_history) // 2 - i
-                break
-        
-        for i in reversed(range(len(self.latest_history))):
-            if sum(self.latest_history[i]) > 0:
-                distances["down"] = i - len(self.latest_history) // 2
-                break
-        
-        for x in range(len(self.latest_history)):
-            for i in range(len(self.latest_history[x])):
-                if self.latest_history[x][i] > 0:
-                    distances["left"] = len(self.latest_history[x]) // 2 - i
-                    break
-            if distances["left"] > 0:
-                break
-        
-        for x in range(len(self.latest_history)):
-            for i in reversed(range(len(self.latest_history[x]))):
-                if self.latest_history[x][i] > 0:
-                    distances["right"] = i - len(self.latest_history[x]) // 2
-                    break
-            if distances["right"] > 0:
-                break
+        for h in range(1, len(self.board.full_history)):
+            current_history = self.board.full_history[h]
+            last_history = self.board.full_history[h - 1]
+            if len(current_history) != len(last_history):
+                raise Exception("Histories stored inside of Board object have different sizes.")
+            
+            if current_history[0] != 0 or current_history[0] != 1:
+                current_history = [[1 if x == '*' else 0 for x in y] for y in current_history]
+                last_history = [[1 if x == '*' else 0 for x in y] for y in last_history]
 
-        for i in distances:
-            if distances[i] < 0:
-                distances[i] = 0
+            diff_history = [
+                [current_history[y][x] - last_history[y][x] for x in range(0, len(current_history[y]))] 
+                for y in range(0, len(current_history))
+            ]
 
-        return distances
-        """
+            #TODO: Implement furthest pixel calculations
 
-        
-
-    def pixels_per_frame(self):
+    def pixels_per_frame(self) -> float:
         """ Computes the average of alive pixels for all frames
 
         Parameters
@@ -65,14 +142,7 @@ class Stats:
         -------
         Average of alive pixels for all frames """
 
-        total_pixels = 0
-        for i in range(len(self.history)):
-            for j in range(len(self.history[i])):
-                total_pixels += sum(self.history[i][j])
-                
-        return total_pixels / len(self.history)
-
-    def survived_time(self):
+    def active_time(self) -> float:
         """ The amount of frames until all cells were dead
 
         Parameters
@@ -82,15 +152,3 @@ class Stats:
         Returns
         -------
         Frames until the board was dead """
-
-        frames = 0
-        for i in range(len(self.history)): # one frame
-            pixels = 0
-            for j in range(len(self.history[i])): # one row
-                pixels += sum(self.history[i][j])
-            
-            if pixels > 0: 
-                frames += 1
-            else:
-                break
-        return frames
