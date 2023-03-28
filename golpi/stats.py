@@ -1,93 +1,78 @@
+from .board import Board
+
 class Stats:
-    def __init__(self, history):
-        self.history = history
+    def __init__(self, board: Board) -> None:
+        self.board = board
+        self.board.full_history = [[
+                [1 if h[y * self.board.current_board.x_dim + x] == '*' or h[y * self.board.current_board.x_dim + x] == 42 else 0 
+                for x in range(0, self.board.current_board.x_dim)] for y in range(0, len(h) // self.board.current_board.x_dim)
+            ] for h in self.board.full_history]
 
-
-    def distance(self):
-        """ check the distance of the furthest pixel from the center
-
-        Parameters
-        ----------
-        None
-
-        Retruns
-        -------
-        Dictionary of the distances in all directions "up", "down", "right" and "left" """
-
-        lastboard = self.history[len(self.history)-1]
-        distances = {"up":0, "down":0, "right":0, "left":0}
-
-        for i in range(len(lastboard)):
-            if sum(lastboard[i]) > 0:
-                distances["up"] = int(len(lastboard)/2) - i
-                break
-        
-        for i in reversed(range(len(lastboard))):
-            if sum(lastboard[i]) > 0:
-                distances["down"] = i - int(len(lastboard)/2)
-                break
-        
-        for x in range(len(lastboard)):
-            for i in range(len(lastboard[x])):
-                if lastboard[x][i] > 0:
-                    distances["left"] = int(len(lastboard[x])/2) - i
-                    break
-            if distances["left"] > 0:
-                break
-        
-        for x in range(len(lastboard)):
-            for i in reversed(range(len(lastboard[x]))):
-                if lastboard[x][i] > 0:
-                    distances["right"] = i - int(len(lastboard[x])/2)
-                    break
-            if distances["right"] > 0:
-                break
-
-        for i in distances:
-            if distances[i] < 0:
-                distances[i] = 0
-
-        return distances
-
-
-    def pixelsperframe(self):
-        """ average amout of alive cells on the board for every frame
+    def movement(self, origin: tuple = (0, 0)) -> list:
+        """ Computes the distance that every pixel has traveled in every direction
 
         Parameters
         ----------
         None
 
-        Retruns
+        Returns
         -------
-        integer"""
+        Vector of the total movement in x and y direction """
 
-        totalpixels = 0
-        for i in range(len(self.history)): # one frame
-            for j in range(len(self.history[i])): # one row
-                totalpixels += sum(self.history[i][j])
-                
-        return totalpixels / len(self.history)
+        movement_vector = [0, 0]
 
+        for h in range(1, len(self.board.full_history)):
+            current_history = self.board.full_history[h]
+            last_history = self.board.full_history[h - 1]
+            if len(current_history) != len(last_history):
+                raise Exception("Histories stored inside of Board object have different sizes.")
 
-    def survivedtime(self):
-        """ the amount of frames until there was no alive cell was left
+            diff_history = [
+                [last_history[y][x] - current_history[y][x] for x in range(0, len(current_history[y]))] 
+                for y in range(0, len(current_history))
+            ]
+
+            row_sum = [sum(y) for y in diff_history]
+            column_sum = []
+            for i in range(0, len(diff_history[0])):
+                temp = 0
+                for j in range(0, len(diff_history)):
+                    temp += diff_history[j][i]
+                column_sum.append(temp)
+
+            print(f"({row_sum}|{column_sum})")
+
+    def pixels_per_frame(self) -> float:
+        """ Computes the average of alive pixels for all frames
 
         Parameters
         ----------
         None
 
-        Retruns
+        Returns
         -------
-        integer """
+        Average of alive pixels for all frames """
 
-        time = 0
-        for i in range(len(self.history)): # one frame
-            pixels = 0
-            for j in range(len(self.history[i])): # one row
-                pixels += sum(self.history[i][j])
+        total_alive_cells = 0
+        for h in self.board.full_history:
+            if h[0] != 0 or h[0] != 1:
+                h = [[1 if x == '*' else 0 for x in y] for y in h]
             
-            if pixels > 0: # survived to the last frame tried
-                time += 1
-            else: # didn't survived to the last frame tried
-                break
-        return time
+            total_alive_cells += sum([sum(y) for y in h])
+        return total_alive_cells / len(self.board.full_history)
+
+    def active_time(self) -> float:
+        """ The amount of frames until all cells were dead
+
+        Parameters
+        ----------
+        None
+
+        Returns
+        -------
+        Frames until the board was dead or None if the board is still alive"""
+
+        for i in range(0, len(self.board.full_history)):
+            if sum([sum(y) for y in self.board.full_history[i]]) == 0:
+                return i
+        return None

@@ -1,48 +1,59 @@
-from . import optimisedsim as opt
+from .c_impl.golpi_c import *
 
 class Board:
+    def __init__(self, start_data: bytes, x_dim: int, y_dim: int, border_mode: int) -> None:
+        self.current_board = golpi_c_create_board(start_data, x_dim, y_dim, border_mode)
+        """Represents the current board as a Ctypes struct object"""
+        self.latest_history = []
+        """Saves the last state of the simulation as list of bytes"""
+        self.full_history = []
+        """Saves all states of the simulation as list of bytes"""
 
-    def __init__(self, startboard):
-        self.now = startboard
-        """current board"""
-        self.history = [[[]]]
-        """history of the board for its last simulation"""
-        self.fullhistory = [[[]]]
-        """history since the board was created"""
-
-
-    def add(self, pattern: list, position=()):
-        """ initialize stats
-
+    def add(self, pattern: bytes, position: int) -> None:
+        """ Add a patter to the current board
+        
         Parameters
         ----------
-        pattern: 2D list
-        - pattern that will be placed on the board
+        pattern: bytes object
+        - Specifies the pattern that must be added to the board
 
-        position: tuple
-        - position where pattern should be placed, centered if none
+        position: int
+        - Specifies the position at wich the pattern originates in the current board
 
-        Retruns
+        Returns
         -------
-        Nothing"""
+        None """
 
-        self.now = opt.addpattern(pattern, self.now, list(position) if position != () else list(opt.centerposition(pattern, (len(self.now), len(self.now[0])))))
+        if (position + len(pattern)) > (self.current_board.x_dim * self.current_board.y_dim):
+            raise Exception("Either the position or the size of the pattern will place it, at least partially, outside of the board.")
+        
+        data = bytearray(self.current_board.raw_data)
+        for i in range(position, position + len(pattern)):
+            data[i] = pattern[i - position]
+        self.current_board.raw_data = bytes(data)
 
-
-    def simulate(self, iterations: int):
-        """ initialize stats
+    def simulate(self, iterations: int) -> None:
+        """ Simulate board for specified ammount of iterations
 
         Parameters
         ----------
         iterations: int
-        - generations the current board should be simulated
+        - The amount of iterations to simulate the board for
 
-        Retruns
+        Returns
         -------
-        Nothing"""
+        None """
 
-        self.history = opt.run(self.now, iterations)
-        self.now = self.history[len(self.history)-1]
-        for i in self.history:
-            self.fullhistory.append(i)
+        if iterations == 0:
+            Warning("No point in generating no iterations. Nothing happend")
+            return
+        elif iterations > 0:
+            Exception("Can't generate negative iterations.")
 
+        for _ in range(0, iterations):
+            self.full_history.append(self.current_board.raw_data)
+            golpi_c_simulate_board(pointer(self.current_board))
+        self.latest_history = self.full_history[len(self.full_history) - 1]
+    
+    def display(self) -> None:
+        golpi_c_print_board(pointer(self.current_board))

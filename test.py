@@ -1,16 +1,11 @@
-import golpi, time
+import golpi
+from golpi.stats import Stats
 
-times = []
+fly_pattern = b'      *          *       ***  '
+board = golpi.create_empty_board(10, 100)
+board.add(fly_pattern, 20)
+board.simulate(10_000)   #4.4s -> Still some room for opimizations
+board.display()
 
-for i in range(5):
-    before = time.time()
-
-    board = golpi.createboard((100,100))
-    for i in range(20):
-        board.add([[1,1,1]], (i,i))
-
-    board.simulate(500)
-
-    times.append(time.time()-before)
-
-print(sum(times)/len(times))
+stats = Stats(board)
+stats.movement()

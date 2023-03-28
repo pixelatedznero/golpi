@@ -1,54 +1,63 @@
-from . import optimisedsim as opt, board, stats, patterns
+from .board import Board
 
-
-def convert2twod(inputlist: list, length: int):
-    """ initialize stats
-
-    Parameters
-    ----------
-    inputlist: list
-    - list that is divisable by length, will be converted into 2D
-
-    length: int
-    - the length of the parts the list should be split in, must be able to divide list lengh
-
-    Retruns
-    -------
-    inputlist converted into 2D"""
-
-    return opt.convert2twod(inputlist, length)
-
-def createboard(size: tuple):
-    """ create a board
+def convert_to_2d(input_list: list, x_length: int) -> list:
+    """ Converts a 1D list into a 2D list with provided x-length
 
     Parameters
     ----------
-    size: tuple
-    - size of the board that should be generated
+    input_list: list
+    - 1D list that must be converted to 2D list
 
-    Retruns
+    x_length: int
+    - The row length that the new 2d list will have
+
+    Returns
     -------
-    board object to work with and simulate"""
+    The provied 1D list converted into a 2D list with given row length """
+
+    if len(input_list) % x_length != 0:
+        raise Exception("List must be divisible by x_length in order to be converted to 2d list.")
     
-    return board.Board(opt.createboard(size[0], size[1]))
+    return [[input_list[y * x_length + x] for x in range(0, x_length)] for y in range(0, len(input_list) // x_length)]
 
-
-def initstats(history: list):
-    """ initialize stats
+def convert_to_binary(input_list: list) -> list:
+    """ Converts a list of space-star representation into a list of binary representation
 
     Parameters
     ----------
-    history: 3D list
-    - binary boards to analyze,  board.history for the last simulation of that specific board
+    input_list: list
+    - 1D list that will be converted to binary represenation
 
-    Retruns
+    Returns
     -------
-    stats object with various checks"""
+    The provided 1D list of space-star representation as a binary representation """
 
-    return stats.Stats(history)
+    return [1 if (i == 42 or i == '*') else 0 for i in input_list]
 
+def create_empty_board(x_dim: int, y_dim: int, border_mode: int = 0) -> Board:
+    """ Create an empty board
 
-def animate(history: list, filename: str, fps=5):
+    Parameters
+    ----------
+    x_dim: int
+    - The row size of the empty board
+
+    y_dim: int
+    - The column size of the empty board
+
+    border_mode: int = 0
+    - The border_mode of the empty board
+
+    Returns
+    -------
+    An empty board object with given dimensions and border mode """
+    
+    board = bytearray(b'')
+    for _ in range(0, x_dim * y_dim):
+        board += b' '
+    return Board(bytes(board), x_dim, y_dim, border_mode)
+
+#def animate(history: list, filename: str, fps=5):
     """Animate a generated history
 
     Parameters
@@ -63,7 +72,7 @@ def animate(history: list, filename: str, fps=5):
     -------
     saves gif, no return"""
     
-    print("animate")
+#    print("animate")
 
     # if not patternposition:
     #         patternposition = (int(boardsize[0]/2),int(boardsize[1]/2))
