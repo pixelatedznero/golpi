@@ -1,1 +1,1 @@
-from golpi import golpi
+from .golpi import *

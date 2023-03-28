@@ -32,7 +32,7 @@ def convert_to_binary(input_list: list) -> list:
     -------
     The provided 1D list of space-star representation as a binary representation """
 
-    return [1 if i == '*' else 0 for i in input_list]
+    return [1 if (i == 42 or i == '*') else 0 for i in input_list]
 
 def create_empty_board(x_dim: int, y_dim: int, border_mode: int = 0) -> Board:
     """ Create an empty board
