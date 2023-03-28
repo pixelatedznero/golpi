@@ -25,7 +25,7 @@ class Board:
         None """
 
         if (position + len(pattern)) > (self.current_board.x_dim * self.current_board.y_dim):
-            raise Exception("Pattern is too long to fit into current board.")
+            raise Exception("Either the position or the size of the pattern will place it, at least partially, outside of the board.")
         
         data = bytearray(self.current_board.raw_data)
         for i in range(position, position + len(pattern)):
