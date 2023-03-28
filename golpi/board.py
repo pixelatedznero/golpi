@@ -44,6 +44,12 @@ class Board:
         -------
         None """
 
+        if iterations == 0:
+            Warning("No point in generating no iterations. Nothing happend")
+            return
+        elif iterations > 0:
+            Exception("Can't generate negative iterations.")
+
         for _ in range(0, iterations):
             self.full_history.append(self.current_board.raw_data)
             golpi_c_simulate_board(pointer(self.current_board))
