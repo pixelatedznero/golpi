@@ -5,9 +5,9 @@ class Board:
         self.current_board = golpi_c_create_board(start_data, x_dim, y_dim, border_mode)
         """Represents the current board as a Ctypes struct object"""
         self.latest_history = []
-        """Saves the last state of the simulation"""
+        """Saves the last state of the simulation as list of bytes"""
         self.full_history = []
-        """Saves all states of the simulation"""
+        """Saves all states of the simulation as list of bytes"""
 
     def add(self, pattern: bytes, position: int) -> None:
         """ Add a patter to the current board
