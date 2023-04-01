@@ -25,7 +25,7 @@ class Stats:
         for h in range(1, len(self.history)):
             current_history = self.history[h]
             last_history = self.history[h - 1]
-            if len(current_history) != len(last_history):
+            if len(current_history) != len(last_history): # this should not happen at all
                 raise Exception("Histories stored inside of Board object have different sizes.")
 
             diff_history = [
