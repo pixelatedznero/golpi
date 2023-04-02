@@ -1,4 +1,5 @@
 from .utility import *
+import copy
 
 class Stats:
     def __init__(self, current_board, history: list) -> None:
@@ -20,28 +21,25 @@ class Stats:
         -------
         Vector of the total movement in x and y direction """
 
-        movement_vector = [0, 0]
+        current = copy.deepcopy(self.history[len(self.history)-1])
+        empty_rows = []
+        changed_origin = list(origin)
 
-        for h in range(1, len(self.history)):
-            current_history = self.history[h]
-            last_history = self.history[h - 1]
-            if len(current_history) != len(last_history): # this should not happen at all
-                raise Exception("Histories stored inside of Board object have different sizes.")
+        if origin[0] > self.current_board.x_dim or origin[1] > self.current_board.y_dim:
+            raise Exception("Origin coordinates outside of board.")
 
-            diff_history = [
-                [last_history[y][x] - current_history[y][x] for x in range(0, len(current_history[y]))] 
-                for y in range(0, len(current_history))
-            ]
 
-            row_sum = [sum(y) for y in diff_history]
-            column_sum = []
-            for i in range(0, len(diff_history[0])):
-                temp = 0
-                for j in range(0, len(diff_history)):
-                    temp += diff_history[j][i]
-                column_sum.append(temp)
+        for key, y in enumerate(self.history[len(self.history)-1]):
+            if sum(y) == 0:
+                empty_rows.append(key)
+                if len(empty_rows)-1 == key:
+                    changed_origin[1] = changed_origin[1] - 1
 
-            print(f"({row_sum}|{column_sum})")
+        for i in reversed(empty_rows):
+            current.pop(i)
+
+        print(current, changed_origin)
+
 
     def pixels_per_frame(self) -> float:
         """ Computes the average of alive pixels for all frames

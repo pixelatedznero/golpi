@@ -8,4 +8,5 @@ board.simulate(10)
 
 stats = Stats(board.current_board, board.full_history)
 
-print(stats.pixels_per_frame())
+print(stats.history[len(stats.history)-1])
+print(stats.movement((0,2)))
