@@ -4,9 +4,9 @@ class Board:
     def __init__(self, start_data: bytes, x_dim: int, y_dim: int, border_mode: int) -> None:
         self.current_board = golpi_c_create_board(start_data, x_dim, y_dim, border_mode)
         """Represents the current board as a Ctypes struct object"""
-        self.latest_history = []
+        self.latest_history = [start_data]
         """Saves the last state of the simulation as list of bytes"""
-        self.full_history = []
+        self.full_history = [start_data]
         """Saves all states of the simulation as list of bytes"""
 
     def add(self, pattern: bytes, position: int) -> None:
@@ -31,6 +31,8 @@ class Board:
         for i in range(position, position + len(pattern)):
             data[i] = pattern[i - position]
         self.current_board.raw_data = bytes(data)
+        self.latest_history[len(self.latest_history)-1] = bytes(data)
+        self.full_history[len(self.full_history)-1] = bytes(data)
 
     def simulate(self, iterations: int) -> None:
         """ Simulate board for specified ammount of iterations

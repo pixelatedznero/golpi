@@ -19,7 +19,7 @@ class Stats:
 
         Returns
         -------
-        Vector of the total movement in x and y direction """
+        List of tuples of vectors of the total movement in x and y direction """
 
         current = copy.deepcopy(self.history[len(self.history)-1])
         empty_rows = []
@@ -38,7 +38,22 @@ class Stats:
         for i in reversed(empty_rows):
             current.pop(i)
 
-        print(current, changed_origin)
+        allvectors = {}
+
+        for ykey, y in enumerate(current):
+            for xkey, x in enumerate(y):
+                if x == 1:
+                    actual_ykey = ykey-(changed_origin[1]-origin[1])
+                    allvectors[(xkey, actual_ykey)] = xkey + actual_ykey
+
+        max_vectors = []
+        max_distance = allvectors[max(allvectors)]
+        for i in allvectors:
+            if allvectors[i] == max_distance:
+                max_vectors.append(i)
+                
+        return max_vectors
+
 
 
     def pixels_per_frame(self) -> float:
