@@ -7,7 +7,6 @@ board.add(fly_pattern, (0, 2))
 board.simulate(10_000)
 board.display()
 
-# stats = Stats(board)
-# stats.movement()
+stats = Stats(board.current_board, board.full_history)
 
-print(golpi.convert_to_2d(fly_pattern, 5))
+print(stats.movement((0,3)))

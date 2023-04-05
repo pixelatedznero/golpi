@@ -1,12 +1,14 @@
-from .board import Board
+from .utility import *
+import copy
 
 class Stats:
-    def __init__(self, board: Board) -> None:
-        self.board = board
-        self.board.full_history = [[
-                [1 if h[y * self.board.current_board.x_dim + x] == '*' or h[y * self.board.current_board.x_dim + x] == 42 else 0 
-                for x in range(0, self.board.current_board.x_dim)] for y in range(0, len(h) // self.board.current_board.x_dim)
-            ] for h in self.board.full_history]
+    def __init__(self, current_board, history: list) -> None:
+        self.current_board = current_board
+
+        for key, h in enumerate(history):
+            history[key] = convert_binary_to_2d(h, current_board.x_dim)
+        self.history = history
+
 
     def movement(self, origin: tuple = (0, 0)) -> list:
         """ Computes the distance that every pixel has traveled in every direction
@@ -17,30 +19,43 @@ class Stats:
 
         Returns
         -------
-        Vector of the total movement in x and y direction """
+        List of tuples of vectors of the total movement in x and y direction """
 
-        movement_vector = [0, 0]
+        current = copy.deepcopy(self.history[len(self.history)-1])
+        empty_rows = []
+        changed_origin = list(origin)
 
-        for h in range(1, len(self.board.full_history)):
-            current_history = self.board.full_history[h]
-            last_history = self.board.full_history[h - 1]
-            if len(current_history) != len(last_history):
-                raise Exception("Histories stored inside of Board object have different sizes.")
+        if origin[0] > self.current_board.x_dim or origin[1] > self.current_board.y_dim:
+            raise Exception("Origin coordinates outside of board.")
+        
+        for key, y in enumerate(self.history[len(self.history)-1]):
+            if sum(y) == 0:
+                empty_rows.append(key)
+                if len(empty_rows)-1 == key:
+                    changed_origin[1] = changed_origin[1] - 1
 
-            diff_history = [
-                [last_history[y][x] - current_history[y][x] for x in range(0, len(current_history[y]))] 
-                for y in range(0, len(current_history))
-            ]
+        for i in reversed(empty_rows):
+            current.pop(i)
 
-            row_sum = [sum(y) for y in diff_history]
-            column_sum = []
-            for i in range(0, len(diff_history[0])):
-                temp = 0
-                for j in range(0, len(diff_history)):
-                    temp += diff_history[j][i]
-                column_sum.append(temp)
+        
+        allvectors = {}
 
-            print(f"({row_sum}|{column_sum})")
+        for ykey, y in enumerate(current):
+            for xkey, x in enumerate(y):
+                if x == 1:
+                    relative_y = ykey-changed_origin[1]
+                    relative_x = xkey-changed_origin[0]
+                    allvectors[(relative_x, relative_y)] = abs(relative_x + relative_y)
+
+        max_vectors = []
+        max_distance = allvectors[max(allvectors, key=allvectors.get)]
+        for i in allvectors:
+            if allvectors[i] == max_distance:
+                max_vectors.append(i)
+
+        return max_vectors
+
+
 
     def pixels_per_frame(self) -> float:
         """ Computes the average of alive pixels for all frames
@@ -54,12 +69,9 @@ class Stats:
         Average of alive pixels for all frames """
 
         total_alive_cells = 0
-        for h in self.board.full_history:
-            if h[0] != 0 or h[0] != 1:
-                h = [[1 if x == '*' else 0 for x in y] for y in h]
-            
+        for h in self.history:
             total_alive_cells += sum([sum(y) for y in h])
-        return total_alive_cells / len(self.board.full_history)
+        return total_alive_cells / len(self.history)
 
     def active_time(self) -> float:
         """ The amount of frames until all cells were dead
@@ -72,7 +84,7 @@ class Stats:
         -------
         Frames until the board was dead or None if the board is still alive"""
 
-        for i in range(0, len(self.board.full_history)):
-            if sum([sum(y) for y in self.board.full_history[i]]) == 0:
+        for i in range(0, len(self.history)):
+            if sum([sum(y) for y in self.history[i]]) == 0:
                 return i
         return None
