@@ -7,4 +7,4 @@ board.add(fly_pattern, 20)
 
 stats = Stats(board.current_board, board.full_history)
 
-print(stats.movement((1,0)))
+print(stats.movement((0,3)))

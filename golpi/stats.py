@@ -27,8 +27,7 @@ class Stats:
 
         if origin[0] > self.current_board.x_dim or origin[1] > self.current_board.y_dim:
             raise Exception("Origin coordinates outside of board.")
-
-
+        
         for key, y in enumerate(self.history[len(self.history)-1]):
             if sum(y) == 0:
                 empty_rows.append(key)
@@ -38,20 +37,22 @@ class Stats:
         for i in reversed(empty_rows):
             current.pop(i)
 
+        
         allvectors = {}
 
         for ykey, y in enumerate(current):
             for xkey, x in enumerate(y):
                 if x == 1:
-                    actual_ykey = ykey-(changed_origin[1]-origin[1])
-                    allvectors[(xkey, actual_ykey)] = xkey + actual_ykey
+                    relative_y = ykey-changed_origin[1]
+                    relative_x = xkey-changed_origin[0]
+                    allvectors[(relative_x, relative_y)] = abs(relative_x + relative_y)
 
         max_vectors = []
-        max_distance = allvectors[max(allvectors)]
+        max_distance = allvectors[max(allvectors, key=allvectors.get)]
         for i in allvectors:
             if allvectors[i] == max_distance:
                 max_vectors.append(i)
-                
+
         return max_vectors
 
 
