@@ -9,7 +9,7 @@ class Board:
         self.full_history = []
         """Saves all states of the simulation as list of bytes"""
 
-    def add(self, pattern: bytes, position: int) -> None:
+    def add(self, pattern: bytes, position: tuple) -> None:
         """ Add a patter to the current board
         
         Parameters
@@ -17,19 +17,20 @@ class Board:
         pattern: bytes object
         - Specifies the pattern that must be added to the board
 
-        position: int
-        - Specifies the position at wich the pattern originates in the current board
+        position: tuple
+        - Specifies the position at wich the pattern originates in the current board (x position, y position)
 
         Returns
         -------
         None """
 
-        if (position + len(pattern)) > (self.current_board.x_dim * self.current_board.y_dim):
+        sd_position = position[1] * self.current_board.x_dim + position[0]
+        if (sd_position + len(pattern)) > (self.current_board.x_dim * self.current_board.y_dim):
             raise Exception("Either the position or the size of the pattern will place it, at least partially, outside of the board.")
         
         data = bytearray(self.current_board.raw_data)
-        for i in range(position, position + len(pattern)):
-            data[i] = pattern[i - position]
+        for i in range(sd_position, sd_position + len(pattern)):
+            data[i] = pattern[i - sd_position]
         self.current_board.raw_data = bytes(data)
 
     def simulate(self, iterations: int) -> None:
