@@ -54,8 +54,8 @@ class Board:
             Exception("Can't generate negative iterations.")
 
         for _ in range(0, iterations):
-            self.full_history.append(self.current_board.raw_data)
             golpi_c_simulate_board(pointer(self.current_board))
+            self.full_history.append(self.current_board.raw_data)
         self.latest_history = self.full_history[len(self.full_history) - 1]
     
     def display(self) -> None:
