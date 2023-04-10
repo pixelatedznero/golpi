@@ -1,3 +1,6 @@
+def create(pattern: bytes, x_dim: int) -> tuple:
+    return (pattern, x_dim)
+
 class Stills :
     block = b'''**
               **'''

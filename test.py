@@ -1,12 +1,9 @@
 import golpi
 from golpi.stats import Stats
 
-# fly_pattern = b'      *          *       ***  '
+fly_pattern = golpi.patterns.create(b' *    * *** ', 4)
 board = golpi.create_empty_board(10, 10)
-board.add(golpi.patterns.block, (0, 0))
+board.add(fly_pattern, (2, 2))
 board.display()
 
-stats = Stats(board.current_board, board.full_history)
-
-print(board.full_history)
-print(stats.movement((0,3)))
+print(golpi.convert_binary_to_2d(board.full_history[0], 10))

@@ -9,13 +9,13 @@ class Board:
         self.full_history = [start_data]
         """Saves all states of the simulation as list of bytes"""
 
-    def add(self, pattern: bytes, position: tuple) -> None:
+    def add(self, patternobject: tuple, position: tuple) -> None:
         """ Add a patter to the current board
         
         Parameters
         ----------
-        pattern: bytes object
-        - Specifies the pattern that must be added to the board
+        patternobject: tuple
+        - Specifies the pattern that must be added to the board and its x dimension, can be easily created using patterns.create()
 
         position: tuple
         - Specifies the position at wich the pattern originates in the current board (x position, y position)
@@ -24,13 +24,29 @@ class Board:
         -------
         None """
 
-        sd_position = position[1] * self.current_board.x_dim + position[0]
-        if (sd_position + len(pattern)) > (self.current_board.x_dim * self.current_board.y_dim):
-            raise Exception("Either the position or the size of the pattern will place it, at least partially, outside of the board.")
-        
+        if len(patternobject[0]) % patternobject[1] != 0:
+            raise Exception("Given dimension doesn't fit given pattern.")
+        elif patternobject[1] + position[0] > self.current_board.x_dim or len(patternobject[0])/patternobject[1] + position[1] > self.current_board.x_dim:
+           raise Exception("Either the position or the size of the pattern will place it, at least partially, outside of the board.") 
+
         data = bytearray(self.current_board.raw_data)
-        for i in range(sd_position, sd_position + len(pattern)):
-            data[i] = pattern[i - sd_position]
+        split_pattern = [patternobject[0][i:i+patternobject[1]] for i in range(0, len(patternobject[0]), patternobject[1])]
+
+        for line in range(int(len(patternobject[0])/patternobject[1])):
+            start = (position[1]*self.current_board.x_dim) + position[0] + (line*self.current_board.x_dim)
+            for i in range(start, start+patternobject[1]):
+                data[i] = split_pattern[line][i-start]
+
+        
+
+
+        # sd_position = position[1] * self.current_board.x_dim + position[0]
+        # if (sd_position + len(pattern)) > (self.current_board.x_dim * self.current_board.y_dim):
+        #     raise Exception("Either the position or the size of the pattern will place it, at least partially, outside of the board.")
+        
+        # data = bytearray(self.current_board.raw_data)
+        # for i in range(sd_position, sd_position + len(pattern)):
+        #     data[i] = pattern[i - sd_position]
         self.current_board.raw_data = bytes(data)
         self.latest_history[len(self.latest_history)-1] = bytes(data)
         self.full_history[len(self.full_history)-1] = bytes(data)
