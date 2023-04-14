@@ -37,16 +37,6 @@ class Board:
             for i in range(start, start+patternobject[1]):
                 data[i] = split_pattern[line][i-start]
 
-        
-
-
-        # sd_position = position[1] * self.current_board.x_dim + position[0]
-        # if (sd_position + len(pattern)) > (self.current_board.x_dim * self.current_board.y_dim):
-        #     raise Exception("Either the position or the size of the pattern will place it, at least partially, outside of the board.")
-        
-        # data = bytearray(self.current_board.raw_data)
-        # for i in range(sd_position, sd_position + len(pattern)):
-        #     data[i] = pattern[i - sd_position]
         self.current_board.raw_data = bytes(data)
         self.latest_history[len(self.latest_history)-1] = bytes(data)
         self.full_history[len(self.full_history)-1] = bytes(data)

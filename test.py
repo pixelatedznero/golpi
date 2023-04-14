@@ -1,11 +1,12 @@
 import golpi
 from golpi.stats import Stats
+import time
 
-fly_pattern = golpi.patterns.create(b' *    * *** ', 4)
-board = golpi.create_empty_board(20, 20)
-board.add(golpi.patterns.Others.generate_crown(), (0, 0))
-for i in range(15):
-    board.simulate(1)
-    board.display()
-    print("----------")
+fly_pattern = golpi.patterns.create(b'* * ** * **   *  * * * * * *    * ****   *   ***   *** *   *  * * * * * *    * ****   *   ***   *** ', 10)
+board = golpi.create_empty_board(100, 100)
+board.add(fly_pattern, (5, 5))
 
+before = time.time()
+board.simulate(400)
+board.display()
+print(time.time()-before)
